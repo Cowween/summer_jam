@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://deilpmagseesp"]
+
+[ext_resource type="Script" uid="uid://c7mpqap0bwu8v" path="res://Entities/Friend/friend.gd" id="1_aiyg6"]
+[ext_resource type="Texture2D" uid="uid://cmrc6qxum6rof" path="res://icon.svg" id="2_2t0wk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6avk"]
+size = Vector2(16, 5)
+
+[node name="Friend" type="CharacterBody2D" unique_id=1900777179]
+collision_layer = 4
+script = ExtResource("1_aiyg6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=637098350]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_2t0wk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1131687648]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_m6avk")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2037454068]
