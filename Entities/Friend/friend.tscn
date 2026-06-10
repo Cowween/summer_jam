@@ -9,6 +9,8 @@ size = Vector2(16, 5)
 [node name="Friend" type="CharacterBody2D" unique_id=1900777179]
 collision_layer = 4
 script = ExtResource("1_aiyg6")
+SPEED = 300.0
+STOPPING_DISTANCE = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=637098350]
 scale = Vector2(0.14, 0.14)

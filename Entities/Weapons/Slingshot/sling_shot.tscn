@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c70b5tih571b0"]
+
+[ext_resource type="PackedScene" uid="uid://ddrs22bw4cnce" path="res://Entities/Objects/TestInvItem/test_inv_item.tscn" id="1_jmng0"]
+[ext_resource type="Resource" uid="uid://ddt5ebhh813sk" path="res://Entities/Weapons/Slingshot/slingshot_resource.tres" id="2_pb25o"]
+
+[node name="Slingshot" unique_id=1939774420 instance=ExtResource("1_jmng0")]
+item_resource = ExtResource("2_pb25o")

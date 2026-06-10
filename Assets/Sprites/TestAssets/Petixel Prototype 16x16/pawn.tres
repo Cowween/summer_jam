@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b4d0qx6y1w6lt"]
+
+[ext_resource type="Texture2D" uid="uid://bra7u0mlv5lhr" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/!Prototype_Pawns.png" id="1_0syv7"]
+
+[resource]
+atlas = ExtResource("1_0syv7")
+region = Rect2(176, 239, 16, 17)

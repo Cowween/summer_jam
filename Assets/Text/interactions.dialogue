@@ -1,0 +1,12 @@
+~ test_interaction_1
+
+Interacted
+Second line
+
+=> END
+
+~ item_pick_up
+
+You picked up {{GlobalStorage.game_data.picked_up_name}}!
+
+=> END

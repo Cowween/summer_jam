@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://h73xotmnutmy"]
+
+[ext_resource type="Script" uid="uid://cygafc2v7uicp" path="res://Core/UI/debug_interface.gd" id="1_yifr2"]
+[ext_resource type="LabelSettings" uid="uid://b36it6bhy5bqy" path="res://Assets/Text/Test/new_label_settings.tres" id="2_fm362"]
+
+[node name="DebugInterface" type="CanvasLayer" unique_id=1042485085]
+script = ExtResource("1_yifr2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=456194783]
+offset_right = 88.0
+offset_bottom = 40.0
+
+[node name="Temp" type="Label" parent="VBoxContainer" unique_id=1712608508]
+layout_mode = 2
+text = "Temp:"
+label_settings = ExtResource("2_fm362")
+
+[node name="PlayerHeat" type="Label" parent="VBoxContainer" unique_id=871554764]
+layout_mode = 2
+text = "PlayerTemp:"
+label_settings = ExtResource("2_fm362")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=2045007422]
+offset_left = 576.0
+offset_right = 637.895
+offset_bottom = 48.0
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer2" unique_id=784291675]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 8
+text = "Temp
+"
+
+[node name="Button" type="Button" parent="VBoxContainer2" unique_id=845746698]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Set temp"
+
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]

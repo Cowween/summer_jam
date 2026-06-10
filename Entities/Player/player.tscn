@@ -12,7 +12,8 @@ size = Vector2(18, 18)
 [node name="Player" type="CharacterBody2D" unique_id=1941967074]
 collision_layer = 2
 script = ExtResource("1_3uyv8")
-SPEED = 500.0
+SPEED = 300.0
+heat_tick_speed = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1412394947]
 scale = Vector2(0.14, 0.14)
@@ -27,5 +28,11 @@ shape = SubResource("RectangleShape2D_a3d8c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1027620094]
 shape = SubResource("RectangleShape2D_3uyv8")
 
+[node name="HeatTick" type="Timer" parent="." unique_id=1661127629]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1867299192]
+
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
+[connection signal="timeout" from="HeatTick" to="." method="_on_heat_tick_timeout"]

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://m8tp7n2v2mq6"]
+
+[ext_resource type="Script" uid="uid://dm1a5q6rlmu6a" path="res://Entities/Objects/TestAnomaly/test_anomaly.gd" id="1_adup4"]
+[ext_resource type="Resource" uid="uid://1d3h2fd2i1mi" path="res://Assets/Text/Test/test_anomaly_1.dialogue" id="2_r0bm7"]
+[ext_resource type="Texture2D" uid="uid://c6wi1u08xllho" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/orb.tres" id="2_wvik4"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_r0bm7"]
+[ext_resource type="Texture2D" uid="uid://dr2m3wrxqbm48" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/orb2.tres" id="4_3f8wj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg7r6"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgn"]
+size = Vector2(23, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
+size = Vector2(16, 16)
+
+[node name="TestAnomaly" type="StaticBody2D" unique_id=1119539795]
+script = ExtResource("1_adup4")
+anomaly_id = "test_1"
+encounter = ExtResource("2_r0bm7")
+
+[node name="IllusionSprite" type="Sprite2D" parent="." unique_id=591201497]
+texture = ExtResource("2_wvik4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=409228283]
+shape = SubResource("RectangleShape2D_xg7r6")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=620950227]
+script = ExtResource("3_r0bm7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1466374265]
+shape = SubResource("RectangleShape2D_38fgn")
+debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
+
+[node name="TrueSprite" type="Sprite2D" parent="." unique_id=2084650500]
+visible = false
+texture = ExtResource("4_3f8wj")
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=798930045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1850676131]
+shape = SubResource("RectangleShape2D_wvik4")
+debug_color = Color(1.5883148e-06, 0.6354228, 0.42116326, 0.41960785)

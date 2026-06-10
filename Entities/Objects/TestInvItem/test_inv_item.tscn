@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ddrs22bw4cnce"]
+
+[ext_resource type="Script" uid="uid://cx7p0hmwrtcsf" path="res://Core/Objects/inventory_object.gd" id="1_tqcbp"]
+[ext_resource type="Script" uid="uid://du7i7ddvjv0n6" path="res://Core/Resources/item_resource.gd" id="2_f4nh0"]
+[ext_resource type="Texture2D" uid="uid://b4d0qx6y1w6lt" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/pawn.tres" id="2_vsxgq"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_lqakv"]
+
+[sub_resource type="Resource" id="Resource_l5aqa"]
+script = ExtResource("2_f4nh0")
+item_id = "test1"
+display_name = "Test Object"
+metadata/_custom_type_script = "uid://du7i7ddvjv0n6"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeh5m"]
+size = Vector2(16, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk87"]
+size = Vector2(26, 25)
+
+[node name="TestInvItem" type="StaticBody2D" unique_id=1939774420]
+script = ExtResource("1_tqcbp")
+item_resource = SubResource("Resource_l5aqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2125217775]
+texture = ExtResource("2_vsxgq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1010930036]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yeh5m")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1806059436]
+script = ExtResource("3_lqakv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=973488294]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wsk87")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_area_2d_interacted"]

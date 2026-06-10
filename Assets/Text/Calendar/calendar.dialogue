@@ -1,0 +1,42 @@
+~ truth
+
+Why would they put the frozen beach on a summer calendar?
+
+=> END
+
+~ illusion
+
+A calendar given to me by the local townhall.
+There are pictures of local scenery throughout the seasons
+
+=> END
+
+~ success
+
+Huh? That's the beach near my house, all frozen over.
+
+=> truth
+
+~ failure
+
+Just an ordinary calendar.
+It's today.
+
+=> END
+
+~ random
+
+My mind feels all jumbled up
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END

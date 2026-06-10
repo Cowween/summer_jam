@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://gn34l6i1imvv"]
+
+[ext_resource type="Script" uid="uid://vatpr0hn3oe5" path="res://Entities/Weapons/Slingshot/sling_shot_ammo.gd" id="1_e2ph0"]
+[ext_resource type="Texture2D" uid="uid://dr2m3wrxqbm48" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/orb2.tres" id="2_6w057"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_py7iy"]
+radius = 2.0
+
+[node name="SlingShotAmmo" type="Area2D" unique_id=891617875]
+script = ExtResource("1_e2ph0")
+
+[node name="Orb2" type="Sprite2D" parent="." unique_id=1821147538]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_6w057")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=478319856]
+shape = SubResource("CircleShape2D_py7iy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

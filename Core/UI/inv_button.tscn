@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://desuc4huggbvk"]
+
+[ext_resource type="Script" uid="uid://cvtgxo2k0pbx6" path="res://Core/UI/inv_button.gd" id="1_3ppyd"]
+
+[node name="Button" type="Button" unique_id=1826563358]
+theme_override_font_sizes/font_size = 8
+text = "Slingshot"
+script = ExtResource("1_3ppyd")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

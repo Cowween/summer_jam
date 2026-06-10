@@ -10,7 +10,7 @@ enum State { FOLLOWING, STAND_STILL, DISTRACTED }
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 var current_state: State = State.FOLLOWING
-
+var game_data : GameData = GlobalStorage.game_data
 var distracted_position: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -24,6 +24,7 @@ func _physics_process(_delta: float) -> void:
 		State.FOLLOWING:
 			handle_following_logic()
 		State.STAND_STILL:
+			game_data.is_friend_following = false
 			velocity = Vector2.ZERO # Do absolutely nothing
 		State.DISTRACTED:
 			handle_distracted_logic()
@@ -32,7 +33,7 @@ func _physics_process(_delta: float) -> void:
 
 func handle_following_logic() -> void:
 	if not target_node: return
-	
+	game_data.is_friend_following = true
 	var distance_to_player = global_position.distance_to(target_node.global_position)
 
 	# Only walk if the player is further away than the stopping comfort zone
@@ -47,6 +48,7 @@ func handle_following_logic() -> void:
 		velocity = Vector2.ZERO
 
 func handle_distracted_logic() -> void:
+	game_data.is_friend_following = false
 	var distance_to_distraction = global_position.distance_to(distracted_position)
 	
 	# Walk toward the distracted target position (like the broken AC)

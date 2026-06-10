@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://v2t13gel5xg0"]
+
+[ext_resource type="PackedScene" uid="uid://ddrs22bw4cnce" path="res://Entities/Objects/TestInvItem/test_inv_item.tscn" id="1_qcxmd"]
+[ext_resource type="Resource" uid="uid://h4g8wy3vrymy" path="res://Entities/Objects/IsotonicDrink/isotonic_drink_item_resource.tres" id="2_pkgbm"]
+[ext_resource type="Texture2D" uid="uid://cgxob4tbwqwmj" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/isotonic_placeholder.tres" id="3_pkgbm"]
+
+[node name="TestInvItem" unique_id=1939774420 instance=ExtResource("1_qcxmd")]
+item_resource = ExtResource("2_pkgbm")
+
+[node name="Sprite2D" parent="." index="0" unique_id=2125217775]
+texture = ExtResource("3_pkgbm")

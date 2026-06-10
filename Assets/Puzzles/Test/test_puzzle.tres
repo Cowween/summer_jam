@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ThoughtPuzzleResource" format=3 uid="uid://6whsou6uspbv"]
+
+[ext_resource type="Resource" uid="uid://1d3h2fd2i1mi" path="res://Assets/Text/Test/test_anomaly_1.dialogue" id="1_djty7"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="2_rvgni"]
+
+[resource]
+script = ExtResource("2_rvgni")
+dialogue = ExtResource("1_djty7")
+anomaly_id = "test1"
+high_temp_text_bank = "Hello These Get Nuts Out Of"
+low_temp_text_bank = "Among Mind My Head"
+valid_solution_lines = "Get Out Of My Head
+Get Out Of My Mind"
+eldritch_solution_lines = "Hello These Nuts"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"

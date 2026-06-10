@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b2204hju1qu5k"]
+
+[ext_resource type="Script" uid="uid://c7pdietmt564k" path="res://Core/UI/thought_puzzle.gd" id="1_t3kx2"]
+[ext_resource type="Script" uid="uid://bt0t6hjofabyh" path="res://Core/UI/word_button.gd" id="2_m1pfy"]
+[ext_resource type="Resource" uid="uid://6whsou6uspbv" path="res://Assets/Puzzles/Test/test_puzzle.tres" id="2_s3rrf"]
+[ext_resource type="PackedScene" uid="uid://i1h8co78bh4o" path="res://Core/UI/word_button.tscn" id="3_s3rrf"]
+
+[node name="ThoughtPuzzle" type="CanvasLayer" unique_id=1708991597]
+script = ExtResource("1_t3kx2")
+current_puzzle = ExtResource("2_s3rrf")
+
+[node name="Panel" type="Panel" parent="." unique_id=1046436163]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Thought" type="HFlowContainer" parent="Panel" unique_id=1628358088]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -20.0
+offset_right = 270.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Words" type="HFlowContainer" parent="Panel" unique_id=1287242502]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -96.0
+offset_right = 270.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button" parent="Panel/Words" unique_id=122677015 instance=ExtResource("3_s3rrf")]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Panel/Words" unique_id=1294864943]
+layout_mode = 2
+text = "Out"
+script = ExtResource("2_m1pfy")
+
+[node name="Button3" type="Button" parent="Panel/Words" unique_id=547712149]
+layout_mode = 2
+text = "Of"
+script = ExtResource("2_m1pfy")
+
+[node name="Button4" type="Button" parent="Panel/Words" unique_id=144936518]
+layout_mode = 2
+text = "My"
+script = ExtResource("2_m1pfy")
+
+[node name="Button5" type="Button" parent="Panel/Words" unique_id=1702190767]
+layout_mode = 2
+text = "Head"
+script = ExtResource("2_m1pfy")
+
+[node name="ThinkButton" type="Button" parent="Panel" unique_id=1251355442]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.5
+offset_top = -31.0
+offset_right = 28.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "THINK"
+
+[connection signal="pressed" from="Panel/Words/Button2" to="Panel/Words/Button2" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Words/Button3" to="Panel/Words/Button3" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Words/Button4" to="Panel/Words/Button4" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Words/Button5" to="Panel/Words/Button5" method="_on_pressed"]
+[connection signal="pressed" from="Panel/ThinkButton" to="." method="_on_think_button_pressed"]

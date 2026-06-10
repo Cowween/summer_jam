@@ -1,0 +1,40 @@
+~ truth
+
+That was something
+
+=> END
+
+~ illusion
+
+Just an ordinary orb
+
+=> END
+
+~ success
+
+Ponder success
+
+=> END
+
+~ failure
+
+Ponder failure
+
+=> END
+
+~ random
+
+My mind feels all jumbled up
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END

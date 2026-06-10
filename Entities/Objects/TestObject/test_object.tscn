@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b657n2f3pwsej"]
+
+[ext_resource type="Script" uid="uid://ro540gk8kpe6" path="res://Entities/Objects/TestObject/test_object.gd" id="1_xelaf"]
+[ext_resource type="Texture2D" uid="uid://b4d0qx6y1w6lt" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/pawn.tres" id="2_1vcvd"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_s0m20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeh5m"]
+size = Vector2(16, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk87"]
+size = Vector2(26, 25)
+
+[node name="TestObject" type="StaticBody2D" unique_id=1939774420]
+script = ExtResource("1_xelaf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2125217775]
+texture = ExtResource("2_1vcvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1010930036]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yeh5m")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1806059436]
+script = ExtResource("3_s0m20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=973488294]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wsk87")
+
+[connection signal="interacted" from="Area2D" to="." method="_on_area_2d_interacted"]

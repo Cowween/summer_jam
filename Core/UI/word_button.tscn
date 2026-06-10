@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://i1h8co78bh4o"]
+
+[ext_resource type="Script" uid="uid://bt0t6hjofabyh" path="res://Core/UI/word_button.gd" id="1_h2gde"]
+
+[node name="Button" type="Button" unique_id=122677015]
+text = "Get"
+script = ExtResource("1_h2gde")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

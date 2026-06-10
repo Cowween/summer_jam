@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://1d3h2fd2i1mi"
+path="res://.godot/imported/test_anomaly_1.dialogue-cd9ddbeed5041b01372e250aa5ec44a6.tres"
+
+[deps]
+
+source_file="res://Assets/Text/Test/test_anomaly_1.dialogue"
+dest_files=["res://.godot/imported/test_anomaly_1.dialogue-cd9ddbeed5041b01372e250aa5ec44a6.tres"]
+
+[params]
+
+defaults=true

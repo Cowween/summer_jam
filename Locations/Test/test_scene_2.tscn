@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://nc2lvpo01mnf"]
+
+[ext_resource type="Script" uid="uid://b7xsekci7sjhn" path="res://Core/stage_manager.gd" id="1_l55nf"]
+[ext_resource type="PackedScene" uid="uid://b6132nmkyqfi5" path="res://Entities/Player/player.tscn" id="2_7bjly"]
+[ext_resource type="TileSet" uid="uid://broxhupjug0w7" path="res://Assets/Sprites/TestAssets/new_tile_set.tres" id="3_3wdu7"]
+[ext_resource type="PackedScene" uid="uid://s52tnyepiya3" path="res://Core/scene_trigger.tscn" id="4_llwor"]
+[ext_resource type="PackedScene" uid="uid://deilpmagseesp" path="res://Entities/Friend/friend.tscn" id="5_xxx6k"]
+[ext_resource type="PackedScene" uid="uid://h73xotmnutmy" path="res://Core/UI/debug_Interface.tscn" id="6_7bjly"]
+[ext_resource type="PackedScene" uid="uid://sdoimmwccupo" path="res://Core/UI/inventory_interface.tscn" id="7_3wdu7"]
+
+[node name="TestScene2" type="Node2D" unique_id=1115424177 node_paths=PackedStringArray("spawn_list", "ui", "roomcam")]
+script = ExtResource("1_l55nf")
+initial_friend_state = "following"
+starting_scene = "uid://bscsgcyvxq3yf"
+spawn_list = [NodePath("Node2D")]
+ui = NodePath("DebugInterface")
+is_room = true
+roomcam = NodePath("Camera2D")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1906287953]
+tile_map_data = PackedByteArray("AAAGAAQAAAABAAEAAAAHAAQAAAABAAEAAAAIAAQAAAABAAEAAAAJAAQAAAABAAEAAAAKAAQAAAABAAEAAAALAAQAAAABAAEAAAAMAAQAAAABAAEAAAANAAQAAAABAAEAAAANAAUAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAANAAgAAAABAAEAAAANAAkAAAABAAEAAAAMAAkAAAABAAEAAAALAAkAAAABAAEAAAAKAAkAAAABAAEAAAAJAAkAAAABAAEAAAAIAAkAAAABAAEAAAAHAAkAAAABAAEAAAAGAAkAAAABAAEAAAAGAAgAAAABAAEAAAAGAAcAAAABAAEAAAAGAAYAAAABAAEAAAAGAAUAAAABAAEAAAAHAAUAAAABAAEAAAAIAAUAAAABAAEAAAAJAAUAAAABAAEAAAAKAAUAAAABAAEAAAALAAUAAAABAAEAAAAMAAUAAAABAAEAAAAMAAYAAAABAAEAAAALAAYAAAABAAEAAAAKAAYAAAABAAEAAAAJAAYAAAABAAEAAAAIAAYAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAHAAgAAAABAAEAAAAIAAgAAAABAAEAAAAJAAgAAAABAAEAAAAKAAgAAAABAAEAAAALAAgAAAABAAEAAAAMAAgAAAABAAEAAAAMAAcAAAABAAEAAAALAAcAAAABAAEAAAAKAAcAAAABAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAGAAMAAAAGAAQAAAAHAAMAAAAGAAQAAAAIAAMAAAAGAAQAAAAJAAMAAAAGAAQAAAAKAAMAAAAGAAQAAAALAAMAAAAGAAQAAAAMAAMAAAAGAAQAAAANAAMAAAAGAAQAAAAGAAIAAAAGAAIAAAAHAAIAAAAGAAIAAAAIAAIAAAAGAAIAAAAJAAIAAAAGAAIAAAAKAAIAAAAGAAIAAAALAAIAAAAGAAIAAAAMAAIAAAAGAAIAAAANAAIAAAAGAAIAAAAOAAIAAAAAAAYAAAAOAAMAAAAFAAEAAAAOAAQAAAAFAAEAAAAOAAUAAAAFAAEAAAAOAAYAAAAFAAEAAAAOAAcAAAAFAAEAAAAOAAgAAAAFAAEAAAAOAAkAAAAFAAEAAAAOAAoAAAAAAAUAAAANAAoAAAAGAAAAAAAMAAoAAAAGAAAAAAALAAoAAAAGAAAAAAAKAAoAAAAGAAAAAAAJAAoAAAAGAAAAAAAIAAoAAAAGAAAAAAAHAAoAAAAGAAAAAAAGAAoAAAAGAAAAAAAFAAMAAAAHAAEAAAAFAAQAAAAHAAEAAAAFAAcAAAAHAAEAAAAFAAgAAAAHAAEAAAAFAAkAAAAHAAEAAAAFAAoAAAABAAUAAAAFAAIAAAABAAYAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAA=")
+tile_set = ExtResource("3_3wdu7")
+
+[node name="SceneTrigger" parent="." unique_id=1998012916 instance=ExtResource("4_llwor")]
+position = Vector2(80, 96)
+next_scene = "uid://bahis2xlech37"
+
+[node name="Friend" parent="." unique_id=1900777179 node_paths=PackedStringArray("target_node") instance=ExtResource("5_xxx6k")]
+unique_name_in_owner = true
+position = Vector2(72, 8)
+target_node = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1941967074 instance=ExtResource("2_7bjly")]
+unique_name_in_owner = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1633422046]
+
+[node name="FriendSpawn" type="Marker2D" parent="Node2D" unique_id=574505424]
+position = Vector2(88, 96)
+
+[node name="Spawn" type="Marker2D" parent="Node2D" unique_id=1179503473]
+position = Vector2(112, 96)
+
+[node name="DebugInterface" parent="." unique_id=1566658164 node_paths=PackedStringArray("env") instance=ExtResource("6_7bjly")]
+env = NodePath("..")
+
+[node name="InventoryInterface" parent="." unique_id=527975129 instance=ExtResource("7_3wdu7")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=543911677]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dymr546j5mdvi"]
+
+[ext_resource type="PackedScene" uid="uid://c6wpo1l6elume" path="res://Locations/base_location.tscn" id="1_kav1m"]
+[ext_resource type="Script" uid="uid://btd26sbergbt4" path="res://Locations/Stages/stage_1_house.gd" id="2_v1tyr"]
+[ext_resource type="PackedScene" uid="uid://dwvyamjog46s1" path="res://Entities/Objects/Calendar/calendar.tscn" id="3_00sps"]
+
+[node name="BaseLocation" unique_id=285425476 instance=ExtResource("1_kav1m")]
+script = ExtResource("2_v1tyr")
+initial_friend_state = "stand_still"
+starting_scene = ""
+is_room = true
+stage_id = 1
+
+[node name="ThoughtPuzzle" parent="." index="2" unique_id=1708991597]
+visible = false
+
+[node name="TestAnomaly" parent="Anomalies" parent_id_path=PackedInt32Array(1391283418) index="0" unique_id=1119539795 node_paths=PackedStringArray("world", "thought_puzzle_interface") instance=ExtResource("3_00sps")]
+position = Vector2(328, 128)
+world = NodePath("../..")
+thought_puzzle_interface = NodePath("../../ThoughtPuzzle")
+
+[node name="Spawn" parent="Spawn0" parent_id_path=PackedInt32Array(300232249) index="0" unique_id=1237786385]
+position = Vector2(232, 168)

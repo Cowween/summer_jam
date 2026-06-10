@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://ddt5ebhh813sk"]
+
+[ext_resource type="Script" uid="uid://bejyvco8gfj6i" path="res://Entities/Weapons/Slingshot/slingshot_resource.gd" id="1_msxq7"]
+
+[resource]
+script = ExtResource("1_msxq7")
+item_id = "slingshot"
+display_name = "Slingshot"
+uses = 1
+item_group = "slingshot"

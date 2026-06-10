@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://sdoimmwccupo"]
+
+[ext_resource type="Script" uid="uid://qyq57xvsfgsm" path="res://Core/UI/inventory_interface.gd" id="1_gwg18"]
+[ext_resource type="PackedScene" uid="uid://desuc4huggbvk" path="res://Core/UI/inv_button.tscn" id="2_7hk8y"]
+
+[node name="InventoryInterface" type="CanvasLayer" unique_id=527975129]
+script = ExtResource("1_gwg18")
+inv_button = ExtResource("2_7hk8y")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=962254456]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -68.0
+offset_right = 104.0
+offset_bottom = 68.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=146248940]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" parent="ScrollContainer/VBoxContainer" unique_id=1826563358 instance=ExtResource("2_7hk8y")]
+layout_mode = 2

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dwvyamjog46s1"]
+
+[ext_resource type="PackedScene" uid="uid://m8tp7n2v2mq6" path="res://Entities/Objects/TestAnomaly/test_anomaly.tscn" id="1_5swh8"]
+[ext_resource type="Script" uid="uid://c62w5mj17lyth" path="res://Entities/Objects/Calendar/calendar.gd" id="2_vlbly"]
+[ext_resource type="Resource" uid="uid://b5j8ic1p5na8t" path="res://Assets/Text/Calendar/calendar.dialogue" id="3_wuoig"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="4_h512l"]
+
+[sub_resource type="Resource" id="Resource_hs8w3"]
+script = ExtResource("4_h512l")
+anomaly_id = "calendar"
+high_temp_text_bank = "Calendar My Just The"
+low_temp_text_bank = "Frozen Beach Why Is"
+valid_solution_lines = "Why Is The Beach Frozen
+Frozen Beach"
+eldritch_solution_lines = "Just My Calendar
+My Calendar"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wuoig"]
+radius = 23.0
+
+[node name="Calendar" unique_id=1119539795 instance=ExtResource("1_5swh8")]
+script = ExtResource("2_vlbly")
+anomaly_id = "calendar"
+temperature_unlock_threshold = 40.0
+encounter = ExtResource("3_wuoig")
+thought_puzzle = SubResource("Resource_hs8w3")
+
+[node name="TemperatureArea" type="Area2D" parent="." index="5" unique_id=863806731]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TemperatureArea" index="0" unique_id=1556328912]
+shape = SubResource("CircleShape2D_wuoig")
+debug_color = Color(0.6102322, 0.53929585, 0.0056532454, 0.41960785)
+
+[connection signal="body_entered" from="TemperatureArea" to="." method="_on_temperature_area_body_entered"]
+[connection signal="body_exited" from="TemperatureArea" to="." method="_on_temperature_area_body_exited"]

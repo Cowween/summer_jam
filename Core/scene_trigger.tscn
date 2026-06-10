@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://s52tnyepiya3"]
+
+[ext_resource type="Script" uid="uid://ck2um0i44o6n6" path="res://Core/scene_trigger.gd" id="1_5l3vq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx5ej"]
+size = Vector2(32, 32)
+
+[node name="SceneTrigger" type="Area2D" unique_id=1998012916]
+collision_mask = 2
+script = ExtResource("1_5l3vq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1542933894]
+shape = SubResource("RectangleShape2D_cx5ej")

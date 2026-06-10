@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://h4g8wy3vrymy"]
+
+[ext_resource type="Script" uid="uid://n41i2sixrlgc" path="res://Entities/Objects/IsotonicDrink/isotonic_drink_resource.gd" id="1_04ork"]
+
+[resource]
+script = ExtResource("1_04ork")
+item_id = "iso2"
+display_name = "Isotonic Drink"
+uses = 2
+item_group = "iso"
