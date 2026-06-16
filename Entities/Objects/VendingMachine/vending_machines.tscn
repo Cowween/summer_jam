@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dsmhet3lo36ew"]
+
+[ext_resource type="PackedScene" uid="uid://m8tp7n2v2mq6" path="res://Entities/Objects/TestAnomaly/test_anomaly.tscn" id="1_kcn0w"]
+[ext_resource type="Script" uid="uid://rpp1wpa0w2jm" path="res://Entities/Objects/VendingMachine/vending_machines.gd" id="2_osajk"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="2_t8cd6"]
+[ext_resource type="Resource" uid="uid://c74i6ke5nblgt" path="res://Entities/Objects/CoffeeIce/coffee_ice.tres" id="3_1spfu"]
+[ext_resource type="Resource" uid="uid://dxbp102mmls3p" path="res://Assets/Text/interactions.dialogue" id="3_qqmrk"]
+[ext_resource type="Resource" uid="uid://cunn7qfgnb2ye" path="res://Entities/Objects/FakeDrink/fake_drink.tres" id="4_uknlq"]
+[ext_resource type="Resource" uid="uid://d00t4x03q6jse" path="res://Assets/Text/VendingMachine/vending_machine.dialogue" id="6_r60xn"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="7_qc1y0"]
+[ext_resource type="Texture2D" uid="uid://dpioejsmdnmlr" path="res://Assets/Env/vendingcold..png" id="8_n5pnm"]
+[ext_resource type="Texture2D" uid="uid://bl5kjflcth8su" path="res://Assets/Env/vendinghot.png" id="9_vkwl6"]
+[ext_resource type="Texture2D" uid="uid://b44cvrr3xou6m" path="res://Assets/Env/vendingmonster.png" id="10_v00mc"]
+
+[sub_resource type="Resource" id="Resource_n5pnm"]
+script = ExtResource("7_qc1y0")
+anomaly_id = "vending_machine"
+high_temp_text_bank = "I Should Drink Get Really A"
+low_temp_text_bank = "These Vending Machines Have No Shadows"
+valid_solution_lines = "These Vending Machines Have No Shadows
+These Machines Have No Shadows
+No Shadows
+Vending Machines No Shadows"
+eldritch_solution_lines = "I Should Get A Drink
+I Should Really Get A Drink
+Get A Drink
+I Really Should Get A Drink"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r60xn"]
+size = Vector2(56, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgn"]
+size = Vector2(23, 30.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqmrk"]
+size = Vector2(58, 20)
+
+[node name="VendingMachines" unique_id=1119539795 instance=ExtResource("1_kcn0w")]
+script = ExtResource("2_osajk")
+coffee_ice = ExtResource("3_1spfu")
+hot_drink = ExtResource("4_uknlq")
+interactions = ExtResource("3_qqmrk")
+anomaly_id = "vending_machine"
+temperature_unlock_threshold = 50.0
+cooling_reward = 3.0
+encounter = ExtResource("6_r60xn")
+thought_puzzle = SubResource("Resource_n5pnm")
+
+[node name="IllusionSprite" parent="." index="0" unique_id=591201497]
+position = Vector2(386, -6)
+texture = ExtResource("8_n5pnm")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=409228283]
+position = Vector2(20, -9)
+shape = SubResource("RectangleShape2D_r60xn")
+
+[node name="Orb" type="Sprite2D" parent="." index="2" unique_id=556861750]
+position = Vector2(387.72, -6.705)
+texture = ExtResource("9_vkwl6")
+
+[node name="CollisionShape2D" parent="Interactable" parent_id_path=PackedInt32Array(620950227) index="0" unique_id=1466374265]
+shape = SubResource("RectangleShape2D_38fgn")
+
+[node name="TrueSprite" parent="." index="4" unique_id=2084650500]
+visible = true
+position = Vector2(386, -6)
+texture = ExtResource("10_v00mc")
+
+[node name="CollisionShape2D" parent="MouseArea" parent_id_path=PackedInt32Array(798930045) index="0" unique_id=1850676131]
+position = Vector2(19, 0)
+shape = SubResource("RectangleShape2D_qqmrk")
+
+[node name="CoffeeMachine" type="Area2D" parent="." index="6" unique_id=1386635259]
+position = Vector2(42.145, 0)
+script = ExtResource("2_t8cd6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoffeeMachine" index="0" unique_id=666559387]
+position = Vector2(-2.1450005, 3.75)
+shape = SubResource("RectangleShape2D_38fgn")
+debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
+
+[node name="Glitch" parent="." index="8" unique_id=714474402]
+offset_left = -30.0
+offset_top = -44.0
+offset_right = 21.0
+offset_bottom = 16.0
+
+[connection signal="interacted" from="CoffeeMachine" to="." method="_on_coffee_machine_interacted"]

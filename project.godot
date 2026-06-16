@@ -31,9 +31,25 @@ window/size/viewport_width=640
 window/size/viewport_height=320
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/lolig/Documents/your-lie-in-summer/Movies/output.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Locations/": "red"
+}
+
+[global_group]
+
+killable=""
+sledge=""
+shootable=""
 
 [input]
 
@@ -80,7 +96,7 @@ cancel={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Assets/Text/interactions.dialogue", "res://Assets/Text/Test/test_anomaly_1.dialogue", "res://Assets/Text/Calendar/calendar.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Assets/Text/interactions.dialogue", "res://Assets/Text/Test/test_anomaly_1.dialogue", "res://Assets/Text/Calendar/calendar.dialogue", "res://Assets/Text/Stage1/stage1_script.dialogue", "res://Assets/Text/Television/television.dialogue", "res://Assets/Text/VendingMachine/vending_machine.dialogue", "res://Assets/Text/IceBag/ice_bag.dialogue", "res://Assets/Text/Lamps/lamps.dialogue", "res://Assets/Text/Stage2/stage2.dialogue", "res://Assets/Text/Aircon/aircon.dialogue", "res://Assets/Text/Mannequins/mannequins.dialogue", "res://Assets/Text/Fountain/fountain.dialogue", "res://Assets/Text/GateTree/gate_tree.dialogue", "res://Assets/Text/Stage0/stage0.dialogue", "res://Assets/Text/friend_interaction/friend_interaction.dialogue", "res://Assets/Text/friend_interaction/friend_p1.dialogue", "res://Assets/Text/friend_interaction/friend_p2.dialogue", "res://Assets/Text/friend_interaction/friend_p3.dialogue", "res://Assets/Text/Stage4/stage4.dialogue", "res://Assets/Text/GodFight/god_fight.dialogue", "res://Assets/Text/Stage5/stage5.dialogue")
 
 [layer_names]
 

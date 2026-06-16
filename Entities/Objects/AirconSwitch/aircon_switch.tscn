@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cxse1m1rf5dro"]
+
+[ext_resource type="Script" uid="uid://b688equmor5hd" path="res://Entities/Objects/AirconSwitch/aircon_switch.gd" id="1_v6bgq"]
+[ext_resource type="Texture2D" uid="uid://c6gmdtfalfxwv" path="res://Assets/Sprites/AirconSwitch/aircon_switch_on.png" id="2_adxnb"]
+[ext_resource type="Resource" uid="uid://dmtm5gb4bgmlx" path="res://Assets/Text/Aircon/aircon.dialogue" id="2_v1q3v"]
+[ext_resource type="Texture2D" uid="uid://bm2cf75kq5q31" path="res://Assets/Sprites/AirconSwitch/aircon_switch.png" id="3_v1q3v"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="3_wycdf"]
+[ext_resource type="Script" uid="uid://cgsxe33566jl6" path="res://Entities/Objects/AirconSwitch/interactable.gd" id="4_adxnb"]
+[ext_resource type="Texture2D" uid="uid://beghw46dke65v" path="res://Assets/Sprites/AirconSwitch/aircon_switch_corrupted5.png" id="5_v6bgq"]
+[ext_resource type="Texture2D" uid="uid://dfeil8l5iek1k" path="res://Assets/Sprites/AirconSwitch/aircon_switch_destroyed1.png" id="6_v1q3v"]
+[ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="9_i2wyc"]
+
+[sub_resource type="Resource" id="Resource_i2wyc"]
+script = ExtResource("3_wycdf")
+high_temp_text_bank = "This Switch Controls The A/Cs"
+low_temp_text_bank = "Is Also Possessed"
+valid_solution_lines = "This Switch Is Also Possessed
+This Switch Is Possessed
+The Switch Is Possessed
+The Switch Is Also Possessed"
+eldritch_solution_lines = "This Switch Controls The A/Cs
+This Switch Controls A/Cs
+Switch Controls The A/Cs
+Switch Controls A/Cs"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i76pd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_adxnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v1q3v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg7r6"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgn"]
+size = Vector2(32, 51.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i76pd"]
+shader = ExtResource("9_i2wyc")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 100.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="AirconSwitch" type="StaticBody2D" unique_id=1119539795]
+script = ExtResource("1_v6bgq")
+anomaly_id = "aircon"
+encounter = ExtResource("2_v1q3v")
+thought_puzzle = SubResource("Resource_i2wyc")
+
+[node name="IllusionSprite" type="AnimatedSprite2D" parent="." unique_id=1742560944]
+sprite_frames = SubResource("SpriteFrames_i76pd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=409228283]
+shape = SubResource("RectangleShape2D_xg7r6")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=620950227 groups=["sledge"]]
+script = ExtResource("4_adxnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1466374265]
+position = Vector2(0, 14.25)
+shape = SubResource("RectangleShape2D_38fgn")
+debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
+
+[node name="TrueSprite" type="Sprite2D" parent="." unique_id=2084650500]
+texture = ExtResource("5_v6bgq")
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=798930045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1850676131]
+shape = SubResource("RectangleShape2D_wvik4")
+debug_color = Color(1.5883148e-06, 0.6354228, 0.42116326, 0.41960785)
+
+[node name="AirconSwitchDestroyed" type="Sprite2D" parent="." unique_id=989387449]
+visible = false
+texture = ExtResource("6_v1q3v")
+
+[node name="Glitch" type="ColorRect" parent="." unique_id=59273280]
+visible = false
+material = SubResource("ShaderMaterial_i76pd")
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 13.0
+offset_bottom = 8.0
+
+[connection signal="destroyed" from="Interactable" to="." method="_on_interactable_destroyed"]

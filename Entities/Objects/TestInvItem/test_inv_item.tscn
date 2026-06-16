@@ -12,7 +12,7 @@ display_name = "Test Object"
 metadata/_custom_type_script = "uid://du7i7ddvjv0n6"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeh5m"]
-size = Vector2(16, 17)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk87"]
 size = Vector2(26, 25)

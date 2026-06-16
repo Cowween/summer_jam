@@ -13,23 +13,76 @@ var is_inventory_open := true
 var is_friend_following := true
 var permanent_temp_dec := 0
 var stage_temp_dec := [0.0, 0.0, 0.0, 0.0, 0.0]
+var loop_count := 0
+var friend_killed := false
+var friend_revealed := true
+var suspect_friend := false
+var suspicion_state := 0
+var god_mode := false
+var current_stage := 0
+
 #==Stage 0 flags==
+
+var stage_0_visited := false
 
 #==Stage 1 flags==
 
+var stage_1_count := 0
+var stage_1_friend_count := 0
+var stage_1_visited := false
+var tv_on := false
+var tv_broken := false
+var stage_1_solved := false
+var fridge_open := false
+var friend_seen := false
+var friend_killed_reset := true
 
 #==Stage 2 flags==
 
+var stage_2_count := 0
+var stage_2_visited := false
+var tentacles_cleared := false
+var unbroken_lamps := 6
+var broken_lamps : Dictionary
+var lamps_pondered := false
 
 #==Stage 3 flags==
 
+var stage_3_count := 0
+var stage_3_visited := false
+var is_truck_open := false
+var is_friend_distracted := false
+var is_switch_off := false
+var is_switch_broken := false
+var is_glass_broken := false
+var jacket_on := false
 
 #==Stage 4 flags==
 
+var stage_4_count := 0
+var stage_4_visited := false
+var can_use_ice := false
+var is_ice_used := false
+
+func loop() -> void:
+	stage_0_visited = false
+	stage_1_visited = false
+	stage_2_visited = false
+	stage_3_visited = false
+	stage_4_visited = false
+	is_friend_following = false
+	is_reset = true
+	next_spawn = 0
+	loop_count += 1
+	player_core_heat = 0.0
+	is_reset = false
+	print("loop number ", loop_count)
 
 func register_anomaly_solved(anomaly_id: String):
 	if not solved_anomalies.has(anomaly_id):
 		solved_anomalies.append(anomaly_id)
+		GameBus.anomaly_solved.emit()
+		
 		
 var player_core_heat: float = 0.0:
 	set(value):
@@ -55,6 +108,13 @@ func remove_item(item: ItemResource) -> void:
 		inventory.erase(item)
 		item_groups.erase(item.item_group)
 		GameBus.inventory_changed.emit()
+
+func remove_item_by_id(target_id: String) -> void:
+	for item in inventory:
+		if item.item_id == target_id:
+			inventory.erase(item)
+			item_groups.erase(item.item_group)
+			GameBus.inventory_changed.emit()
 
 func has_item(target_id: String) -> bool:
 	for item in inventory:

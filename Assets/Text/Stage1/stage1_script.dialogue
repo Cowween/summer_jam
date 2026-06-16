@@ -1,0 +1,49 @@
+~ start
+if GlobalStorage.game_data.stage_1_count == 0:
+	You: Urgh...
+	You: How is it so hot here...
+	You: I can't even think clearly under this heat.
+	Hold "alt" and press on objects of interest to gather your thoughts.
+elif GlobalStorage.game_data.friend_revealed:
+	Suika: Heloooo~
+	You: ...
+	(Get me out of here.)
+elif GlobalStorage.game_data.stage_1_solved and GlobalStorage.game_data.stage_1_friend_count == 0:
+	Suika: Helloooo~
+	You: Huh, Suika?
+	You: How did you get in here?
+	Suika: You left your door open, silly~
+elif GlobalStorage.game_data.stage_1_solved:
+	Suika: Helloooo~
+	% (This again huh.)
+	% You: ...
+	% (What's going on here.)
+else:
+	You: This same hot living room again...
+	You: There must be something strange going on with my house, but what?
+	
+=> END
+
+~ puzzles_solved
+Knock knock knock
+You: Who's there?
+=> END
+
+~ friend
+Suika: Heya~ Watchu up to?
+You: Oh, Suika, it's you.
+You: My aircon's broken, and it's so unbearably hot here...
+Suika: Oh gosh... Maybe we should go get someone to fix it?
+Suika: Oh! I know! There's this aircon shop at the shopping district, down at the end of the road.
+Suika: Maybe they'll know what to do!
+You: Urgh you're right, let's go get this aircon fixed.
+
+=> END
+
+~ hot_door
+
+You: Ouch!
+The door handle is scorching.
+You: I need to lower the temperature... Somehow...
+
+=> END

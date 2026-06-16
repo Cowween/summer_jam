@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cg8iojobhl4vn"
+path="res://.godot/imported/mannequins.dialogue-b21a93efa355130f51761cd76c773003.tres"
+
+[deps]
+
+source_file="res://Assets/Text/Mannequins/mannequins.dialogue"
+dest_files=["res://.godot/imported/mannequins.dialogue-b21a93efa355130f51761cd76c773003.tres"]
+
+[params]
+
+defaults=true

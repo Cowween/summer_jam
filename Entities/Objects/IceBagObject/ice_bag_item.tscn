@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cto6bqesqyvfg"]
+
+[ext_resource type="PackedScene" uid="uid://ddrs22bw4cnce" path="res://Entities/Objects/TestInvItem/test_inv_item.tscn" id="1_fj0m0"]
+[ext_resource type="Resource" uid="uid://c5h4map38jxek" path="res://Entities/Objects/IceBagObject/ice_bag.tres" id="2_dmig5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj0m0"]
+size = Vector2(40, 35.5)
+
+[node name="IceBagItem" unique_id=1939774420 instance=ExtResource("1_fj0m0")]
+item_resource = ExtResource("2_dmig5")
+
+[node name="CollisionShape2D" parent="Interactable" parent_id_path=PackedInt32Array(1806059436) index="0" unique_id=973488294]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_fj0m0")

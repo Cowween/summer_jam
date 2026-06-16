@@ -1,9 +1,19 @@
 extends BaseAnomaly
 
 
-# Called when the node enters the scene tree for the first time.
-func unsolved_interaction() -> void:
-	DialogueManager.show_dialogue_balloon(encounter, "illusion")
-
 func solved_interaction() -> void:
-	DialogueManager.show_dialogue_balloon(encounter, "truth")
+	pass
+
+func unsolved_interaction() -> void:
+	pass
+
+func execute_hallucination_trap() -> void:
+	# Virtual function: Handles heat spikes, or misleading text from the friend
+	pass
+
+func random_solution() -> void:
+	DialogueManager.show_dialogue_balloon(encounter, "random")
+
+func _on_truth_revealed() -> void:
+	# Virtual function: Overridden by individual anomalies (e.g., breaking streetlights)
+	pass

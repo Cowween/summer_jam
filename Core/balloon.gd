@@ -15,13 +15,24 @@ extends CanvasLayer
 @export var will_block_other_input: bool = true
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = &"interact"
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+
+@export var suiyobi_texture : Texture2D
+@export var suika_texture : Texture2D
+@export var evil_suika :Texture2D
+@export var dead_suika : Texture2D
+
+@export var normal_style : StyleBoxFlat
+@export var evil_style : StyleBoxFlat
+
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var portrait := %CharacterPortrait
+@onready var panel_container: PanelContainer = $Balloon/MarginContainer/PanelContainer
 
 ## Temporary game states
 var temporary_game_states: Array = []
@@ -132,6 +143,7 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -142,6 +154,24 @@ func apply_dialogue_line() -> void:
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
+	
+	portrait.hide()
+	panel_container.add_theme_stylebox_override("panel", normal_style)
+	if dialogue_line.character != "":
+		portrait.show()
+		if dialogue_line.character == "You":
+			portrait.texture = suiyobi_texture
+		elif dialogue_line.character == "Suika":
+			if GlobalStorage.game_data.friend_killed:
+				panel_container.add_theme_stylebox_override("panel", evil_style)
+				portrait.texture = dead_suika
+				character_label.text = character_label.text + "?"
+			elif GlobalStorage.game_data.friend_revealed:
+				panel_container.add_theme_stylebox_override("panel", evil_style)
+				portrait.texture = evil_suika
+				character_label.text = character_label.text + "?"
+			else:
+				portrait.texture = suika_texture
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():

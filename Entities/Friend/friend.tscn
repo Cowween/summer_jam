@@ -1,23 +1,279 @@
 [gd_scene format=3 uid="uid://deilpmagseesp"]
 
 [ext_resource type="Script" uid="uid://c7mpqap0bwu8v" path="res://Entities/Friend/friend.gd" id="1_aiyg6"]
-[ext_resource type="Texture2D" uid="uid://cmrc6qxum6rof" path="res://icon.svg" id="2_2t0wk"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="2_2t0wk"]
+[ext_resource type="Texture2D" uid="uid://c3hwrpo6jr87r" path="res://Assets/Sprites/Suica/suica.png" id="2_aiyg6"]
+[ext_resource type="Resource" uid="uid://y0fdxye61mq0" path="res://Assets/Text/friend_interaction/friend_p1.dialogue" id="2_eqygu"]
+[ext_resource type="Resource" uid="uid://btbo7vkt64p8g" path="res://Assets/Text/friend_interaction/friend_interaction.dialogue" id="3_hunxy"]
+[ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="4_m6avk"]
+[ext_resource type="Resource" uid="uid://c8nh1phltd5f7" path="res://Assets/Text/friend_interaction/friend_p2.dialogue" id="4_x7i2n"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="4_yapia"]
+[ext_resource type="Resource" uid="uid://ctxv1iwkyedrs" path="res://Assets/Text/friend_interaction/friend_p3.dialogue" id="5_fbcvg"]
+[ext_resource type="Texture2D" uid="uid://crt78nhoomd7a" path="res://Assets/Sprites/Suica/evilsuica.png" id="9_x7i2n"]
+
+[sub_resource type="Resource" id="Resource_m6avk"]
+script = ExtResource("2_2t0wk")
+dialogue = ExtResource("2_eqygu")
+anomaly_id = "sus1"
+high_temp_text_bank = "Suika Is My Friend Never Calls Me By Name"
+valid_solution_lines = "Suika Never Calls Me By Name
+Suika Never Calls Me By My Name"
+eldritch_solution_lines = "Suika Is My Friend"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="Resource" id="Resource_yapia"]
+script = ExtResource("2_2t0wk")
+dialogue = ExtResource("4_x7i2n")
+anomaly_id = "sus2"
+high_temp_text_bank = "Suika Loves Me Will Never Lie To Me"
+valid_solution_lines = "Suika Will Never Lie To Me"
+eldritch_solution_lines = "Suika Loves Me"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="Resource" id="Resource_hunxy"]
+script = ExtResource("2_2t0wk")
+dialogue = ExtResource("5_fbcvg")
+anomaly_id = "sus3"
+high_temp_text_bank = "I Love Suika She Is Not"
+valid_solution_lines = "She Is Not Suika"
+eldritch_solution_lines = "I Love Suika"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6avk"]
 size = Vector2(16, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t0wk"]
+size = Vector2(20, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbcvg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiyg6")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcjj3"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(10, 37, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqogr"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(34, 10, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ppk7"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(34, 37, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nrub"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(12, 10, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgwye"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(10, 37, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dqat"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(34, 10, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tydmh"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(34, 37, 27, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqn75"]
+atlas = ExtResource("9_x7i2n")
+region = Rect2(12, 10, 27, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06y26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcjj3")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqogr")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ppk7")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nrub")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgwye")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dqat")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tydmh")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqn75")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yapia"]
+shader = ExtResource("4_m6avk")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 41.215
+shader_parameter/shake_color_rate = 0.01
+
 [node name="Friend" type="CharacterBody2D" unique_id=1900777179]
+y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_aiyg6")
-SPEED = 300.0
+SPEED = 150.0
 STOPPING_DISTANCE = 30.0
+puzzle1 = SubResource("Resource_m6avk")
+puzzle2 = SubResource("Resource_yapia")
+puzzle3 = SubResource("Resource_hunxy")
+friend_script = ExtResource("3_hunxy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=637098350]
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("2_2t0wk")
+visible = false
+texture = ExtResource("2_aiyg6")
+offset = Vector2(8, -30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1131687648]
-position = Vector2(0, 5)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_m6avk")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2037454068]
+
+[node name="MouseArea" type="Area2D" parent="." unique_id=1830417709]
+priority = -1
+script = ExtResource("4_yapia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=605643710]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_2t0wk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=768981677]
+position = Vector2(8, -30)
+sprite_frames = SubResource("SpriteFrames_fbcvg")
+animation = &"walk_up"
+
+[node name="EvilSprite" type="AnimatedSprite2D" parent="." unique_id=1555043929]
+visible = false
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_06y26")
+animation = &"walk_up"
+offset = Vector2(-0.6, -0.53)
+
+[node name="Glitch" type="ColorRect" parent="." unique_id=1785101299]
+z_index = 1
+material = SubResource("ShaderMaterial_yapia")
+offset_left = -5.0
+offset_top = -17.0
+offset_right = 6.0
+offset_bottom = -8.0
+mouse_filter = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1859681691]
+one_shot = true
+
+[connection signal="interacted" from="MouseArea" to="." method="_on_mouse_area_interacted"]
+[connection signal="mouse_entered" from="MouseArea" to="." method="_on_mouse_area_mouse_entered"]
+[connection signal="mouse_exited" from="MouseArea" to="." method="_on_mouse_area_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://8nefqrcf4ouh"]
+
+[ext_resource type="Script" uid="uid://b3u0s31w3qekn" path="res://Entities/Objects/Jacket/jacket.gd" id="1_l54ja"]
+
+[resource]
+script = ExtResource("1_l54ja")
+item_id = "jacket"
+display_name = "Jacket"
+uses = 1
+item_group = "jacket"

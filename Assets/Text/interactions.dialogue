@@ -10,3 +10,40 @@ Second line
 You picked up {{GlobalStorage.game_data.picked_up_name}}!
 
 => END
+
+~ fridge_locked
+
+The fridge would not budge.
+Is there something wrong with the power?
+
+=> END
+
+~ fridge
+
+Take some isotonic drinks from the fridge?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	set GlobalStorage.game_data.player_y_n = false
+	
+=> END
+	
+~ puddle
+
+A puddle that doesn't seem to evaporate in the middle of the heat.
+
+=> END
+
+~ hot_drink
+
+As the drink traveled down your throat, you could feel it burning your insides.
+You: *Cough* What the hell is this.
+You: It's burning hot!
+
+=> END
+
+~ frozen_coffee
+
+The solid chunk of frozen coffee cooled your core temperature down.
+
+=> END

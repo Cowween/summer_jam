@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c6wi1u08xllho" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/orb.tres" id="2_wvik4"]
 [ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_r0bm7"]
 [ext_resource type="Texture2D" uid="uid://dr2m3wrxqbm48" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/orb2.tres" id="4_3f8wj"]
+[ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="6_r0bm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xg7r6"]
 size = Vector2(16, 16)
@@ -14,6 +15,14 @@ size = Vector2(23, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
 size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3f8wj"]
+shader = ExtResource("6_r0bm7")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 100.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
 
 [node name="TestAnomaly" type="StaticBody2D" unique_id=1119539795]
 script = ExtResource("1_adup4")
@@ -42,3 +51,15 @@ texture = ExtResource("4_3f8wj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1850676131]
 shape = SubResource("RectangleShape2D_wvik4")
 debug_color = Color(1.5883148e-06, 0.6354228, 0.42116326, 0.41960785)
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1321336372]
+position = Vector2(-12, -12)
+copy_mode = 2
+
+[node name="Glitch" type="ColorRect" parent="." unique_id=714474402]
+material = SubResource("ShaderMaterial_3f8wj")
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 11.0
+offset_bottom = 12.0
+mouse_filter = 2

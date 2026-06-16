@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c62w5mj17lyth" path="res://Entities/Objects/Calendar/calendar.gd" id="2_vlbly"]
 [ext_resource type="Resource" uid="uid://b5j8ic1p5na8t" path="res://Assets/Text/Calendar/calendar.dialogue" id="3_wuoig"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="4_h512l"]
+[ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="5_h512l"]
 
 [sub_resource type="Resource" id="Resource_hs8w3"]
 script = ExtResource("4_h512l")
@@ -19,6 +20,14 @@ metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 [sub_resource type="CircleShape2D" id="CircleShape2D_wuoig"]
 radius = 23.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hs8w3"]
+shader = ExtResource("5_h512l")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 100.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
 [node name="Calendar" unique_id=1119539795 instance=ExtResource("1_5swh8")]
 script = ExtResource("2_vlbly")
 anomaly_id = "calendar"
@@ -33,6 +42,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TemperatureArea" index="0" unique_id=1556328912]
 shape = SubResource("CircleShape2D_wuoig")
 debug_color = Color(0.6102322, 0.53929585, 0.0056532454, 0.41960785)
+
+[node name="BackBufferCopy" parent="." index="6" unique_id=1321336372]
+visible = false
+position = Vector2(0.5, 2)
+scale = Vector2(0.135, 0.14)
+
+[node name="Glitch" parent="." index="7" unique_id=714474402]
+material = SubResource("ShaderMaterial_hs8w3")
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 12.0
+offset_bottom = 11.0
 
 [connection signal="body_entered" from="TemperatureArea" to="." method="_on_temperature_area_body_entered"]
 [connection signal="body_exited" from="TemperatureArea" to="." method="_on_temperature_area_body_exited"]

@@ -1,0 +1,104 @@
+~ remote
+
+if GlobalStorage.game_data.tv_broken:
+	The tv is out of commmission.
+	=> END
+
+if GlobalStorage.game_data.tv_on:
+	You cannnot seem to turn off the tv.
+else:
+	Turn on the tv?
+	- Yes
+		set GlobalStorage.game_data.player_y_n = true
+	- No
+		set GlobalStorage.game_data.player_y_n = false
+		
+=> END
+
+~ tv
+if GlobalStorage.game_data.tv_on:
+	You: It's
+	You: So hot...
+else:
+	if GlobalStorage.game_data.tv_broken:
+		Look at what you have done.
+	else:
+		The tv is off.
+		There seems to be a layer of moisture building up on the tv.
+=> END
+
+~ plug
+
+Unplug the tv?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+	You unplugged the tv, and the cold air inside the tv seems to be gushing out.
+- No
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ truth
+
+if GlobalStorage.game_data.tv_broken:
+	Look at what you have done.
+else:
+	You: I need to turn the tv off.
+	You: I- I need to blind it
+	Use the slingshot to shoot at the eye.
+
+=> END
+
+~ illusion
+
+if GlobalStorage.game_data.tv_on:
+	You: It's
+	You: So hot...
+else:
+	The tv is off.
+	There seems to be a layer of moisture building up on the tv.
+
+=> END
+
+~ success
+
+You: What the hell is going on with the tv?
+You: It's... It's staring at me.
+
+=> END
+
+~ failure
+
+You: It's my favourite program.
+
+=> END
+
+~ random
+
+(My mind feels all jumbled up.)
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ fridge
+
+A gust of cool air flowed out from the crack in the television.
+Meanwhile, a beep sound came from the general direction of your fridge.
+
+=> END
+
+~ deflect
+
+You wouldn't want to break your own tv, right?
+
+=> END

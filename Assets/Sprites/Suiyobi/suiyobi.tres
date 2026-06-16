@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://bt1twdy56kflu"]
+
+[ext_resource type="Texture2D" uid="uid://cmg053bvpv6ho" path="res://Assets/Sprites/Suiyobi/suiyobi.png" id="1_7sjpv"]
+
+[resource]
+atlas = ExtResource("1_7sjpv")
+region = Rect2(15, 39, 18, 25)

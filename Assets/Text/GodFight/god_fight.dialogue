@@ -1,0 +1,52 @@
+
+~ success
+%
+	You: Uurghhhh!
+	You: Get out of my head you creepy fucker!
+%
+	You: Shut up, shut up, SHUT UP!
+%
+	You: I have enough of your stupid thoughts!
+=> END
+
+~ failure
+%
+	You are drawn to me.
+	Your love for me is as endless as the eternal summer.
+%
+	Your friend wished for the world to be free of her.
+	You wish to be free too.
+%
+	You wish to be set free.
+	And you realise summer is the season of freedom, of change.
+
+=> END
+
+~ random
+%
+	Your mind is not clear.
+	The summer sun shall shine through all falsehoods.
+%
+	I miss you.
+%
+	I love you.
+%
+	I shall sweep the darkness away.
+%
+	You desire the truth.
+	My truth.
+%
+	Look, isn't summer beautiful?
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END

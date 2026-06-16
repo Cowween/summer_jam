@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bhy4f70srwl5x"
+path="res://.godot/imported/lamps.dialogue-69d633f9930fc31226e01bf886e60f54.tres"
+
+[deps]
+
+source_file="res://Assets/Text/Lamps/lamps.dialogue"
+dest_files=["res://.godot/imported/lamps.dialogue-69d633f9930fc31226e01bf886e60f54.tres"]
+
+[params]
+
+defaults=true

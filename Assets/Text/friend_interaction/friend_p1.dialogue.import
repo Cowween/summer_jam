@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://y0fdxye61mq0"
+path="res://.godot/imported/friend_p1.dialogue-109ef5978f9ee77b8f0e64ae94419c89.tres"
+
+[deps]
+
+source_file="res://Assets/Text/friend_interaction/friend_p1.dialogue"
+dest_files=["res://.godot/imported/friend_p1.dialogue-109ef5978f9ee77b8f0e64ae94419c89.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,26 @@
+~ start
+if GlobalStorage.game_data.loop_count == 0:
+	You: Ou- Ouch-
+	You: Why am I on the floor?
+	You: And urgh, why is it so goddamn hot here, who turned off the aircon??
+elif GlobalStorage.game_data.friend_killed and not GlobalStorage.game_data.friend_killed_reset:
+	You: Awh...
+	You: Suika...
+	You: What have you gotten yourself into... Where are you...
+	You: I- I genuinely cannot take this anymore.
+	set GlobalStorage.game_data.friend_killed_reset = true
+elif GlobalStorage.game_data.loop_count == 1:
+	You: Ou- Huh?
+	You: This position on the floor.
+	You: It was like earlier before.
+	You: Was just now all a dream?
+
+elif GlobalStorage.game_data.loop_count == 2:
+	You: Ou-
+	(The same position.)
+	(The same heat.)
+	(The same broken air conditioner.)
+	(What have I gotten myself into.)
+elif GlobalStorage.game_data.loop_count > 2:
+	You: ...
+=> END

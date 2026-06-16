@@ -1,0 +1,48 @@
+~ truth
+
+I am there beyond the trees.
+Come to me.
+
+=> END
+
+~ illusion
+
+You: Why are there icicles on the tree.
+You: Think, Suiyobi, think.
+You: You've been through so many insane happenings at this point.
+
+=> END
+
+~ success
+
+You: ...
+You: It has been winter... All along...
+
+=> END
+
+~ failure
+
+You: Urgh, that's definitely not correct.
+You: Someone's definitely been fucking with my head.
+
+=> END
+~ blocking
+(This path should lead to the beach.)
+(If not for the trees blocking my way.)
+=> END
+~ random
+
+(My mind feels all jumbled up)
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END

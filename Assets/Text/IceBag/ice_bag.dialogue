@@ -1,0 +1,54 @@
+~ truth
+
+Straight up gore.
+
+=> END
+
+~ illusion
+
+An isotonic drinks machine.
+Get one?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ drink_over
+
+The isotonic drinks machine is not responding to your touch.
+
+=> END
+
+~ success
+
+You: Are those tentacles surrounding that bag of ice?
+You: I better not get too close to them.
+
+=> END
+
+~ failure
+
+You: That bag of ice must be really high quality to not melt in this weather.
+Suika: It's not even that hot though...?
+
+=> END
+
+~ random
+
+My mind feels all jumbled up
+
+=> END
+
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END

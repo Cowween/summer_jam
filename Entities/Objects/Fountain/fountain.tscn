@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bp51lq2ew3yiu"]
+
+[ext_resource type="PackedScene" uid="uid://m8tp7n2v2mq6" path="res://Entities/Objects/TestAnomaly/test_anomaly.tscn" id="1_i2rra"]
+[ext_resource type="Script" uid="uid://bp6onctfpean7" path="res://Entities/Objects/Fountain/fountain.gd" id="2_ipepd"]
+[ext_resource type="Texture2D" uid="uid://cxeb2gmnkgqfg" path="res://Assets/Sprites/fountain/fountain.png" id="3_2hxlc"]
+[ext_resource type="Resource" uid="uid://ce86157a0lktd" path="res://Assets/Text/Fountain/fountain.dialogue" id="3_ak5hq"]
+[ext_resource type="Texture2D" uid="uid://e6al5s1ftynf" path="res://Assets/Sprites/fountain/fountain_evil.png" id="4_ak5hq"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="4_dvleq"]
+
+[sub_resource type="Resource" id="Resource_w3a14"]
+script = ExtResource("4_dvleq")
+high_temp_text_bank = "It's Just A Fountain"
+low_temp_text_bank = "The Statue Looks Off"
+valid_solution_lines = "The Statue Looks Off"
+eldritch_solution_lines = "It's Just A Fountain"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvleq"]
+size = Vector2(80, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipepd"]
+size = Vector2(88, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5hq"]
+size = Vector2(80, 88)
+
+[node name="Fountain" unique_id=1119539795 instance=ExtResource("1_i2rra")]
+script = ExtResource("2_ipepd")
+anomaly_id = "fountain"
+cooling_reward = 10.0
+encounter = ExtResource("3_ak5hq")
+thought_puzzle = SubResource("Resource_w3a14")
+
+[node name="IllusionSprite" parent="." index="0" unique_id=591201497]
+position = Vector2(0, -48)
+texture = ExtResource("3_2hxlc")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=409228283]
+position = Vector2(0, -24)
+shape = SubResource("RectangleShape2D_dvleq")
+
+[node name="Interactable" parent="." index="2" unique_id=620950227]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Interactable" index="0" unique_id=1466374265]
+position = Vector2(-4, -22.5)
+shape = SubResource("RectangleShape2D_ipepd")
+
+[node name="TrueSprite" parent="." index="3" unique_id=2084650500]
+position = Vector2(0, -48)
+texture = ExtResource("4_ak5hq")
+
+[node name="CollisionShape2D" parent="MouseArea" parent_id_path=PackedInt32Array(798930045) index="0" unique_id=1850676131]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_ak5hq")
+
+[node name="Glitch" parent="." index="6" unique_id=714474402]
+offset_left = -16.0
+offset_top = -88.0
+offset_right = 7.0
+offset_bottom = -72.0
+
+[connection signal="body_entered" from="Interactable" to="." method="_on_interactable_body_entered"]
+[connection signal="body_exited" from="Interactable" to="." method="_on_interactable_body_exited"]

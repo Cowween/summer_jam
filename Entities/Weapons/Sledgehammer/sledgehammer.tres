@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://xehqy2ra5wb2"]
+
+[ext_resource type="Script" uid="uid://d0rt4aueput2s" path="res://Entities/Weapons/Sledgehammer/sledgehammer_resource.gd" id="1_fc1fb"]
+
+[resource]
+script = ExtResource("1_fc1fb")
+item_id = "sledgehammer"
+display_name = "Sledgehammer"
+uses = 1
+item_group = "sledgehammer"

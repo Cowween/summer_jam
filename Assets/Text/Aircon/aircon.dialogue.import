@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dmtm5gb4bgmlx"
+path="res://.godot/imported/aircon.dialogue-1feff9b81f5caf040fe798096458fd7e.tres"
+
+[deps]
+
+source_file="res://Assets/Text/Aircon/aircon.dialogue"
+dest_files=["res://.godot/imported/aircon.dialogue-1feff9b81f5caf040fe798096458fd7e.tres"]
+
+[params]
+
+defaults=true

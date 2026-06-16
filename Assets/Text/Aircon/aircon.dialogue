@@ -1,0 +1,66 @@
+~ truth
+
+(Of course this switch is also some kind of gore, should I even be surprised?)
+(I have to destroy this somehow.)
+
+=> END
+
+~ illusion
+
+This lever seems to be connected to the air conditioners.
+Turn it off?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ success
+
+Suika: Suiyobi~ You've been spacing out a lot lately...
+Suika: Are you feeling okay?
+You: Sui... Tell me that at least you are real...
+You: Even if my beloved air conditioners are possessed by demons, at least you are real right?
+Suika: Demons...? Girl what are you even talking about.
+Suika: Of course i'm real!!
+You: Haha, what am I even on.
+(This lever is apparently some demonic flesh too.)
+(And Suika never calls me by my full name.)
+
+
+=> END
+
+~ failure
+
+(All the air conditioners seem to be working so well.)
+(What a shame that the actual shop is closed.)
+
+=> END
+
+~ random
+
+(My mind feels all jumbled up)
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ break_switch
+
+Suika: AHHHHHH!
+You: Huh? It's just a-
+Suika: WHAT HAVE YOU DONEEEEEEE!
+Suika: I've got to... Fix it...
+You: ...
+
+=> END

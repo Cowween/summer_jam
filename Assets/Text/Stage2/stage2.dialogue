@@ -1,0 +1,49 @@
+~ start
+if GlobalStorage.game_data.stage_2_count == 0:
+	You: This heat... It doesn't feel real.
+	You: I swear I'm not built for this, I'm already starting to see things...
+	Suika: The store is just at the end of the road, hang in there!
+	You: I really need something cold...
+elif GlobalStorage.game_data.stage_2_count == 1:
+	You: Suika.
+	You: Have you ever felt like your life is somehow stuck in a loop.
+	You: Like the same strange things keep happening, it always ends badly, and there seems to be no escape.
+	Suika: ...
+	Suika: Why are you thinking of such dreary thing when there's the beautiful summer sky!
+=> END
+
+~ truck_block
+
+Suika: Waiiiittt!
+Suika: Don't you see that a traffic accident happened there?
+Suika: Don't get too close!
+You: What's the worst that could happen?
+Suika: Uhm... Like, what if the cars explode!!
+Suika: Just don't get close!!
+
+=> END
+
+~ stage_transition
+if not GlobalStorage.game_data.is_switch_broken and GlobalStorage.game_data.stage_3_count==0:
+	You: Oh god, what's happened here?
+	Suika: Suiyobi! Don't get too close!
+	Suika: Lookie there, the air con shop is right there!
+	Suika: Let's not get distracted.
+	(...Suiyobi?)
+else:
+	Suika: NOOOOOO!
+	Suika: DON'T BREAK DON'T BREAK DON'T BREAK DON'T BREAK
+	You: ...
+
+=> END
+
+~ aircon_closed
+
+You: Looks like this shop is closed.
+You: Not that I'm expecting anything less considering all the weird shit that's happened.
+Suika: Oh no!
+Suika: Looks like there's nothing we can do but enjoy the summer~
+Suika: Maybe we can go sunbathe in the park or something.
+Suika: Y'know, hot girl summer stuff.
+
+=> END

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://btg2wb031q54s"]
+
+[ext_resource type="Script" uid="uid://ixiishwl5um6" path="res://Entities/Objects/Truck/truck.gd" id="1_8p583"]
+[ext_resource type="Texture2D" uid="uid://brt7ecquk0x2x" path="res://Assets/Env/icecreamtruck.png" id="2_1u6t5"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_gigcm"]
+[ext_resource type="Texture2D" uid="uid://dkbp8cust1tbi" path="res://Assets/Sprites/Truck/truck_open.png" id="4_1u6t5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krsms"]
+size = Vector2(112, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sr8k5"]
+size = Vector2(100.774826, 60.443825)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsabr"]
+size = Vector2(45, 41)
+
+[node name="Truck" type="StaticBody2D" unique_id=1494584065]
+script = ExtResource("1_8p583")
+
+[node name="Truck" type="Sprite2D" parent="." unique_id=517495973]
+position = Vector2(-208, -72)
+texture = ExtResource("2_1u6t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=191681774]
+position = Vector2(-16, -80)
+shape = SubResource("RectangleShape2D_krsms")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=500468053]
+position = Vector2(-10.495728, -54.534515)
+rotation = 0.8115781
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_sr8k5")
+
+[node name="Interactable" type="Area2D" parent="." unique_id=1994008817]
+script = ExtResource("3_gigcm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2043302058]
+position = Vector2(25.5, -19.5)
+shape = SubResource("RectangleShape2D_lsabr")
+debug_color = Color(0.97988075, 0, 0.38827664, 0.41960785)
+
+[node name="TruckOpen" type="Sprite2D" parent="." unique_id=834964735]
+visible = false
+position = Vector2(32, -32)
+texture = ExtResource("4_1u6t5")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

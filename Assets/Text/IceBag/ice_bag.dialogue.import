@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dcph2w8vug0af"
+path="res://.godot/imported/ice_bag.dialogue-e1b3f6534a1bff3a7e254ad8356c30e5.tres"
+
+[deps]
+
+source_file="res://Assets/Text/IceBag/ice_bag.dialogue"
+dest_files=["res://.godot/imported/ice_bag.dialogue-e1b3f6534a1bff3a7e254ad8356c30e5.tres"]
+
+[params]
+
+defaults=true

@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b3bciitqfekcm" path="res://Core/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Texture2D" uid="uid://dknampu1d5fwr" path="res://Assets/Sprites/Suiyobi/suiyobisplash.png" id="2_vayph"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://dyowfiq733kwq" path="res://Assets/Sprites/Suica/suicasplash2.png" id="3_pxaix"]
+[ext_resource type="Shader" uid="uid://bjw437c7p0dyy" path="res://Assets/Shaders/melt.gdshader" id="4_ggi1d"]
+[ext_resource type="Texture2D" uid="uid://dkjnyk71q2w4n" path="res://Assets/Sprites/Suica/suicaskin.png" id="4_m6uqt"]
+[ext_resource type="Texture2D" uid="uid://cyebf74lu1a7e" path="res://Assets/Sprites/Suica/suicaskindead.png" id="5_kinxr"]
+[ext_resource type="StyleBox" uid="uid://cxaaiymnrp2cc" path="res://Assets/Themes/normal_dialogue.tres" id="6_pxaix"]
+[ext_resource type="StyleBox" uid="uid://b5ks2njbfts0k" path="res://Assets/Themes/evil_dialogue.tres" id="7_m6uqt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,6 +70,11 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri7kw"]
+shader = ExtResource("4_ggi1d")
+shader_parameter/progress = 0.0
+shader_parameter/meltiness = 1.0
+
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -102,6 +114,12 @@ _data = {
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
 script = ExtResource("1_36de5")
+suiyobi_texture = ExtResource("2_vayph")
+suika_texture = ExtResource("3_pxaix")
+evil_suika = ExtResource("4_m6uqt")
+dead_suika = ExtResource("5_kinxr")
+normal_style = ExtResource("6_pxaix")
+evil_style = ExtResource("7_m6uqt")
 
 [node name="Balloon" type="Control" parent="." unique_id=359403728]
 unique_name_in_owner = true
@@ -119,20 +137,34 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -148.0
+offset_top = -128.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 30
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer" unique_id=810051587]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
+theme_override_styles/panel = ExtResource("6_pxaix")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer" unique_id=1030936092]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer" unique_id=1428277592]
 layout_mode = 2
+
+[node name="CharacterPortrait" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=90231051]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ri7kw")
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 2
+texture = ExtResource("2_vayph")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1624289611]
 layout_mode = 2

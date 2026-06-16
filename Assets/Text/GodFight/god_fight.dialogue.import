@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bhgh2rigsatn4"
+path="res://.godot/imported/god_fight.dialogue-ca68b2dcfae0f9794e792515a44f63fd.tres"
+
+[deps]
+
+source_file="res://Assets/Text/GodFight/god_fight.dialogue"
+dest_files=["res://.godot/imported/god_fight.dialogue-ca68b2dcfae0f9794e792515a44f63fd.tres"]
+
+[params]
+
+defaults=true

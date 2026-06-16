@@ -1,0 +1,57 @@
+~ truth
+
+(The mannequin wearing the jacket seems to be cooler than the rest.)
+
+=> END
+
+~ illusion
+
+(Fashion for bland people.)
+(Not that I'm currently wearing anything special, but still.)
+
+=> END
+
+~ success
+
+You: The mannequin wearing the jacket is the only one that not melting...
+You: Could it be the jacket cooling it down?
+
+=> END
+
+~ failure
+
+Winter jacket during summer.
+How stuffy.
+
+=> END
+
+~ random
+
+(My mind feels all jumbled up.)
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ jacket
+Take the mannequin's jacket?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	set GlobalStorage.game_data.player_y_n = false
+=> END
+
+~ glass
+You: Here's hoping that I'm actually stuck in some pocket dimension.
+You: I can't pay the property damages.
+
+=> END

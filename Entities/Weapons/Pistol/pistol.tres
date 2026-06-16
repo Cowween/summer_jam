@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://dhxdayhkv8afq"]
+
+[ext_resource type="Script" uid="uid://br8uln1uo2rgs" path="res://Entities/Weapons/Pistol/pistol_resource.gd" id="1_o7abt"]
+
+[resource]
+script = ExtResource("1_o7abt")
+item_id = "pistol"
+display_name = "Pistol"
+uses = 1
+item_group = "pistol"

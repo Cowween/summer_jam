@@ -3,17 +3,19 @@ class_name StageManager
 
 @export_enum("following", "stand_still", "distracted") var initial_friend_state : String
 @export_file("*.tscn") var starting_scene : String
+@export var stage_script : DialogueResource
 @export var spawn_list : Array[Node2D]
 @export var ui : CanvasLayer
 @export var base_temp := 45.0
 @export var is_room := false
 @export var stage_id := 0
+@export var background_sprite : Sprite2D
 
 
-@onready var player := %Player
-@onready var friend := %Friend
+@onready var player : Player = %Player
+@onready var friend : Friend = %Friend
 @onready var inventory := $InventoryInterface
-@onready var tilemap := $TileMapLayer
+@onready var tilemap := $FloorLayer
 
 var game_data : GameData = GlobalStorage.game_data
 
@@ -25,25 +27,26 @@ var current_temp : float :
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	configure_camera_limits()
+	if not background_sprite:
+		configure_camera_limits()
+	else:
+		lock_camera_to_background()
 	handle_spawn()
 	GameBus.player_heat_changed.connect(_player_heat_changed)
 	GameBus.refresh_temp.connect(_on_temp_refresh)
-	current_temp = base_temp
+	GameBus.anomaly_solved.connect(_on_anomaly_solved)
+	refresh_temp()
+	game_data.current_stage = stage_id
 	game_data.player_core_heat = game_data.player_core_heat
 	if game_data.is_inventory_open:
 		inventory.show_inventory()
 	else:
 		inventory.hide_inventory()
-	match initial_friend_state:
-		
-		"following":
-			friend.current_state = friend.State.FOLLOWING
-		"stand_still":
-			friend.current_state = friend.State.STAND_STILL
-		"distracted":
-			friend.current_state = friend.State.DISTRACTED
+	if not game_data.is_friend_following:
+		friend.global_position = $FriendInitialSpawn.global_position
+		set_friend_state("stand_still")
+	else:
+		set_friend_state("following")
 
 func handle_spawn() -> void:
 	var spawn_node := spawn_list[game_data.next_spawn]
@@ -71,21 +74,71 @@ func configure_camera_limits() -> void:
 	camera.limit_right = map_rect.end.x * tile_size.x
 	camera.limit_top = map_rect.position.y * tile_size.y
 	camera.limit_bottom = map_rect.end.y * tile_size.y
+func lock_camera_to_background() -> void:
+
+	if not background_sprite:
+		push_error("Missing background sprite, texture, or camera!")
+		return
+	var camera = player.camera
+	# 1. Get the base pixel size of the image
+	var tex_size = background_sprite.texture.get_size()
+	
+	# 2. Multiply by scale (just in case you made the background bigger in the editor)
+	var bg_scale = background_sprite.global_scale
+	var actual_width = tex_size.x * bg_scale.x
+	var actual_height = tex_size.y * bg_scale.y
+	
+	# 3. Calculate the boundaries based on the sprite's origin point
+	var left_limit: float
+	var top_limit: float
+	
+	# Godot sprites are centered by default. We have to account for that!
+	if background_sprite.centered:
+		left_limit = background_sprite.global_position.x - (actual_width / 2.0)
+		top_limit = background_sprite.global_position.y - (actual_height / 2.0)
+	else:
+		left_limit = background_sprite.global_position.x
+		top_limit = background_sprite.global_position.y
+		
+	var right_limit = left_limit + actual_width
+	var bottom_limit = top_limit + actual_height
+
+	# 4. Inject these boundaries directly into the camera
+	camera.limit_left = int(left_limit)
+	camera.limit_top = int(top_limit)
+	camera.limit_right = int(right_limit)
+	camera.limit_bottom = int(bottom_limit)
 
 func refresh_temp() -> void:
 	current_temp = base_temp - game_data.permanent_temp_dec - game_data.stage_temp_dec[stage_id]
 
+func set_friend_state(state: String) -> void:
+	match state:
+		
+		"following":
+			friend.set_state(Friend.State.FOLLOWING)
+		"stand_still":
+			friend.set_state(Friend.State.STAND_STILL)
+		"distracted":
+			friend.current_state = friend.State.DISTRACTED
+
 func _new_loop() -> void:
-	game_data.is_reset = true
-	game_data.next_spawn = 0
+	game_data.loop()
 	get_tree().change_scene_to_file(starting_scene)
 
 func _player_heat_changed(new_heat: float) -> void:
-	if new_heat >= 100.0:
+	if new_heat >= 100.0 and not game_data.god_mode:
 		_new_loop()
 		
 func _on_temp_refresh() -> void:
 	refresh_temp()
+	
+func _on_anomaly_solved() -> void:
+	for a in $Anomalies.get_children():
+		if not game_data.solved_anomalies.has(a.anomaly_id):
+			return
+			
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

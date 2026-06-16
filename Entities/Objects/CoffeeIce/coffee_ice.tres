@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://c74i6ke5nblgt"]
+
+[ext_resource type="Script" uid="uid://dks6l2llitsc" path="res://Entities/Objects/CoffeeIce/coffee_ice.gd" id="1_u1srd"]
+
+[resource]
+script = ExtResource("1_u1srd")
+item_id = "coffee_ice"
+display_name = "Frozen Coffee"
+uses = 1
+item_group = "coffee_ice"

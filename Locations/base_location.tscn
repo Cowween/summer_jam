@@ -8,14 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://s52tnyepiya3" path="res://Core/scene_trigger.tscn" id="5_qmtrm"]
 [ext_resource type="PackedScene" uid="uid://b6132nmkyqfi5" path="res://Entities/Player/player.tscn" id="6_jmrj2"]
 [ext_resource type="PackedScene" uid="uid://deilpmagseesp" path="res://Entities/Friend/friend.tscn" id="7_usuq2"]
+[ext_resource type="Script" uid="uid://x24h0mjwh5lo" path="res://Assets/Shaders/effects_layer.gd" id="9_0by87"]
+[ext_resource type="Shader" uid="uid://dhd8y1rpyjqj1" path="res://Assets/Shaders/pixel_sort.gdshader" id="9_5u6bn"]
 
-[node name="BaseLocation" type="Node2D" unique_id=285425476 node_paths=PackedStringArray("spawn_list", "ui", "roomcam")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0by87"]
+shader = ExtResource("9_5u6bn")
+shader_parameter/mask_softness = 1.4
+shader_parameter/mask_threshold = 0.6
+shader_parameter/sort = 0.0
+
+[node name="BaseLocation" type="Node2D" unique_id=285425476 node_paths=PackedStringArray("spawn_list", "ui")]
+y_sort_enabled = true
 script = ExtResource("1_g4np3")
 initial_friend_state = "following"
 starting_scene = "uid://bscsgcyvxq3yf"
 spawn_list = [NodePath("Spawn0")]
 ui = NodePath("DebugInterface")
-roomcam = NodePath("Camera2D")
 
 [node name="DebugInterface" parent="." unique_id=1566658164 node_paths=PackedStringArray("env") instance=ExtResource("1_c702s")]
 env = NodePath("..")
@@ -25,9 +33,11 @@ env = NodePath("..")
 [node name="ThoughtPuzzle" parent="." unique_id=1708991597 node_paths=PackedStringArray("env") instance=ExtResource("3_5u6bn")]
 env = NodePath("..")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1350096058]
+[node name="FloorLayer" type="TileMapLayer" parent="." unique_id=1350096058]
 tile_map_data = PackedByteArray("AAALAAYAAAABAAEAAAALAAcAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAABAAEAAAALAAoAAAABAAEAAAALAAsAAAABAAEAAAALAAwAAAABAAEAAAALAA0AAAABAAEAAAALAA4AAAABAAEAAAALAA8AAAABAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAAMAAgAAAABAAEAAAAMAAkAAAABAAEAAAAMAAoAAAABAAEAAAAMAAsAAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAAMAA4AAAABAAEAAAAMAA8AAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAANAAgAAAABAAEAAAANAAkAAAABAAEAAAANAAoAAAABAAEAAAANAAsAAAABAAEAAAANAAwAAAABAAEAAAANAA0AAAABAAEAAAANAA4AAAABAAEAAAANAA8AAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAAOAAgAAAABAAEAAAAOAAkAAAABAAEAAAAOAAoAAAABAAEAAAAOAAsAAAABAAEAAAAOAAwAAAABAAEAAAAOAA0AAAABAAEAAAAOAA4AAAABAAEAAAAOAA8AAAABAAEAAAAPAAYAAAABAAEAAAAPAAcAAAABAAEAAAAPAAgAAAABAAEAAAAPAAkAAAABAAEAAAAPAAoAAAABAAEAAAAPAAsAAAABAAEAAAAPAAwAAAABAAEAAAAPAA0AAAABAAEAAAAPAA4AAAABAAEAAAAPAA8AAAABAAEAAAAQAAYAAAABAAEAAAAQAAcAAAABAAEAAAAQAAgAAAABAAEAAAAQAAkAAAABAAEAAAAQAAoAAAABAAEAAAAQAAsAAAABAAEAAAAQAAwAAAABAAEAAAAQAA0AAAABAAEAAAAQAA4AAAABAAEAAAAQAA8AAAABAAEAAAARAAYAAAABAAEAAAARAAcAAAABAAEAAAARAAgAAAABAAEAAAARAAkAAAABAAEAAAARAAoAAAABAAEAAAARAAsAAAABAAEAAAARAAwAAAABAAEAAAARAA0AAAABAAEAAAARAA4AAAABAAEAAAARAA8AAAABAAEAAAASAAYAAAABAAEAAAASAAcAAAABAAEAAAASAAgAAAABAAEAAAASAAkAAAABAAEAAAASAAoAAAABAAEAAAASAAsAAAABAAEAAAASAAwAAAABAAEAAAASAA0AAAABAAEAAAASAA4AAAABAAEAAAASAA8AAAABAAEAAAATAAYAAAABAAEAAAATAAcAAAABAAEAAAATAAgAAAABAAEAAAATAAkAAAABAAEAAAATAAoAAAABAAEAAAATAAsAAAABAAEAAAATAAwAAAABAAEAAAATAA0AAAABAAEAAAATAA4AAAABAAEAAAATAA8AAAABAAEAAAAUAAYAAAABAAEAAAAUAAcAAAABAAEAAAAUAAgAAAABAAEAAAAUAAkAAAABAAEAAAAUAAoAAAABAAEAAAAUAAsAAAABAAEAAAAUAAwAAAABAAEAAAAUAA0AAAABAAEAAAAUAA4AAAABAAEAAAAUAA8AAAABAAEAAAAVAAYAAAABAAEAAAAVAAcAAAABAAEAAAAVAAgAAAABAAEAAAAVAAkAAAABAAEAAAAVAAoAAAABAAEAAAAVAAsAAAABAAEAAAAVAAwAAAABAAEAAAAVAA0AAAABAAEAAAAVAA4AAAABAAEAAAAVAA8AAAABAAEAAAAWAAYAAAABAAEAAAAWAAcAAAABAAEAAAAWAAgAAAABAAEAAAAWAAkAAAABAAEAAAAWAAoAAAABAAEAAAAWAAsAAAABAAEAAAAWAAwAAAABAAEAAAAWAA0AAAABAAEAAAAWAA4AAAABAAEAAAAWAA8AAAABAAEAAAAXAAYAAAABAAEAAAAXAAcAAAABAAEAAAAXAAgAAAABAAEAAAAXAAkAAAABAAEAAAAXAAoAAAABAAEAAAAXAAsAAAABAAEAAAAXAAwAAAABAAEAAAAXAA0AAAABAAEAAAAXAA4AAAABAAEAAAAXAA8AAAABAAEAAAAYAAYAAAABAAEAAAAYAAcAAAABAAEAAAAYAAgAAAABAAEAAAAYAAkAAAABAAEAAAAYAAoAAAABAAEAAAAYAAsAAAABAAEAAAAYAAwAAAABAAEAAAAYAA0AAAABAAEAAAAYAA4AAAABAAEAAAAYAA8AAAABAAEAAAAZAAYAAAABAAEAAAAZAAcAAAABAAEAAAAZAAgAAAABAAEAAAAZAAkAAAABAAEAAAAZAAoAAAABAAEAAAAZAAsAAAABAAEAAAAZAAwAAAABAAEAAAAZAA0AAAABAAEAAAAZAA4AAAABAAEAAAAZAA8AAAABAAEAAAA=")
 tile_set = ExtResource("4_0by87")
+
+[node name="WallLayer" type="TileMapLayer" parent="." unique_id=769951624]
 
 [node name="Triggers" type="Node2D" parent="." unique_id=1897780192]
 
@@ -36,15 +46,18 @@ tile_set = ExtResource("4_0by87")
 [node name="Interactables" type="Node2D" parent="." unique_id=2140238182]
 
 [node name="Anomalies" type="Node2D" parent="." unique_id=1391283418]
+y_sort_enabled = true
 
 [node name="Characters" type="Node2D" parent="." unique_id=28831964]
+y_sort_enabled = true
+
+[node name="Friend" parent="Characters" unique_id=1900777179 node_paths=PackedStringArray("target_node", "thought_interface") instance=ExtResource("7_usuq2")]
+unique_name_in_owner = true
+target_node = NodePath("../Player")
+thought_interface = NodePath("../../ThoughtPuzzle")
 
 [node name="Player" parent="Characters" unique_id=1941967074 instance=ExtResource("6_jmrj2")]
 unique_name_in_owner = true
-
-[node name="Friend" parent="Characters" unique_id=1900777179 node_paths=PackedStringArray("target_node") instance=ExtResource("7_usuq2")]
-unique_name_in_owner = true
-target_node = NodePath("../Player")
 
 [node name="Spawn0" type="Node2D" parent="." unique_id=300232249]
 
@@ -53,3 +66,19 @@ target_node = NodePath("../Player")
 [node name="FriendSpawn" type="Marker2D" parent="Spawn0" unique_id=729169349]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1464039767]
+
+[node name="FriendInitialSpawn" type="Marker2D" parent="." unique_id=1753829264]
+position = Vector2(-277, -463)
+
+[node name="EffectsLayer" type="CanvasLayer" parent="." unique_id=2109084688]
+layer = 101
+script = ExtResource("9_0by87")
+
+[node name="PixelSort" type="ColorRect" parent="EffectsLayer" unique_id=669286162]
+material = SubResource("ShaderMaterial_0by87")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

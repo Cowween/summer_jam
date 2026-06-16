@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://o7edxomvo4dv"]
+
+[ext_resource type="Script" uid="uid://bug6tmo4b33ea" path="res://Entities/God/god.gd" id="1_5rjty"]
+[ext_resource type="Texture2D" uid="uid://c578pl4t1i1dk" path="res://Assets/Sprites/God/god.png" id="2_egt1n"]
+[ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="2_vm4dh"]
+[ext_resource type="Resource" uid="uid://bhgh2rigsatn4" path="res://Assets/Text/GodFight/god_fight.dialogue" id="3_2ap1n"]
+[ext_resource type="Texture2D" uid="uid://cto22qsxjms8x" path="res://Assets/Sprites/God/god_psychic.png" id="3_vm4dh"]
+[ext_resource type="Script" uid="uid://dtgvvueyk0v0i" path="res://Entities/God/sling_shot_target.gd" id="6_2ap1n"]
+[ext_resource type="Script" uid="uid://behe7tu2edhlj" path="res://Entities/God/sledge_hammer_target.gd" id="7_idqnx"]
+
+[sub_resource type="Resource" id="Resource_2ap1n"]
+script = ExtResource("2_vm4dh")
+anomaly_id = "boss_psychic_attack"
+high_temp_text_bank = "Feel The Warmth Of The Sun Get Out Of My Head"
+valid_solution_lines = "Get Out Of My Head"
+eldritch_solution_lines = "Feel The Warmth Of The Sun"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="Resource" id="Resource_idqnx"]
+script = ExtResource("2_vm4dh")
+anomaly_id = "boss_psychic_attack"
+high_temp_text_bank = "Your Friend Wanted This Get Out Of My Head"
+valid_solution_lines = "Get Out Of My Head"
+eldritch_solution_lines = "Your Friend Wanted This"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="Resource" id="Resource_msrd1"]
+script = ExtResource("2_vm4dh")
+anomaly_id = "boss_psychic_attack"
+high_temp_text_bank = "I Love You Get Out Of My Head"
+valid_solution_lines = "Get Out Of My Head"
+eldritch_solution_lines = "I Love You"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="Resource" id="Resource_odn4y"]
+script = ExtResource("2_vm4dh")
+anomaly_id = "boss_psychic_attack"
+high_temp_text_bank = "Don't Struggle Anymore Get Out Of My Head"
+valid_solution_lines = "Get Out Of My Head"
+eldritch_solution_lines = "Don't Struggle Anymore"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="Resource" id="Resource_3xxr4"]
+script = ExtResource("2_vm4dh")
+high_temp_text_bank = "No More Pain Forever Get Out Of My Head"
+valid_solution_lines = "Get Out Of My Head"
+eldritch_solution_lines = "No More Pain Forever"
+metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ap1n"]
+size = Vector2(91, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idqnx"]
+radius = 12.0415945
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msrd1"]
+radius = 32.06244
+
+[node name="God" type="StaticBody2D" unique_id=1863923207]
+script = ExtResource("1_5rjty")
+boss_puzzle = Array[ExtResource("2_vm4dh")]([SubResource("Resource_2ap1n"), SubResource("Resource_idqnx"), SubResource("Resource_msrd1"), SubResource("Resource_odn4y"), SubResource("Resource_3xxr4")])
+encounter = ExtResource("3_2ap1n")
+
+[node name="IdleSprite" type="Sprite2D" parent="." unique_id=461959572]
+position = Vector2(7, -64)
+texture = ExtResource("2_egt1n")
+
+[node name="StunnedSprite" type="Sprite2D" parent="." unique_id=1495757446]
+position = Vector2(-43.755, 25.54)
+rotation = -2.2235494
+texture = ExtResource("2_egt1n")
+
+[node name="GodPsychic" type="Sprite2D" parent="." unique_id=849186423]
+position = Vector2(7, -64)
+texture = ExtResource("3_vm4dh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854614127]
+position = Vector2(-1, -16)
+shape = SubResource("RectangleShape2D_2ap1n")
+
+[node name="SlingShotTarget" type="Area2D" parent="." unique_id=618169762]
+script = ExtResource("6_2ap1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlingShotTarget" unique_id=642926016]
+position = Vector2(-1, -86)
+shape = SubResource("CircleShape2D_idqnx")
+
+[node name="SledgeHammerTarget" type="Area2D" parent="." unique_id=367093070]
+script = ExtResource("7_idqnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SledgeHammerTarget" unique_id=1160561759]
+position = Vector2(-56, 39)
+shape = SubResource("CircleShape2D_msrd1")
+
+[node name="PsychicAttackTimer" type="Timer" parent="." unique_id=406907407]
+one_shot = true
+
+[connection signal="bullet" from="SlingShotTarget" to="." method="_on_sling_shot_target_bullet"]
+[connection signal="sledgehammer" from="SledgeHammerTarget" to="." method="_on_sledge_hammer_target_sledgehammer"]

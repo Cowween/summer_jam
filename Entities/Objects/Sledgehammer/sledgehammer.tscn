@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://di66fi272422a"]
+
+[ext_resource type="PackedScene" uid="uid://ddrs22bw4cnce" path="res://Entities/Objects/TestInvItem/test_inv_item.tscn" id="1_otp3c"]
+[ext_resource type="Resource" uid="uid://xehqy2ra5wb2" path="res://Entities/Weapons/Sledgehammer/sledgehammer.tres" id="2_rlr0y"]
+
+[node name="Sledgehammer" unique_id=1939774420 instance=ExtResource("1_otp3c")]
+item_resource = ExtResource("2_rlr0y")

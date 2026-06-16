@@ -1,0 +1,45 @@
+~ truth
+
+I must be going insane.
+
+=> END
+
+~ illusion
+
+These lamps have been around since I went to primary school.
+Somehow, they seem extra bright today.
+
+=> END
+
+~ success
+
+You: The street lamps are staring at me...
+You: What the hell is wrong with this town?!
+You: Sui... Tell me I'm not the only one seeing this right?
+Suika: Seeing what?
+You: ...Fuck
+
+=> END
+
+~ failure
+
+The lamps light up the streets, protecting everyone from danger.
+
+=> END
+
+~ random
+
+My mind feels all jumbled up
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END

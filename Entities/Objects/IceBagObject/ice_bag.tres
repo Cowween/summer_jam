@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://c5h4map38jxek"]
+
+[ext_resource type="Script" uid="uid://d1rrk0whylejh" path="res://Entities/Objects/IceBagObject/ice_bag_object.gd" id="1_fkqn8"]
+
+[resource]
+script = ExtResource("1_fkqn8")
+item_id = "ice_bag"
+display_name = "Unmelting Ice"
+uses = 1
+item_group = "ice_bag"

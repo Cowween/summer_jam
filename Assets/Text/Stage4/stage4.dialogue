@@ -1,0 +1,12 @@
+~ start
+if not GlobalStorage.game_data.jacket_on:
+	You: I- I'm being... Boiled...
+	You: Somebody...
+	Suika: Let's lie down on the grass patches!
+elif GlobalStorage.game_data.friend_revealed and GlobalStorage.game_data.stage_4_count==0:
+	(This is the park I always come to with Suika.)
+	(It's kinda small, but there's a nice fountain and a beach.)
+	(We somehow convinced ourselves that the fountain can grant our wishes.)
+	(Suika always came here to make wishes.)
+	(I wish you were here, Suika.)
+=> END

@@ -1,0 +1,75 @@
+~ truth
+
+(Straight up gore.)
+
+=> END
+
+~ illusion
+
+An isotonic drinks machine.
+Get one?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
+
+~ drink_over
+
+The isotonic drinks machine is not responding to your touch.
+
+=> END
+
+~ success
+
+You: Ah-
+You: The vending machine- It's alive!
+Suika: The vending machine...?
+Suika: Did something happen to it?
+You: Do you not see-
+You: N-Never mind.
+
+=> END
+
+~ failure
+
+The vending machine seems to be selling some nice cold drinks.
+You: I should really get a drink.
+Suika: There's a vending machine right there silly~
+Suika: You can get a 100 Minus there!
+
+=> END
+
+~ random
+
+(My mind feels all jumbled up.)
+
+=> END
+
+~ get_coffee
+
+A hot coffee machine.
+Get one?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	set GlobalStorage.game_data.player_y_n = false
+=> END
+
+~ coffee_over
+
+The coffee machine is not responding to your touch.
+
+=> END
+
+~ ponder_intro
+
+Do you want to ponder this object?
+- Yes
+	set GlobalStorage.game_data.player_y_n = true
+- No
+	You got better things to think about
+	set GlobalStorage.game_data.player_y_n = false
+
+=> END
