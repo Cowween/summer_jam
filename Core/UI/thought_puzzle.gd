@@ -9,10 +9,11 @@ class_name ThoughtPuzzle
 @onready var submit_button := $Panel/ThinkButton
 
 @export var current_puzzle : ThoughtPuzzleResource
-
+@export var whispering : AudioStream
 func open_puzzle(puzzle : ThoughtPuzzleResource) -> void:
 	current_puzzle = puzzle
 	GameBus.block_player_movement.emit()
+	SoundManager.play_ui(whispering)
 	show()
 	
 	for child in thought.get_children():
@@ -38,6 +39,7 @@ func create_word_tile(word: String, container: HFlowContainer):
 	
 func close_ui() -> void:
 	hide()
+	SoundManager.stop_ui()
 	GameBus.block_player_movement.emit()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

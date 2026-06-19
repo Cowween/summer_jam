@@ -15,6 +15,7 @@ extends Node2D
 @onready var glitch_sprite : CanvasItem = $TrueSprite
 @onready var mouse_area : Area2D = $MouseArea
 @onready var glitch: CanvasItem = $Glitch
+const CROSSHAIRTHOUGHT = preload("uid://b80m7xygk0i5o")
 
 # Fetching the data architecture from our global anchor point
 @onready var data: GameData = GlobalStorage.game_data
@@ -23,6 +24,7 @@ var is_pondered: bool = false
 var mouse_in := false
 var is_input_locked := false
 var flicker_timer: Timer
+var p_toggle := false
 
 
 func _ready() -> void:
@@ -60,8 +62,20 @@ func cold_visuals() -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ponder") and mouse_in and not is_pondered:
+	if event.is_action_pressed("p_toggle"):
+		p_toggle = true
+		if not data.wpn_equipped and mouse_in:
+			CursorManager.set_ponder_mode()
+	if event.is_action_released("p_toggle"):
+		p_toggle = false
+		if not data.wpn_equipped:
+			CursorManager.set_default_mode()
+	if event.is_action_pressed("ponder") and mouse_in and not is_pondered and not data.wpn_equipped:
+		
 		_ponder()
+		get_viewport().set_input_as_handled()
+	
+		
 
 func _ponder() -> void:
 	DialogueManager.show_dialogue_balloon(encounter, "ponder_intro")
@@ -93,9 +107,14 @@ func _on_interact() -> void:
 func _on_mouse_entered():
 	print("mouse in")
 	mouse_in = true
+	if p_toggle and not data.wpn_equipped:
+		CursorManager.set_ponder_mode()
 	
 func _on_mouse_exited():
 	mouse_in = false
+	if not data.wpn_equipped:
+		CursorManager.set_default_mode()
+	
 	
 func _on_dialogue_started(_resource: DialogueResource) -> void:
 	is_input_locked = true
@@ -154,7 +173,7 @@ func _on_flicker_timer_timeout() -> void:
 	
 	if glitch.visible:
 		# It's currently VISIBLE. Keep it on screen for a terrifying, split-second flash.
-		next_time = randf_range(1.0, 2.5)
+		next_time = randf_range(0.5, 1.0)
 	else:
 		# It's currently HIDDEN. Wait a few seconds before the next jump scare.
 		next_time = randf_range(1.5, 4.0)

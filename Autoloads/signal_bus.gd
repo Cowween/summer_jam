@@ -17,3 +17,6 @@ signal use_ice
 signal friend_sus
 signal killed
 signal call_pixel_sort
+signal open_fridge
+signal show_cg
+signal truck

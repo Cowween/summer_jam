@@ -1,41 +1,47 @@
 ~ start
-You: So you're the bastard behind all this.
+You: [#determined]So you're the bastard behind all this.
 Your heart swells with comfort at the warmth of-
-You: STOP, STOP THAT, STOP PLAYING WITH MY HEAD!
+You: [#angry]STOP, STOP THAT, STOP PLAYING WITH MY HEAD!
 You realise that trying to confront me is futile.
 You: I DON'T CARE, YOU DID SOMETHING TO SUIKA, AND I WILL MAKE YOU PAY!
 => END
 
 ~ boss_die
 
-You: W-what, that's it? Did I do it?
-You realise that I cannot be killed in a meaningful way, but toying with you takes too much effort.
-You: Shut up you creepy sun thing.
+You: [#default]W-what, that's it? Did I do it?
+You realise that I cannot be killed in a meaningful way, but toying with you has grown troublesome.
+You: [#determined]Shut up you creepy sun thing.
 You can have your friend back, I will search for other mortals to play with.
-You: W-what?
+You: [#default]W-what?
 You realise that Suika is sleeping on the sand beside you.
 
 => END
 
 ~ ending
 
-You: Sui, Sui, wake up!
+You: [#default]Sui, Sui, wake up!
+Suika: [#melancholic]...
 Suika: ...
-Suika: ...
-Suika: ...Sui?
-Suika: Where... Where am I?
-You: Oh Sui, you won't believe-
-Suika: Woah, woah, are you alright...
-You: I'm just... Tired...
-Suika: Awh...
-Suika: Sui... Can I tell you about a weird dream I was having just now...
-You: Mmhmm.
-Suika: I think, before that, I was praying to the fountain to make me disappear or something.
-Suika: Then I began to dream a dream of a really dreary and hot day.
-Suika: And everyone left me behind, except for you, who kept trying to find me in this weird hellscape.
-Suika: ...After seeing that, I don't think I want to disappear anymore...
-You: ...
-You: Tell me about it.
+Suika: ...Sui-chan?
+Suika: [#sad]Sui-chan! I- I-
+Suika: I'm sorrryyy!
+You: [#happy]Woah woah, easy there.
+Suika: [#sad]I remember praying to the stupid fountain to make me disappear.
+Suika: Remember that one in the park?
+You: [#default]Uh huh...
+Suika: [#sad]Then, I had this really really horrible nightmare that everyone left the world I was in.
+Suika: Except for you.
+Suika: And because of me, you got stuck in some horrific hellscape, trying to find me.
+Suika: [#melancholic]But I'm so glad, that the first person I see when I wake up...
+Suika: ...Is you.
+$> GameBus.show_cg.emit()
+(Should I tell her that what she dreamt actually came true?)
+(Nah... She has enough on her plate.)
+(Then...)
+You: [#happy]I'm glad to see you too.
+You: Good morning, Sui.
 ==THE END==
-
+THINK.
+A GAME BY HUANG XIAOTIAN (PROGRAMMING & CONCEPT), JAYCE LIANG (ART), AND LOCKE LOW (MUSIC).
+THANK YOU FOR PLAYING <3
 => END

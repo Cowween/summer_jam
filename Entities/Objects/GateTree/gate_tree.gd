@@ -9,6 +9,8 @@ func _ready() -> void:
 	super()
 	if is_pondered:
 		collision_shape_2d.set_deferred("disabled", true)
+		tree_closed.hide()
+		true_sprite.hide()
 
 func solved_interaction() -> void:
 	DialogueManager.show_dialogue_balloon(encounter, "truth")
@@ -27,12 +29,6 @@ func execute_hallucination_trap() -> void:
 func _on_truth_revealed() -> void:
 	# Virtual function: Overridden by individual anomalies (e.g., breaking streetlights)
 	collision_shape_2d.set_deferred("disabled", true)
-	
-func _on_environment_cooled(current_temp: float) -> void:
-	if current_temp < temperature_unlock_threshold:
-		tree_closed.hide()
-		illusion_sprite.show()
-		cold_enough = true
-	else:
-		illusion_sprite.hide()
-		tree_closed.show()
+	var tween := create_tween()
+	tween.tween_property(tree_closed.material, "shader_parameter/strength", 1.0, 1.0)
+	true_sprite.hide()

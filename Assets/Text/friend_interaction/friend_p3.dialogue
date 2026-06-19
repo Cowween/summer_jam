@@ -13,21 +13,21 @@ Just an ordinary orb
 
 ~ success
 
-You: You...
-You: I don't know who or what you are, but you are not Suika!
+You: [#default]You...
+You: [#determined]I don't know who or what you are, but you are not Suika!
 Suika: What are you talking about? I am Suika, your best friend!
-You: !-
+You: [#scared]!-
 Suika: Why are you looking at me like that?
 Suika: Don't you think I'm cute? Don't you think I'm pretty?
 Suika: Or do you just think I'm a freak like everyone else?
 Suika: I love you, Suiyobi, how can you doubt me?
 Suika: Let's celebrate the warmth of the sun together!
-You: Stop, stop pretending to be Suika!
+You: [#determined]Stop, stop pretending to be Suika!
 You: After all, Suika's the one always pretending.
 You: Pretending to be cheerful, pretending that everything is ok.
 You: Hell she pretended to be something she's not for the most of her life.
 You: But I know who she really is.
-You: She's every bit as strong as she is vulnerable, and that's what makes her cute.
+You: [#angry]She's every bit as strong as she is vulnerable, and that's what makes her cute.
 You: So you can't fool me.
 You: You can only pretend to be the facade of someone who has pretended all her life.
 You: GIVE SUIKA BACK!
@@ -45,6 +45,6 @@ You love Suika, and will never doubt her, right?
 
 ~ random
 
-You: Urgh, this isn't right, this isn't right.
+You: [#default]Urgh, this isn't right, this isn't right.
 
 => END

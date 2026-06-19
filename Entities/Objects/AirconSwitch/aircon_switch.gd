@@ -1,6 +1,7 @@
 extends BaseAnomaly
 
 @onready var aircon_switch_destroyed: Sprite2D = $AirconSwitchDestroyed
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	super()
@@ -36,7 +37,11 @@ func update_visuals() -> void:
 	
 	if data.is_switch_broken:
 		aircon_switch_destroyed.show()
+		illusion_sprite.show()
+		glitch.hide()
 	elif is_pondered:
+		glitch.hide()
+		illusion_sprite.show()
 		true_sprite.show()
 	elif data.is_switch_off:
 		illusion_sprite.show()
@@ -46,11 +51,14 @@ func update_visuals() -> void:
 		illusion_sprite.frame = 1
 
 func _on_interactable_destroyed() -> void:
-	if is_pondered:
+	if is_pondered and not data.is_switch_broken:
 		data.is_switch_broken = true
+		audio_stream_player_2d.play()
 		update_visuals()
 		DialogueManager.show_dialogue_balloon(encounter, "break_switch")
 		await DialogueManager.dialogue_ended
 		GameBus.aircon_switch_broken.emit()
 		GameBus.friend_sus.emit()
+	else:
+		DialogueManager.show_dialogue_balloon(encounter, "dont_break_switch")
 		

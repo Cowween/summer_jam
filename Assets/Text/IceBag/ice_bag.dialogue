@@ -23,21 +23,21 @@ The isotonic drinks machine is not responding to your touch.
 
 ~ success
 
-You: Are those tentacles surrounding that bag of ice?
+You: [#default]Are those tentacles surrounding that bag of ice?
 You: I better not get too close to them.
 
 => END
 
 ~ failure
 
-You: That bag of ice must be really high quality to not melt in this weather.
-Suika: It's not even that hot though...?
+You: [#confused]That bag of ice must be really high quality to not melt in this weather.
+Suika: [#default]It's not even that hot though...?
 
 => END
 
 ~ random
 
-My mind feels all jumbled up
+(My mind feels all jumbled up)
 
 => END
 

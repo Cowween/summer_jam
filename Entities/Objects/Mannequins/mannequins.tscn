@@ -3,14 +3,15 @@
 [ext_resource type="Script" uid="uid://rfktpbr04mqm" path="res://Entities/Objects/Mannequins/mannequins.gd" id="1_nq6l2"]
 [ext_resource type="Resource" uid="uid://8nefqrcf4ouh" path="res://Entities/Objects/Jacket/jacket.tres" id="2_k78xs"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="3_fmhpl"]
-[ext_resource type="Texture2D" uid="uid://bqege53owqd38" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/test_char2.tres" id="3_qalnl"]
 [ext_resource type="Resource" uid="uid://cg8iojobhl4vn" path="res://Assets/Text/Mannequins/mannequins.dialogue" id="3_rco1v"]
-[ext_resource type="Texture2D" uid="uid://c6uinu5eufy8t" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/test_char.tres" id="5_dxw5d"]
 [ext_resource type="Script" uid="uid://cgsxe33566jl6" path="res://Entities/Objects/AirconSwitch/interactable.gd" id="6_g12p0"]
-[ext_resource type="Texture2D" uid="uid://b5o2uovrluov4" path="res://Assets/Sprites/ClothesShop/glass.png" id="6_k78xs"]
-[ext_resource type="Texture2D" uid="uid://dsuterfrdn43i" path="res://Assets/Sprites/ClothesShop/glass_broken.png" id="7_rco1v"]
+[ext_resource type="Texture2D" uid="uid://3puk6bqxamlu" path="res://Assets/Sprites/ClothesShop/clothescold.png" id="6_rco1v"]
+[ext_resource type="Texture2D" uid="uid://8uyy8kf13528" path="res://Assets/Sprites/ClothesShop/clotheshot.png" id="8_5q6er"]
 [ext_resource type="Texture2D" uid="uid://dfeil8l5iek1k" path="res://Assets/Sprites/AirconSwitch/aircon_switch_destroyed1.png" id="8_oa5vd"]
+[ext_resource type="Texture2D" uid="uid://spabv4i086nh" path="res://Assets/Sprites/ClothesShop/clothesglass.png" id="9_d7y1l"]
+[ext_resource type="Texture2D" uid="uid://ci0gnsvh68hqu" path="res://Assets/Sprites/ClothesShop/clothesglasscrackhole.png" id="10_jvrtw"]
 [ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="11_rco1v"]
+[ext_resource type="AudioStream" uid="uid://cc0nb3tusakeo" path="res://Assets/Audio/SFX/Bluezone_BC0297_stone_impact_041.wav" id="12_5q6er"]
 
 [sub_resource type="Resource" id="Resource_5q6er"]
 script = ExtResource("3_fmhpl")
@@ -22,19 +23,19 @@ eldritch_solution_lines = "Stuffy Winter Jacket"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xg7r6"]
-size = Vector2(96, 16)
+size = Vector2(152, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38fgn"]
-size = Vector2(32, 51.5)
+size = Vector2(152, 51.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
-size = Vector2(16, 16)
+size = Vector2(152, 56)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q6er"]
 shader = ExtResource("11_rco1v")
 shader_parameter/shake_power = 0.03
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
+shader_parameter/shake_rate = 0.4170000198075
+shader_parameter/shake_speed = 22.205
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.01
 
@@ -46,24 +47,25 @@ encounter = ExtResource("3_rco1v")
 thought_puzzle = SubResource("Resource_5q6er")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=409228283]
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_xg7r6")
 
 [node name="Interactable" type="Area2D" parent="." unique_id=620950227 groups=["sledge"]]
 script = ExtResource("6_g12p0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1466374265]
-position = Vector2(0, 14.25)
+position = Vector2(4, 14.25)
 shape = SubResource("RectangleShape2D_38fgn")
 debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
 
 [node name="TrueSprite" type="Sprite2D" parent="." unique_id=2084650500]
-visible = false
-position = Vector2(0, -8)
-texture = ExtResource("3_qalnl")
+position = Vector2(-544, 8)
+texture = ExtResource("6_rco1v")
 
 [node name="MouseArea" type="Area2D" parent="." unique_id=798930045]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1850676131]
+position = Vector2(4, -20)
 shape = SubResource("RectangleShape2D_wvik4")
 debug_color = Color(1.5883148e-06, 0.6354228, 0.42116326, 0.41960785)
 
@@ -72,22 +74,29 @@ visible = false
 texture = ExtResource("8_oa5vd")
 
 [node name="IllusionSprite" type="Sprite2D" parent="." unique_id=2114395201]
-position = Vector2(0, -8)
-texture = ExtResource("5_dxw5d")
+position = Vector2(-544, 8)
+texture = ExtResource("8_5q6er")
 
 [node name="Glass" type="Sprite2D" parent="." unique_id=583589426]
-position = Vector2(0, -8)
-texture = ExtResource("6_k78xs")
+position = Vector2(-544, 8)
+texture = ExtResource("9_d7y1l")
 
 [node name="GlassBroken" type="Sprite2D" parent="." unique_id=1670065613]
-visible = false
-position = Vector2(0, -8)
-texture = ExtResource("7_rco1v")
+position = Vector2(-544, 8)
+texture = ExtResource("10_jvrtw")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=276748084]
+position = Vector2(-22, -48)
+scale = Vector2(1.5, 1)
+copy_mode = 2
 
 [node name="Glitch" type="ColorRect" parent="." unique_id=57881336]
 material = SubResource("ShaderMaterial_5q6er")
-offset_left = -16.0
-offset_top = -24.0
-offset_right = 16.0
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 80.0
+
+[node name="Break" type="AudioStreamPlayer2D" parent="." unique_id=56359245]
+stream = ExtResource("12_5q6er")
 
 [connection signal="destroyed" from="Interactable" to="." method="_on_interactable_destroyed"]

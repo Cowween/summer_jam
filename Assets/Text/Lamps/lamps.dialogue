@@ -1,21 +1,21 @@
 ~ truth
 
-I must be going insane.
+(I must be going insane.)
 
 => END
 
 ~ illusion
 
-These lamps have been around since I went to primary school.
-Somehow, they seem extra bright today.
+(These lamps have been around since I went to primary school.)
+(Somehow, they seem extra bright today.)
 
 => END
 
 ~ success
 
-You: The street lamps are staring at me...
-You: What the hell is wrong with this town?!
-You: Sui... Tell me I'm not the only one seeing this right?
+You: [#shocked]The street lamps are staring at me...
+You: [#determined]What the hell is wrong with this town?!
+You: [#default]Sui... Tell me I'm not the only one seeing this right?
 Suika: Seeing what?
 You: ...Fuck
 

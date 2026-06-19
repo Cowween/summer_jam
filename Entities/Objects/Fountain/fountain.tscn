@@ -2,29 +2,45 @@
 
 [ext_resource type="PackedScene" uid="uid://m8tp7n2v2mq6" path="res://Entities/Objects/TestAnomaly/test_anomaly.tscn" id="1_i2rra"]
 [ext_resource type="Script" uid="uid://bp6onctfpean7" path="res://Entities/Objects/Fountain/fountain.gd" id="2_ipepd"]
-[ext_resource type="Texture2D" uid="uid://cxeb2gmnkgqfg" path="res://Assets/Sprites/fountain/fountain.png" id="3_2hxlc"]
 [ext_resource type="Resource" uid="uid://ce86157a0lktd" path="res://Assets/Text/Fountain/fountain.dialogue" id="3_ak5hq"]
-[ext_resource type="Texture2D" uid="uid://e6al5s1ftynf" path="res://Assets/Sprites/fountain/fountain_evil.png" id="4_ak5hq"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="4_dvleq"]
+[ext_resource type="Texture2D" uid="uid://cyxvl58jki40d" path="res://Assets/Sprites/fountain/fountaindry.png" id="5_aujan"]
+[ext_resource type="Texture2D" uid="uid://d3kds3rmgc0lw" path="res://Assets/Sprites/fountain/fountaindryevil.png" id="6_25421"]
+[ext_resource type="Texture2D" uid="uid://bybh6wgctbito" path="res://Assets/Sprites/fountain/fountainevil.png" id="6_ak5hq"]
+[ext_resource type="Texture2D" uid="uid://cg64au86g8co" path="res://Assets/Env/water.tres" id="7_w3a14"]
+[ext_resource type="Texture2D" uid="uid://bu86khucop6fw" path="res://Assets/Env/smoke.tres" id="8_n584m"]
+[ext_resource type="Texture2D" uid="uid://bu4fxowqe8w4m" path="res://Assets/Env/smoke2.tres" id="9_ysikp"]
+[ext_resource type="AudioStream" uid="uid://5yv7mgq3k3ys" path="res://Assets/Audio/SFX/scream3.mp3" id="11_25421"]
 
 [sub_resource type="Resource" id="Resource_w3a14"]
 script = ExtResource("4_dvleq")
 high_temp_text_bank = "It's Just A Fountain"
-low_temp_text_bank = "The Statue Looks Off"
+low_temp_text_bank = "The Statue Looks Off
+The Fountain Statue Looks Off
+The Fountain Looks Off"
 valid_solution_lines = "The Statue Looks Off"
 eldritch_solution_lines = "It's Just A Fountain"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvleq"]
-size = Vector2(80, 48)
+size = Vector2(80, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipepd"]
-size = Vector2(88, 61)
+size = Vector2(112, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5hq"]
-size = Vector2(80, 88)
+size = Vector2(80, 112)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aujan"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_25421"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -50, 0)
 
 [node name="Fountain" unique_id=1119539795 instance=ExtResource("1_i2rra")]
+y_sort_enabled = true
 script = ExtResource("2_ipepd")
 anomaly_id = "fountain"
 cooling_reward = 10.0
@@ -32,33 +48,71 @@ encounter = ExtResource("3_ak5hq")
 thought_puzzle = SubResource("Resource_w3a14")
 
 [node name="IllusionSprite" parent="." index="0" unique_id=591201497]
-position = Vector2(0, -48)
-texture = ExtResource("3_2hxlc")
+position = Vector2(0, -38)
+texture = ExtResource("5_aujan")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=409228283]
-position = Vector2(0, -24)
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_dvleq")
 
 [node name="Interactable" parent="." index="2" unique_id=620950227]
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="Interactable" index="0" unique_id=1466374265]
-position = Vector2(-4, -22.5)
+position = Vector2(0, -17.67)
 shape = SubResource("RectangleShape2D_ipepd")
 
 [node name="TrueSprite" parent="." index="3" unique_id=2084650500]
-position = Vector2(0, -48)
-texture = ExtResource("4_ak5hq")
+visible = true
+position = Vector2(0, -38)
+texture = ExtResource("6_25421")
 
 [node name="CollisionShape2D" parent="MouseArea" parent_id_path=PackedInt32Array(798930045) index="0" unique_id=1850676131]
-position = Vector2(0, -44)
+position = Vector2(0, -56)
 shape = SubResource("RectangleShape2D_ak5hq")
 
-[node name="Glitch" parent="." index="6" unique_id=714474402]
+[node name="BackBufferCopy" parent="." index="5" unique_id=1321336372]
+visible = false
+position = Vector2(0, -56)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="6" unique_id=1147826102]
+z_index = 1
+position = Vector2(-9.005, -68.885)
+emitting = false
+texture = ExtResource("7_w3a14")
+lifetime = 0.9
+process_material = SubResource("ParticleProcessMaterial_aujan")
+
+[node name="Smoke" type="GPUParticles2D" parent="." index="7" unique_id=1288316251]
+position = Vector2(-1.075, -27.72)
+emitting = false
+amount = 10
+texture = ExtResource("8_n584m")
+lifetime = 6.06
+process_material = SubResource("ParticleProcessMaterial_25421")
+
+[node name="Smoke2" type="GPUParticles2D" parent="." index="8" unique_id=1173176821]
+position = Vector2(-1.075, -27.72)
+emitting = false
+amount = 6
+texture = ExtResource("9_ysikp")
+lifetime = 6.06
+process_material = SubResource("ParticleProcessMaterial_25421")
+
+[node name="Fountainevil" type="Sprite2D" parent="." index="9" unique_id=461005181]
+visible = false
+position = Vector2(0, -38)
+texture = ExtResource("6_ak5hq")
+
+[node name="Glitch" parent="." index="10" unique_id=714474402]
+z_index = 1
 offset_left = -16.0
-offset_top = -88.0
-offset_right = 7.0
-offset_bottom = -72.0
+offset_top = -120.0
+offset_right = 32.0
+offset_bottom = -88.0
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="." index="11" unique_id=1965471961]
+stream = ExtResource("11_25421")
 
 [connection signal="body_entered" from="Interactable" to="." method="_on_interactable_body_entered"]
 [connection signal="body_exited" from="Interactable" to="." method="_on_interactable_body_exited"]

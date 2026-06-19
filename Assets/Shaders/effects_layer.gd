@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var pixel_sort: CanvasItem = $PixelSort # Or $ColorRect
+@onready var fade_out: ColorRect = $FadeOut
 
 func _ready() -> void:
 	GameBus.call_pixel_sort.connect(trigger_pixel_sort)
@@ -23,3 +24,8 @@ func trigger_pixel_sort() -> void:
 		# Optional: Add an ease-out so the sort slows down dramatically at the end
 		tween.set_trans(Tween.TRANS_EXPO)
 		tween.set_ease(Tween.EASE_OUT)
+func fade_black() -> void:
+	var tween := create_tween()
+	
+	tween.tween_property(fade_out, "color:a", 255, 3.0)
+	

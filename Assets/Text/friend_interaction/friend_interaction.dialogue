@@ -1,60 +1,68 @@
 ~ start
 if GlobalStorage.game_data.friend_revealed:
 	Suika: Yes? Suiyobi~
-	You: ...
+	You: [#default]...
 	=> END
 match GlobalStorage.game_data.current_stage:
 	when 0
 		%
-			Suika: Girl your room is so nice and warm~
+			Suika: [#default]Girl your room is so nice and warm~
 			You: Well that's because my aircon's broken.
 			You: Plus, when did you start liking the warm weather?
-			Suika: Well, summer's always the season for change!
+			Suika: [#playful]Well, summer's always the season for change!
 		%
-			You: Listen, Sui... I'm sorry for what happened a few days ago.
+			You: [#sad]Listen, Sui... I'm sorry for what happened a few days ago.
 			You: If you ever need help, or a place to stay, I'll always be there for you!
-			You: I'm glad you seem all okay though!
-			Suika: What do you mean? Of course I'm okay!
+			You: [#happy]I'm glad you seem all okay though!
+			Suika: [#default]What do you mean? Of course I'm okay!
 			Suika: The summer sun melts away all unhappiness and sorrow~
 	when 1
 		%
-			Suika: Why did you have to break your TV?
+			Suika: [#default]Why did you have to break your TV?
 			You: There was something weird inside it, like some kind of eye.
 			You: I swear it was making the room hotter.
 			Suika: Having an eye in something doesn't mean you have to break it!
 			Suika: What if you hurt somebody doing it?
 			You: But it was just me in my house...?
 		%
-			Suika: It's so nice and sunny out, you should really stop bumming around in your house the whole day!
-			You: Maybe it's because it's so "nice" and "sunny" that I'm staying inside?!
+			Suika: [#playful]It's so nice and sunny out, you should really stop bumming around in your house the whole day!
+			You: [#default]Maybe it's because it's so "nice" and "sunny" that I'm staying inside?!
 	when 2
 		%
-			You: How are you wearing a jacket in this weather?
+			You:[#default]How are you wearing a jacket in this weather?
 			You: I swear it's abnormally hot out here.
 			Suika: Really? It's not even that hot silly~
 			You: Seriously what's gotten into you today?
 			You: Usually you're the one complaining about the heat in this kinda weather.
 			Suika: I just learnt to love summer I guess, teehee~
 		%
-			You: I swear there's something wrong with the street lamps.
+			You: [#default]I swear there's something wrong with the street lamps.
 			You: It feels as if I'm being boiled alive under them.
 			Suika: It's probably just a side effect from you all holing up inside when it's summer.
 			Suika: Try staying under the lamps longer to get used to them!
 		%
-			You: Isn't it strange that there is no one on the streets at all?
+			You: [#default]Isn't it strange that there is no one on the streets at all?
 			You: It's so... Quiet...
 			Suika: Isn't it better this way?
 			Suika: Just the two of us, and the beautiful sun.
-			Suika: F------.
+			Suika: Foreve-
 			You: Sorry?
 			
 	when 3
 		%
-			You: Remember when we bought your first skirt at that store?
+			You: [#default]Remember when we bought your first skirt at that store?
 			You: You were so unsure of yourself, but I knew you would rock it!
 			Suika: Yes! And now, all my insecurities are washed away, by this gentle sun~
 			You: What's with you and the sun lately?
 			You: I'm glad you're feeling better though.
+		%
+			You: [#default]There's such limited shopping options here.
+			You: We should totally move to the city together one day!
+			Suika: Why? The beach, the park, the weather.
+			Suika: Everything is so nice here!
+			You: Don't you want to get more cute clothes?
+			Suika: I have a higher calling now~
+			You: [#confused]...?
 
 		
 => END
@@ -63,9 +71,10 @@ match GlobalStorage.game_data.current_stage:
 
 Suika: Oh Suiyobi...
 Suika: You cannot kill me in a meaningful way...
-You: Ahhh...
+You: [#scared]Ahhh...
 do GameBus.call_pixel_sort.emit()
-You: AHHHHHHHHHHHHHHHHHHHHHH
+You: [#shocked]AHHHHHHHHHHHHHHHHHHHHHH[next=1.0]
+
 
 
 => END

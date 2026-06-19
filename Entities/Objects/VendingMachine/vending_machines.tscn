@@ -15,16 +15,15 @@
 [sub_resource type="Resource" id="Resource_n5pnm"]
 script = ExtResource("7_qc1y0")
 anomaly_id = "vending_machine"
-high_temp_text_bank = "I Should Drink Get Really A"
-low_temp_text_bank = "These Vending Machines Have No Shadows"
-valid_solution_lines = "These Vending Machines Have No Shadows
-These Machines Have No Shadows
-No Shadows
-Vending Machines No Shadows"
-eldritch_solution_lines = "I Should Get A Drink
-I Should Really Get A Drink
-Get A Drink
-I Really Should Get A Drink"
+high_temp_text_bank = "I Should Get Some Drinks"
+low_temp_text_bank = "These Are Not"
+valid_solution_lines = "These Are Not Drinks
+Not Drinks
+"
+eldritch_solution_lines = "I Should Get Some Drinks
+Get Some Drinks
+Should Get Drinks
+I Should Get Drinks"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r60xn"]
@@ -34,7 +33,7 @@ size = Vector2(56, 34)
 size = Vector2(23, 30.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqmrk"]
-size = Vector2(58, 20)
+size = Vector2(58, 50)
 
 [node name="VendingMachines" unique_id=1119539795 instance=ExtResource("1_kcn0w")]
 script = ExtResource("2_osajk")
@@ -68,7 +67,7 @@ position = Vector2(386, -6)
 texture = ExtResource("10_v00mc")
 
 [node name="CollisionShape2D" parent="MouseArea" parent_id_path=PackedInt32Array(798930045) index="0" unique_id=1850676131]
-position = Vector2(19, 0)
+position = Vector2(19, -15)
 shape = SubResource("RectangleShape2D_qqmrk")
 
 [node name="CoffeeMachine" type="Area2D" parent="." index="6" unique_id=1386635259]

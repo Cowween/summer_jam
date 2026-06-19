@@ -18,13 +18,13 @@ Turn it off?
 
 ~ success
 
-Suika: Suiyobi~ You've been spacing out a lot lately...
+Suika: [#default]Suiyobi~ You've been spacing out a lot lately...
 Suika: Are you feeling okay?
 You: Sui... Tell me that at least you are real...
-You: Even if my beloved air conditioners are possessed by demons, at least you are real right?
-Suika: Demons...? Girl what are you even talking about.
+You: [#happy]Even if my beloved air conditioners are possessed by demons, at least you are real right?
+Suika: [#default]Demons...? Girl what are you even talking about.
 Suika: Of course i'm real!!
-You: Haha, what am I even on.
+You: [#happy]Haha, what am I even on.
 (This lever is apparently some demonic flesh too.)
 (And Suika never calls me by my full name.)
 
@@ -57,10 +57,17 @@ Do you want to ponder this object?
 
 ~ break_switch
 
-Suika: AHHHHHH!
-You: Huh? It's just a-
-Suika: WHAT HAVE YOU DONEEEEEEE!
+Suika: [#ugly]AHHHHHH!
+You: [#scared]Huh? It's just a-
+Suika: [#ugly]WHAT HAVE YOU DONEEEEEEE!
+Suika: Suiyobi...
 Suika: I've got to... Fix it...
-You: ...
+You: [#default]...
+
+=> END
+
+~ dont_break_switch
+
+You wouldn't want to break something, right?
 
 => END

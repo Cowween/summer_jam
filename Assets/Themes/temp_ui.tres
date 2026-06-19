@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://bduktker7rnyv"]
+
+[ext_resource type="FontFile" uid="uid://bc4trdu0bk1xl" path="res://Assets/Themes/Greybeard-12px-Bold.ttf" id="1_h1beh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1beh"]
+bg_color = Color(0.6, 0.6, 0.6, 0.27058825)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1kmn"]
+bg_color = Color(0.9993749, 0.3590968, 0, 1)
+
+[resource]
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 12
+Label/fonts/font = ExtResource("1_h1beh")
+ProgressBar/font_sizes/font_size = 12
+ProgressBar/fonts/font = ExtResource("1_h1beh")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_h1beh")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_e1kmn")

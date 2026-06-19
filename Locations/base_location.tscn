@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://sdoimmwccupo" path="res://Core/UI/inventory_interface.tscn" id="2_g4np3"]
 [ext_resource type="PackedScene" uid="uid://b2204hju1qu5k" path="res://Core/UI/thought_puzzle.tscn" id="3_5u6bn"]
 [ext_resource type="TileSet" uid="uid://broxhupjug0w7" path="res://Assets/Sprites/TestAssets/new_tile_set.tres" id="4_0by87"]
+[ext_resource type="PackedScene" uid="uid://dn4xj7sc8f1ii" path="res://Core/UI/actual_interface.tscn" id="5_jmrj2"]
 [ext_resource type="PackedScene" uid="uid://s52tnyepiya3" path="res://Core/scene_trigger.tscn" id="5_qmtrm"]
 [ext_resource type="PackedScene" uid="uid://b6132nmkyqfi5" path="res://Entities/Player/player.tscn" id="6_jmrj2"]
 [ext_resource type="PackedScene" uid="uid://deilpmagseesp" path="res://Entities/Friend/friend.tscn" id="7_usuq2"]
@@ -26,11 +27,15 @@ spawn_list = [NodePath("Spawn0")]
 ui = NodePath("DebugInterface")
 
 [node name="DebugInterface" parent="." unique_id=1566658164 node_paths=PackedStringArray("env") instance=ExtResource("1_c702s")]
+visible = false
 env = NodePath("..")
 
 [node name="InventoryInterface" parent="." unique_id=527975129 instance=ExtResource("2_g4np3")]
 
 [node name="ThoughtPuzzle" parent="." unique_id=1708991597 node_paths=PackedStringArray("env") instance=ExtResource("3_5u6bn")]
+env = NodePath("..")
+
+[node name="ActualInterface" parent="." unique_id=1237272209 node_paths=PackedStringArray("env") instance=ExtResource("5_jmrj2")]
 env = NodePath("..")
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=1350096058]
@@ -65,8 +70,6 @@ unique_name_in_owner = true
 
 [node name="FriendSpawn" type="Marker2D" parent="Spawn0" unique_id=729169349]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1464039767]
-
 [node name="FriendInitialSpawn" type="Marker2D" parent="." unique_id=1753829264]
 position = Vector2(-277, -463)
 
@@ -82,3 +85,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="FadeOut" type="ColorRect" parent="EffectsLayer" unique_id=198079097]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.99999994, 0.10323811, 0.0693007, 0)

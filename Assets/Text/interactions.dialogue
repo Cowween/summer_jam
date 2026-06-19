@@ -27,6 +27,12 @@ Take some isotonic drinks from the fridge?
 	set GlobalStorage.game_data.player_y_n = false
 	
 => END
+
+~ cannot_carry
+
+(I cannot possibly carry any more isotonic drinks.)
+
+=> END
 	
 ~ puddle
 
@@ -37,7 +43,7 @@ A puddle that doesn't seem to evaporate in the middle of the heat.
 ~ hot_drink
 
 As the drink traveled down your throat, you could feel it burning your insides.
-You: *Cough* What the hell is this.
+You: [#default]*Cough* What the hell is this.
 You: It's burning hot!
 
 => END
@@ -45,5 +51,80 @@ You: It's burning hot!
 ~ frozen_coffee
 
 The solid chunk of frozen coffee cooled your core temperature down.
+
+=> END
+
+
+~ bed
+
+Just your bed.
+That you can't manage to stay on for some reason.
+
+=> END
+
+~ mirror
+
+if GlobalStorage.game_data.loop_count <= 5:
+	It's you.
+elif GlobalStorage.game_data.loop_count <= 10:
+	(It's me.)
+else:
+	(I can't do this anymore.)
+	
+=> END
+
+~ poster
+
+"Press E to interact with stuff."
+
+=> END
+
+~ truck_open
+
+You: [#default]Uwah-
+A gust of cold wind rushes out of the ice cream truck.
+The hot air in the shopping district was blown away.
+
+=> END
+
+~ aircon
+
+(These air conditioners are blasting hot inferno air of doom)
+(I can't believe my favourite invention betrayed me like this.)
+
+=> END
+
+~ aircon_closed
+
+You: [#default]Looks like this shop is closed.
+You: Not that I'm expecting anything less considering all the weird shit that's happened.
+Suika: [#sus]Oh no!
+Suika: Looks like there's nothing we can do but enjoy the summer~
+Suika: Maybe we can go sunbathe in the park or something.
+Suika: Y'know, hot girl summer stuff.
+
+=> END
+
+~ crash
+
+(Looks like a pretty nasty crash.)
+
+=> END
+
+~ slingshot_pickup
+
+You picked up {{GlobalStorage.game_data.picked_up_name}}!
+Left click to shoot, right click to unequip the slingshot.
+
+=> END
+
+~ self_help
+
+"Your Thoughts Shape Your Reality"
+"Hold alt and left click on objects to give them a good hard think."
+"Who knows, maybe some things are not as they appear to be."
+"The end."
+"P.S. Studies have shown that temperatures really affect how you think???"
+You: [#default]Wow who the hell wrote this.
 
 => END

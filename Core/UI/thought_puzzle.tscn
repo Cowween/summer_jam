@@ -3,11 +3,31 @@
 [ext_resource type="Script" uid="uid://c7pdietmt564k" path="res://Core/UI/thought_puzzle.gd" id="1_t3kx2"]
 [ext_resource type="Script" uid="uid://bt0t6hjofabyh" path="res://Core/UI/word_button.gd" id="2_m1pfy"]
 [ext_resource type="Resource" uid="uid://6whsou6uspbv" path="res://Assets/Puzzles/Test/test_puzzle.tres" id="2_s3rrf"]
+[ext_resource type="AudioStream" uid="uid://dm5lm5dlbgo8s" path="res://Assets/Audio/SFX/whispering.mp3" id="3_e774x"]
 [ext_resource type="PackedScene" uid="uid://i1h8co78bh4o" path="res://Core/UI/word_button.tscn" id="3_s3rrf"]
+[ext_resource type="FontFile" uid="uid://bojkj0qg1pnjf" path="res://Assets/Themes/Greybeard-16px-Bold.ttf" id="4_loc4c"]
+[ext_resource type="StyleBox" uid="uid://bytbuelol4x6j" path="res://Assets/Themes/button.tres" id="5_w8moh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gjuw"]
+bg_color = Color(0.5631715, 0.1861135, 0.14528516, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24356937, 0.2435692, 0.24356905, 1)
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+
+[sub_resource type="Theme" id="Theme_s3rrf"]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("4_loc4c")
+Button/styles/hover = SubResource("StyleBoxFlat_6gjuw")
+Button/styles/normal = ExtResource("5_w8moh")
 
 [node name="ThoughtPuzzle" type="CanvasLayer" unique_id=1708991597]
 script = ExtResource("1_t3kx2")
 current_puzzle = ExtResource("2_s3rrf")
+whispering = ExtResource("3_e774x")
 
 [node name="Panel" type="Panel" parent="." unique_id=1046436163]
 anchors_preset = 15
@@ -15,6 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_s3rrf")
 
 [node name="Thought" type="HFlowContainer" parent="Panel" unique_id=1628358088]
 layout_mode = 1
@@ -24,12 +45,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -270.0
-offset_top = -20.0
+offset_top = -39.6
 offset_right = 270.0
-offset_bottom = 20.0
+offset_bottom = 0.39993286
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 6
 alignment = 1
+
+[node name="Button" parent="Panel/Thought" unique_id=122677015 instance=ExtResource("3_s3rrf")]
+layout_mode = 2
 
 [node name="Words" type="HFlowContainer" parent="Panel" unique_id=1287242502]
 layout_mode = 1
@@ -39,14 +64,13 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -270.0
-offset_top = -96.0
+offset_top = -119.115005
 offset_right = 270.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/h_separation = 6
 alignment = 1
-
-[node name="Button" parent="Panel/Words" unique_id=122677015 instance=ExtResource("3_s3rrf")]
-layout_mode = 2
 
 [node name="Button2" type="Button" parent="Panel/Words" unique_id=1294864943]
 layout_mode = 2
@@ -68,22 +92,26 @@ layout_mode = 2
 text = "Head"
 script = ExtResource("2_m1pfy")
 
-[node name="ThinkButton" type="Button" parent="Panel" unique_id=1251355442]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=301712763]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -28.5
-offset_top = -31.0
-offset_right = 28.5
+offset_left = -44.0
+offset_top = -40.0
+offset_right = 44.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_bottom = 9
+
+[node name="ThinkButton" type="Button" parent="Panel/MarginContainer" unique_id=1251355442]
+layout_mode = 2
 text = "THINK"
 
 [connection signal="pressed" from="Panel/Words/Button2" to="Panel/Words/Button2" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Words/Button3" to="Panel/Words/Button3" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Words/Button4" to="Panel/Words/Button4" method="_on_pressed"]
 [connection signal="pressed" from="Panel/Words/Button5" to="Panel/Words/Button5" method="_on_pressed"]
-[connection signal="pressed" from="Panel/ThinkButton" to="." method="_on_think_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/ThinkButton" to="." method="_on_think_button_pressed"]

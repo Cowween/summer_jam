@@ -2,7 +2,10 @@ extends BaseAnomaly
 
 @onready var tv_off: Sprite2D = $TvOff
 @onready var tv_possessed: AnimatedSprite2D = $TvPosessed
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+@export var shatter : AudioStream
+@export var static_sound : AudioStream
 var deflect := true
 
 func update_visuals() -> void:
@@ -16,19 +19,26 @@ func update_visuals() -> void:
 	# 2. Evaluate state from the final stage (Broken) backward to the first (Off)
 	if data.tv_broken:
 		# STATE 4: TV is shattered
+		
 		if true_sprite: true_sprite.visible = true
+		glitch_sprite.hide()
 		mouse_area.input_pickable = false
 		remove_from_group("killable")
 		
 	elif is_pondered: # is_solved is managed by your base anomaly upon thought success
 		# STATE 3: Pondered, possessed, waiting to be shot
+		audio_stream_player_2d.stream = static_sound
+		audio_stream_player_2d.play()
 		tv_possessed.visible = true
 		tv_possessed.play("default") # Use the exact name of your animation here
 		glitch_sprite.hide()
 		mouse_area.input_pickable = true
 		deflect = false
 		
+		
 	elif data.tv_on:
+		audio_stream_player_2d.stream = static_sound
+		audio_stream_player_2d.play()
 		# STATE 2: Turned on, hot, but not pondered yet
 		if illusion_sprite: illusion_sprite.visible = true
 		mouse_area.input_pickable = true
@@ -106,12 +116,15 @@ func take_slingshot_damage() ->  void:
 	if deflect:
 		DialogueManager.show_dialogue_balloon(encounter, "deflect")
 		return
+	audio_stream_player_2d.stream = shatter
+	audio_stream_player_2d.play()
 	data.tv_broken = true
 	data.add_stage_decrease(cooling_reward, 1)
 	update_visuals()
 	DialogueManager.show_dialogue_balloon(encounter, "fridge")
 	await DialogueManager.dialogue_ended
 	GameBus.anomaly_solved.emit()
+	GameBus.open_fridge.emit()
 	data.fridge_open = true
 	remove_from_group("killable")
 	update_visuals()

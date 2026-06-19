@@ -5,12 +5,15 @@ extends BaseAnomaly
 
 @onready var broken_sprite: Sprite2D = $BrokenSprite
 @onready var target_area: Area2D = $Target # The area the slingshot rock will actually hit
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var point_light_2d: PointLight2D = $PointLight2D
 
 func _ready() -> void:
 	super()
 	
 	# Forcefully ensure the lamp starts off un-shootable
-		
+	if data.broken_lamps.get(name):
+		$HeatCircle.monitoring = false
 	update_visuals()
 
 func update_visuals() -> void:
@@ -20,16 +23,18 @@ func update_visuals() -> void:
 	if broken_sprite: broken_sprite.visible = false
 	
 	# 2. Evaluate from the final state (Broken) backwards
-	if data.broken_lamps.get(self): # Make sure to add 'lamp_broken' to your game_data.gd!
+	if data.broken_lamps.get(name): # Make sure to add 'lamp_broken' to your game_data.gd!
 		# STATE 3: The eye was shot and shattered
 		if broken_sprite: broken_sprite.visible = true
-		mouse_area.input_pickable = false
+		glitch.hide()
+		point_light_2d.hide()
+
 		
 	elif data.lamps_pondered: 
 		# STATE 2: The puzzle was solved, the eye is revealed and ready to be shot
 		if true_sprite: true_sprite.visible = true
-		mouse_area.input_pickable = false 
 		target_area.deflect = false
+		glitch.hide()
 		
 	else:
 		# STATE 1: Normal street lamp (Illusion)
@@ -65,9 +70,9 @@ func _on_target_shot() -> void:
 		return
 	# 1. Update the permanent save data
 	data.unbroken_lamps -= 1
-	data.broken_lamps[self] = true
+	data.broken_lamps[name] = true
 	$HeatCircle.monitoring = false
-	
+	audio_stream_player_2d.play()
 	if data.unbroken_lamps == 0:
 		data.add_stage_decrease(cooling_reward, 2)
 		GameBus.anomaly_solved.emit()

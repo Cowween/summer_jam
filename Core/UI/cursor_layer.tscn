@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bucbsxnvruos"]
+
+[ext_resource type="Script" uid="uid://bbbkri3gj7uvy" path="res://Core/UI/cursor_layer.gd" id="1_lvp3a"]
+[ext_resource type="Texture2D" uid="uid://dkkwp1mnqfrcc" path="res://Assets/UI/Crosshair.png" id="2_cvgq4"]
+[ext_resource type="Texture2D" uid="uid://b80m7xygk0i5o" path="res://Assets/UI/Crosshairthought.png" id="3_bbf7d"]
+
+[node name="CursorLayer" type="CanvasLayer" unique_id=1092571304]
+layer = 200
+script = ExtResource("1_lvp3a")
+aim_texture = ExtResource("2_cvgq4")
+ponder_texture = ExtResource("3_bbf7d")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1440657646]

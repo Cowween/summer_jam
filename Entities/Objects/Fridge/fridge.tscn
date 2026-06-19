@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dl0jok1huyva6" path="res://Entities/Objects/Fridge/fridge.gd" id="2_m2332"]
 [ext_resource type="Script" uid="uid://n41i2sixrlgc" path="res://Entities/Objects/IsotonicDrink/isotonic_drink_resource.gd" id="3_1d4yh"]
 [ext_resource type="Resource" uid="uid://dxbp102mmls3p" path="res://Assets/Text/interactions.dialogue" id="3_wp3fg"]
+[ext_resource type="Texture2D" uid="uid://70ykf0u8bq1v" path="res://Assets/Env/kitchen.png" id="5_t6j5b"]
 
 [sub_resource type="Resource" id="Resource_wp3fg"]
 script = ExtResource("3_1d4yh")
@@ -12,22 +13,21 @@ display_name = "Isotonic Drink"
 item_group = "iso"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1d4yh"]
-size = Vector2(20, 74)
+size = Vector2(162, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wp3fg"]
 size = Vector2(44, 87.5)
 
 [node name="Fridge" unique_id=1939774420 instance=ExtResource("1_x0iks")]
 script = ExtResource("2_m2332")
-interactions = ExtResource("3_wp3fg")
 item_resource = SubResource("Resource_wp3fg")
 
 [node name="Sprite2D" parent="." index="0" unique_id=2125217775]
-position = Vector2(0, 28.25)
-scale = Vector2(1, 4.3235292)
+position = Vector2(-40, 128)
+texture = ExtResource("5_t6j5b")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1010930036]
-position = Vector2(0, 27)
+position = Vector2(71, 52)
 shape = SubResource("RectangleShape2D_1d4yh")
 
 [node name="CollisionShape2D" parent="Interactable" parent_id_path=PackedInt32Array(1806059436) index="0" unique_id=973488294]

@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://dxeyf0bouvdub"]
 
+[ext_resource type="AudioStream" uid="uid://bpttyx5rleb56" path="res://Assets/Audio/SFX/Bottle Break.wav" id="2_q7ant"]
 [ext_resource type="Script" uid="uid://brtvlbn02b2re" path="res://Entities/Objects/Television/television.gd" id="2_vxsmq"]
+[ext_resource type="AudioStream" uid="uid://q13s0d8a8kgj" path="res://Assets/Audio/SFX/ScatterNoise1.mp3" id="3_7m3jd"]
 [ext_resource type="Resource" uid="uid://bsodoyxda3tpj" path="res://Assets/Text/Television/television.dialogue" id="3_vqg2t"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="4_sh0fu"]
-[ext_resource type="Texture2D" uid="uid://cgxob4tbwqwmj" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/isotonic_placeholder.tres" id="4_vgjq4"]
 [ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="5_sh0fu"]
 [ext_resource type="Texture2D" uid="uid://dsuvvkkqaguap" path="res://Assets/Sprites/TV/TV_on.png" id="5_ty5xd"]
 [ext_resource type="Texture2D" uid="uid://bk88orego3jd1" path="res://Assets/Sprites/TV/TV_off.png" id="6_75csp"]
 [ext_resource type="Texture2D" uid="uid://d3pes4oke7gwh" path="res://Assets/Sprites/TV/TV_shattered.png" id="7_75csp"]
+[ext_resource type="Texture2D" uid="uid://coionc5xcwmya" path="res://Assets/Sprites/TV/remote.png" id="8_75csp"]
 [ext_resource type="Texture2D" uid="uid://bliegkjdbfngi" path="res://Assets/Sprites/TV/TV_possessed1.png" id="9_ymai1"]
 [ext_resource type="Texture2D" uid="uid://sneyjubp50oe" path="res://Assets/Sprites/TV/TV_possessed3.png" id="10_q7ant"]
 [ext_resource type="Texture2D" uid="uid://b2xwk6cq2djs7" path="res://Assets/Sprites/TV/TV_possessed2.png" id="11_7m3jd"]
@@ -22,7 +24,8 @@ script = ExtResource("4_sh0fu")
 high_temp_text_bank = "TV On The Is"
 low_temp_text_bank = "Something In There"
 valid_solution_lines = "There Is Something In The TV
-Something In The TV"
+Something In The TV
+Something Is In The TV"
 eldritch_solution_lines = "The TV Is On
 TV On
 TV Is On"
@@ -32,13 +35,13 @@ metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 size = Vector2(40, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rui07"]
-size = Vector2(38, 41)
+size = Vector2(57, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsudb"]
-size = Vector2(13.5, 6)
+size = Vector2(13.5, 29.375)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o0245"]
 animations = [{
@@ -80,6 +83,8 @@ shader_parameter/shake_color_rate = 0.1990000094525
 [node name="Television" type="StaticBody2D" unique_id=1119539795 groups=["killable"]]
 y_sort_enabled = true
 script = ExtResource("2_vxsmq")
+shatter = ExtResource("2_q7ant")
+static_sound = ExtResource("3_7m3jd")
 anomaly_id = "tv"
 temperature_unlock_threshold = 45.0
 cooling_reward = 10.0
@@ -105,7 +110,7 @@ position = Vector2(0, -19)
 script = ExtResource("5_sh0fu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1466374265]
-position = Vector2(0, 10.5)
+position = Vector2(-0.5, 7)
 shape = SubResource("RectangleShape2D_rui07")
 debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
 
@@ -123,19 +128,16 @@ shape = SubResource("RectangleShape2D_wvik4")
 debug_color = Color(1.5883148e-06, 0.6354228, 0.42116326, 0.41960785)
 
 [node name="IsotonicPlaceholder" type="Sprite2D" parent="." unique_id=399899387]
-position = Vector2(73, -14)
-rotation = 1.5132004
-scale = Vector2(0.5071857, 0.48096642)
-texture = ExtResource("4_vgjq4")
-offset = Vector2(0, -19)
+position = Vector2(12, 31)
+texture = ExtResource("8_75csp")
+offset = Vector2(70.66, 10.825)
 
 [node name="Remote" type="Area2D" parent="." unique_id=1470279805]
-visible = false
 position = Vector2(0, -19)
 script = ExtResource("5_sh0fu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Remote" unique_id=390500212]
-position = Vector2(82.75, 5)
+position = Vector2(12, 50.3125)
 shape = SubResource("RectangleShape2D_wsudb")
 
 [node name="TvPosessed" type="AnimatedSprite2D" parent="." unique_id=604721680]
@@ -149,6 +151,8 @@ material = SubResource("ShaderMaterial_75csp")
 sprite_frames = SubResource("SpriteFrames_o0245")
 frame_progress = 0.36506677
 offset = Vector2(0, -19)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=856156031]
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
 [connection signal="interacted" from="Remote" to="." method="_on_remote_interacted"]

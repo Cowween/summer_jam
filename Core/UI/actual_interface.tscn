@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dn4xj7sc8f1ii"]
+
+[ext_resource type="Script" uid="uid://sf2kjqfk68wv" path="res://Core/UI/actual_interface.gd" id="1_leybu"]
+[ext_resource type="Texture2D" uid="uid://cbjubawku32en" path="res://Assets/UI/tempstill.png" id="2_pttym"]
+[ext_resource type="Theme" uid="uid://bduktker7rnyv" path="res://Assets/Themes/temp_ui.tres" id="2_ylxoh"]
+[ext_resource type="Texture2D" uid="uid://bhibewvgxa1s1" path="res://Assets/UI/tempdrop1.png" id="3_ylxoh"]
+[ext_resource type="Texture2D" uid="uid://cw1by63ri8kpi" path="res://Assets/UI/tempdrop2.png" id="4_t5vyc"]
+[ext_resource type="Texture2D" uid="uid://c0wmir0ukmwuv" path="res://Assets/UI/tempdrop3.png" id="5_yjrx6"]
+[ext_resource type="Texture2D" uid="uid://sakea03phob7" path="res://Assets/UI/tempdrop4.png" id="6_kt0up"]
+[ext_resource type="Texture2D" uid="uid://ds4yf3adonsmg" path="res://Assets/UI/temprise1.png" id="7_k2min"]
+[ext_resource type="Texture2D" uid="uid://bsvdadoxqh72a" path="res://Assets/UI/temprise2.png" id="8_6tl3x"]
+[ext_resource type="Texture2D" uid="uid://mvs52nswxtj1" path="res://Assets/UI/temprise3.png" id="9_p2p3b"]
+[ext_resource type="Texture2D" uid="uid://bu7enbmis8rxu" path="res://Assets/UI/temprise4.png" id="10_eagoi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp5ir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pttym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ylxoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t5vyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yjrx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kt0up")
+}],
+"loop": true,
+"name": &"drop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_k2min")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6tl3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p2p3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eagoi")
+}],
+"loop": true,
+"name": &"rise",
+"speed": 10.0
+}]
+
+[node name="ActualInterface" type="CanvasLayer" unique_id=1237272209]
+script = ExtResource("1_leybu")
+
+[node name="Control" type="Control" parent="." unique_id=1479823853]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_ylxoh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=2014225015]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 104.0
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1059315450]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer" unique_id=1968505060]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=101961727]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Thermo" type="AnimatedSprite2D" parent="Control/MarginContainer/VBoxContainer/HBoxContainer/Margin" unique_id=1548004774]
+sprite_frames = SubResource("SpriteFrames_hp5ir")
+animation = &"rise"
+centered = false
+
+[node name="Temperature" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1921278849]
+layout_mode = 2
+text = "Temp"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer" unique_id=313667546]
+layout_mode = 2
+
+[node name="Heat" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=315200270]
+layout_mode = 2
+text = "Heat:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=638455305]
+layout_mode = 2
+size_flags_horizontal = 3

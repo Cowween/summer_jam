@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://bu86khucop6fw"]
+
+[ext_resource type="Texture2D" uid="uid://l806cw4u5xnl" path="res://Assets/Env/smoke_sheet.png" id="1_heqaf"]
+
+[resource]
+atlas = ExtResource("1_heqaf")
+region = Rect2(91, 97, 50, 53)

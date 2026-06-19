@@ -21,9 +21,9 @@ extends CanvasLayer
 @export var skip_action: StringName = &"ui_cancel"
 
 
-@export var suiyobi_texture : Texture2D
-@export var suika_texture : Texture2D
-@export var evil_suika :Texture2D
+@export var suiyobi_texture : Dictionary[String, Texture2D]
+@export var suika_texture : Dictionary[String, Texture2D]
+@export var evil_suika : Texture2D
 @export var dead_suika : Texture2D
 
 @export var normal_style : StyleBoxFlat
@@ -48,6 +48,7 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+var last_tag := "default"
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -144,6 +145,8 @@ func apply_dialogue_line() -> void:
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
 	
+	if not dialogue_line.tags.is_empty():
+		last_tag = dialogue_line.tags[0]
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -160,7 +163,7 @@ func apply_dialogue_line() -> void:
 	if dialogue_line.character != "":
 		portrait.show()
 		if dialogue_line.character == "You":
-			portrait.texture = suiyobi_texture
+			portrait.texture = suiyobi_texture[last_tag]
 		elif dialogue_line.character == "Suika":
 			if GlobalStorage.game_data.friend_killed:
 				panel_container.add_theme_stylebox_override("panel", evil_style)
@@ -171,7 +174,7 @@ func apply_dialogue_line() -> void:
 				portrait.texture = evil_suika
 				character_label.text = character_label.text + "?"
 			else:
-				portrait.texture = suika_texture
+				portrait.texture = suika_texture[last_tag]
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():

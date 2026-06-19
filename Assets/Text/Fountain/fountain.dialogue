@@ -7,7 +7,7 @@
 
 ~ illusion
 
-You: Oh wishing fountain, will you help me solve whatever's wrong with this town?
+You: [#sad]Oh wishing fountain, will you help me solve whatever's wrong with this town?
 You: Or will you just turn out to be some demonic entity again.
 The fountain does not reply.
 But you can vaguely hear the sound of water flowing despite the empty basin.
@@ -16,15 +16,15 @@ But you can vaguely hear the sound of water flowing despite the empty basin.
 
 ~ success
 
-You: So you must be the one behind whatever's wrong with this town.
-You: Turning up the heat, making me stuck in this loop, and pretending to be my Suika.
+You: [#default]So you must be the one behind whatever's wrong with this town.
+You: [#determined]Turning up the heat, making me stuck in this loop, and pretending to be my Suika.
 You: I will make you pay.
 
 => END
 
 ~ failure
 
-You: What am I even doing, trying to communicate with a fountain.
+You: [#sad]What am I even doing, trying to communicate with a fountain.
 You: It's just a fountain...
 
 => END

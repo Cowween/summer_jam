@@ -1,12 +1,28 @@
 [gd_scene format=3 uid="uid://o7edxomvo4dv"]
 
 [ext_resource type="Script" uid="uid://bug6tmo4b33ea" path="res://Entities/God/god.gd" id="1_5rjty"]
-[ext_resource type="Texture2D" uid="uid://c578pl4t1i1dk" path="res://Assets/Sprites/God/god.png" id="2_egt1n"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="2_vm4dh"]
 [ext_resource type="Resource" uid="uid://bhgh2rigsatn4" path="res://Assets/Text/GodFight/god_fight.dialogue" id="3_2ap1n"]
-[ext_resource type="Texture2D" uid="uid://cto22qsxjms8x" path="res://Assets/Sprites/God/god_psychic.png" id="3_vm4dh"]
+[ext_resource type="Texture2D" uid="uid://ijlaj5p5dcjb" path="res://Assets/Sprites/God/Eldritch.png" id="4_2ap1n"]
+[ext_resource type="AudioStream" uid="uid://51rwc8e8ltwj" path="res://Assets/Audio/SFX/scream.wav" id="4_i7yhw"]
+[ext_resource type="Texture2D" uid="uid://cv00rkx2gg7xs" path="res://Assets/Env/2d_lights_and_shadows_neutral_point_light.webp" id="4_idqnx"]
+[ext_resource type="AudioStream" uid="uid://dwc7tn4wvv2e6" path="res://Assets/Audio/SFX/ELECEmf_Electromagnetic66_InMotionAudio_Electromagnesis Samples Volume 1.wav" id="5_1upim"]
 [ext_resource type="Script" uid="uid://dtgvvueyk0v0i" path="res://Entities/God/sling_shot_target.gd" id="6_2ap1n"]
+[ext_resource type="Texture2D" uid="uid://dobctrc1ugu7t" path="res://Assets/Sprites/God/Eldritchspin1.png" id="7_i7yhw"]
 [ext_resource type="Script" uid="uid://behe7tu2edhlj" path="res://Entities/God/sledge_hammer_target.gd" id="7_idqnx"]
+[ext_resource type="Texture2D" uid="uid://bnmmsjr02je20" path="res://Assets/Sprites/God/Eldritchspin2.png" id="8_1upim"]
+[ext_resource type="Texture2D" uid="uid://dhmd01tn2vpwe" path="res://Assets/Sprites/God/Eldritchspin3.png" id="9_tmhsa"]
+[ext_resource type="Texture2D" uid="uid://c5yv3411m7smv" path="res://Assets/Sprites/God/Eldritchspin4.png" id="10_q0e0j"]
+[ext_resource type="Texture2D" uid="uid://bbciv7va3y5sd" path="res://Assets/Sprites/God/Eldritchspin5.png" id="11_7lxa2"]
+[ext_resource type="Texture2D" uid="uid://2foxjclio1y6" path="res://Assets/Sprites/God/Eldritchfall1.png" id="12_wduif"]
+[ext_resource type="Texture2D" uid="uid://cw77e0nvuj7cb" path="res://Assets/Sprites/God/Eldritchfall2.png" id="13_6h63u"]
+[ext_resource type="Texture2D" uid="uid://kijkb61cieko" path="res://Assets/Sprites/God/Eldritchfall3.png" id="14_fk5t7"]
+[ext_resource type="Texture2D" uid="uid://dfxknlwf7u0ev" path="res://Assets/Sprites/God/Eldritchfall4.png" id="15_oy1hd"]
+[ext_resource type="Texture2D" uid="uid://bxkv21vhdl46j" path="res://Assets/Sprites/God/Eldritchfall5.png" id="16_0eh4x"]
+[ext_resource type="Texture2D" uid="uid://c55pwow16v760" path="res://Assets/Sprites/God/Eldritchfall6.png" id="17_flctg"]
+[ext_resource type="Texture2D" uid="uid://72svg7ad5gqi" path="res://Assets/Sprites/God/Eldritchfall7.png" id="18_rcytc"]
+[ext_resource type="Texture2D" uid="uid://cm31ctds2yt6o" path="res://Assets/Sprites/God/Eldritchfall8.png" id="19_jbj4m"]
+[ext_resource type="Texture2D" uid="uid://c6rtpvlt65pt0" path="res://Assets/Sprites/God/Eldritchfall9.png" id="20_cr2ib"]
 
 [sub_resource type="Resource" id="Resource_2ap1n"]
 script = ExtResource("2_vm4dh")
@@ -47,6 +63,86 @@ valid_solution_lines = "Get Out Of My Head"
 eldritch_solution_lines = "No More Pain Forever"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
+[sub_resource type="Shader" id="Shader_wxxpx"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float flash_modifier : hint_range(0.0, 1.0, 0.01) = 0.0;
+
+void fragment() {
+    vec4 color = texture(TEXTURE, UV);
+    color.rgb = mix(color.rgb, flash_color.rgb, flash_modifier);
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ccm33"]
+shader = SubResource("Shader_wxxpx")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.999999977648
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4c2x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2ap1n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_i7yhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1upim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tmhsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_q0e0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7lxa2")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_wduif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6h63u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fk5t7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_oy1hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0eh4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_flctg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_rcytc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jbj4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_cr2ib")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ap1n"]
 size = Vector2(91, 31)
 
@@ -54,25 +150,131 @@ size = Vector2(91, 31)
 radius = 12.0415945
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msrd1"]
-radius = 32.06244
+radius = 45.17743
+
+[sub_resource type="Animation" id="Animation_dg4a3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:offset:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-27.14]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_tv7f8"]
+resource_name = "bobbing"
+length = 1.0666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:offset:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.5, 0.96666664),
+"transitions": PackedFloat32Array(1, 4, 9.8491535),
+"update": 0,
+"values": [0.0, -2.5, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [2.0, 3.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y04tl"]
+_data = {
+&"RESET": SubResource("Animation_dg4a3"),
+&"bobbing": SubResource("Animation_tv7f8")
+}
+
+[sub_resource type="Animation" id="Animation_kdtuo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.999999977648]
+}
+
+[sub_resource type="Animation" id="Animation_10l1c"]
+resource_name = "flash"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 0.999999977648, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7vra"]
+_data = {
+&"RESET": SubResource("Animation_kdtuo"),
+&"flash": SubResource("Animation_10l1c")
+}
 
 [node name="God" type="StaticBody2D" unique_id=1863923207]
 script = ExtResource("1_5rjty")
 boss_puzzle = Array[ExtResource("2_vm4dh")]([SubResource("Resource_2ap1n"), SubResource("Resource_idqnx"), SubResource("Resource_msrd1"), SubResource("Resource_odn4y"), SubResource("Resource_3xxr4")])
 encounter = ExtResource("3_2ap1n")
+scream1 = ExtResource("4_i7yhw")
+psychic = ExtResource("5_1upim")
 
-[node name="IdleSprite" type="Sprite2D" parent="." unique_id=461959572]
-position = Vector2(7, -64)
-texture = ExtResource("2_egt1n")
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=807383760]
+visible = false
+position = Vector2(-0.9999962, -85)
+scale = Vector2(2.2890625, 2.0800781)
+color = Color(0.9999905, 0.3725894, 0.14551166, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("4_idqnx")
 
-[node name="StunnedSprite" type="Sprite2D" parent="." unique_id=1495757446]
-position = Vector2(-43.755, 25.54)
-rotation = -2.2235494
-texture = ExtResource("2_egt1n")
-
-[node name="GodPsychic" type="Sprite2D" parent="." unique_id=849186423]
-position = Vector2(7, -64)
-texture = ExtResource("3_vm4dh")
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=665895602]
+material = SubResource("ShaderMaterial_ccm33")
+position = Vector2(-1, -86)
+sprite_frames = SubResource("SpriteFrames_j4c2x")
+animation = &"stun"
+frame = 8
+frame_progress = 1.0
+offset = Vector2(0, -27.14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=854614127]
 position = Vector2(-1, -16)
@@ -89,11 +291,19 @@ shape = SubResource("CircleShape2D_idqnx")
 script = ExtResource("7_idqnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SledgeHammerTarget" unique_id=1160561759]
-position = Vector2(-56, 39)
+position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_msrd1")
 
 [node name="PsychicAttackTimer" type="Timer" parent="." unique_id=406907407]
 one_shot = true
+
+[node name="Bob" type="AnimationPlayer" parent="." unique_id=472047781]
+libraries/ = SubResource("AnimationLibrary_y04tl")
+
+[node name="Flash" type="AnimationPlayer" parent="." unique_id=1826092374]
+libraries/ = SubResource("AnimationLibrary_s7vra")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=467555556]
 
 [connection signal="bullet" from="SlingShotTarget" to="." method="_on_sling_shot_target_bullet"]
 [connection signal="sledgehammer" from="SledgeHammerTarget" to="." method="_on_sledge_hammer_target_sledgehammer"]

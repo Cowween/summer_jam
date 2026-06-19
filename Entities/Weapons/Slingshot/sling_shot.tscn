@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://c70b5tih571b0"]
 
 [ext_resource type="PackedScene" uid="uid://ddrs22bw4cnce" path="res://Entities/Objects/TestInvItem/test_inv_item.tscn" id="1_jmng0"]
+[ext_resource type="Script" uid="uid://colwfo2mgd6pj" path="res://Entities/Weapons/Slingshot/sling_shot.gd" id="2_dph8j"]
 [ext_resource type="Resource" uid="uid://ddt5ebhh813sk" path="res://Entities/Weapons/Slingshot/slingshot_resource.tres" id="2_pb25o"]
+[ext_resource type="Texture2D" uid="uid://3qaurrsi7vgp" path="res://Assets/Sprites/Slingshot/sling.png" id="3_dph8j"]
 
 [node name="Slingshot" unique_id=1939774420 instance=ExtResource("1_jmng0")]
+script = ExtResource("2_dph8j")
 item_resource = ExtResource("2_pb25o")
+
+[node name="Sprite2D" parent="." index="0" unique_id=2125217775]
+position = Vector2(-80, 88)
+texture = ExtResource("3_dph8j")
+
+[node name="CollisionShape2D" parent="Interactable" parent_id_path=PackedInt32Array(1806059436) index="0" unique_id=973488294]
+position = Vector2(0, 14)

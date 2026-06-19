@@ -1,6 +1,10 @@
 ~ truth
+if not GlobalStorage.game_data.jacket_taken:
+	(The mannequin wearing the jacket seems to be cooler than the rest.)
+	(I gotta get the jacket somehow.)
+else:
+	(Is the mannequin hotter or colder now?)
 
-(The mannequin wearing the jacket seems to be cooler than the rest.)
 
 => END
 
@@ -13,8 +17,9 @@
 
 ~ success
 
-You: The mannequin wearing the jacket is the only one that not melting...
-You: Could it be the jacket cooling it down?
+You: [#default]The mannequin wearing the jacket is the only one that not melting...
+You: Seems like everyone wants a piece of that jacket.
+You: I want it too, just gotta remove the glass between us.
 
 => END
 
@@ -51,7 +56,13 @@ Take the mannequin's jacket?
 => END
 
 ~ glass
-You: Here's hoping that I'm actually stuck in some pocket dimension.
+You: [#default]Here's hoping that I'm actually stuck in some pocket dimension.
 You: I can't pay the property damages.
+
+=> END
+
+~ dont_break
+
+You don't want to break a perfectly normal shop, right?
 
 => END

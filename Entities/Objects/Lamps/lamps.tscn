@@ -5,11 +5,12 @@
 [ext_resource type="Resource" uid="uid://bhy4f70srwl5x" path="res://Assets/Text/Lamps/lamps.dialogue" id="2_h532v"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="2_jgfah"]
 [ext_resource type="Script" uid="uid://cp1jvnlmba38c" path="res://Entities/Objects/Lamps/target.gd" id="2_to3r0"]
-[ext_resource type="Texture2D" uid="uid://d2js7iavxw0r" path="res://Assets/Sprites/Lamps/lamp.png" id="3_to3r0"]
-[ext_resource type="Texture2D" uid="uid://kigp3hum3vyn" path="res://Assets/Sprites/Lamps/lamp_evil.png" id="4_jgfah"]
-[ext_resource type="Texture2D" uid="uid://c3hu0ku103d85" path="res://Assets/Sprites/Lamps/lamp_dead.png" id="5_h532v"]
+[ext_resource type="Texture2D" uid="uid://dtyxw8ld51b1x" path="res://Assets/Sprites/Lamps/streetlamp.png" id="5_n1kb4"]
+[ext_resource type="Texture2D" uid="uid://c24ueiw2cmu85" path="res://Assets/Sprites/Lamps/streetlampevil.png" id="6_k5lub"]
+[ext_resource type="Texture2D" uid="uid://doa3b1p7urjaq" path="res://Assets/Sprites/Lamps/streetlampdead.png" id="7_ijatv"]
 [ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="9_h532v"]
 [ext_resource type="Texture2D" uid="uid://cv00rkx2gg7xs" path="res://Assets/Env/2d_lights_and_shadows_neutral_point_light.webp" id="10_n1kb4"]
+[ext_resource type="AudioStream" uid="uid://bpttyx5rleb56" path="res://Assets/Audio/SFX/Bottle Break.wav" id="11_k5lub"]
 
 [sub_resource type="Resource" id="Resource_h532v"]
 script = ExtResource("2_jgfah")
@@ -20,7 +21,25 @@ The Street Lamps Are Watching Me
 Street Lamps Are Watching Me
 Street Lamps Are Staring At Me
 Street Lamps Staring At Me
-Street Lamps Watching Me"
+Street Lamps Watching Me
+The Lamps Are Staring At Me
+The Lamps Are Watching Me
+Lamps Are Watching Me
+Lamps Are Staring At Me
+Lamps Staring At Me
+Lamps Watching Me
+The Street Lamps Are Staring At Me
+The Street Lamps Are Watching Us
+Street Lamps Are Watching Us
+Street Lamps Are Staring At Us
+Street Lamps Staring At Us
+Street Lamps Watching Us
+The Lamps Are Staring At Us
+The Lamps Are Watching Us
+Lamps Are Watching US
+Lamps Are Staring At Us
+Lamps Staring At Us
+Lamps Watching Us"
 eldritch_solution_lines = "The Street Lamps Are Keeping Us Safe
 Street Lamps Keeping Us Safe
 "
@@ -39,7 +58,7 @@ size = Vector2(23, 23)
 size = Vector2(16, 46)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qkyn"]
-radius = 36.013885
+radius = 56.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1kb4"]
 shader = ExtResource("9_h532v")
@@ -69,17 +88,16 @@ position = Vector2(0, -3.705)
 shape = SubResource("RectangleShape2D_xg7r6")
 
 [node name="IllusionSprite" type="Sprite2D" parent="." unique_id=301085566]
-position = Vector2(0, -48)
-texture = ExtResource("3_to3r0")
+texture = ExtResource("5_n1kb4")
+offset = Vector2(-94.07, -17.875)
 
-[node name="TrueSprite" type="Sprite2D" parent="." unique_id=507385444]
-visible = false
-position = Vector2(0, -48)
-texture = ExtResource("4_jgfah")
+[node name="TrueSprite" type="Sprite2D" parent="." unique_id=682873230]
+texture = ExtResource("6_k5lub")
+offset = Vector2(-94.07, -17.875)
 
-[node name="BrokenSprite" type="Sprite2D" parent="." unique_id=391476089]
-position = Vector2(0, -48)
-texture = ExtResource("5_h532v")
+[node name="BrokenSprite" type="Sprite2D" parent="." unique_id=62617805]
+texture = ExtResource("7_ijatv")
+offset = Vector2(-94.07, -17.875)
 
 [node name="Interactable" type="Area2D" parent="." unique_id=620950227]
 script = ExtResource("2_2qkyn")
@@ -107,16 +125,19 @@ copy_mode = 2
 
 [node name="Glitch" type="ColorRect" parent="." unique_id=445724272]
 material = SubResource("ShaderMaterial_n1kb4")
-offset_left = -6.0
-offset_top = -80.0
-offset_right = 6.0
-offset_bottom = -69.0
+offset_left = -17.0
+offset_top = -86.0
+offset_right = 18.0
+offset_bottom = -56.0
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1058798894]
 position = Vector2(1.9999962, -74)
 scale = Vector2(0.5107422, 0.5058593)
 shadow_enabled = true
 texture = ExtResource("10_n1kb4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=931613865]
+stream = ExtResource("11_k5lub")
 
 [connection signal="shot" from="Target" to="." method="_on_target_shot"]
 [connection signal="body_entered" from="HeatCircle" to="." method="_on_heat_circle_body_entered"]

@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://ddrs22bw4cnce" path="res://Entities/Objects/TestInvItem/test_inv_item.tscn" id="1_otp3c"]
 [ext_resource type="Resource" uid="uid://xehqy2ra5wb2" path="res://Entities/Weapons/Sledgehammer/sledgehammer.tres" id="2_rlr0y"]
+[ext_resource type="Texture2D" uid="uid://cowvs2gqicmk0" path="res://Assets/Sprites/Hammer/hammer.png" id="3_v0hfq"]
 
 [node name="Sledgehammer" unique_id=1939774420 instance=ExtResource("1_otp3c")]
 item_resource = ExtResource("2_rlr0y")
+
+[node name="Sprite2D" parent="." index="0" unique_id=2125217775]
+texture = ExtResource("3_v0hfq")
+offset = Vector2(-291.57, -59.97)

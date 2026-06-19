@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ngm88bn0vmu6"]
+
+[ext_resource type="Script" uid="uid://cgty5t4ssk0aq" path="res://Autoloads/bg_music.gd" id="1_ut2qc"]
+
+[node name="AudioManager" type="Node2D" unique_id=1842008343]
+script = ExtResource("1_ut2qc")
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="." unique_id=1223735234]
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="." unique_id=1193209367]
+volume_db = 5.0
+
+[node name="UI" type="AudioStreamPlayer2D" parent="." unique_id=350768105]
+volume_db = 5.0

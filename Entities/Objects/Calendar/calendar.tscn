@@ -5,14 +5,19 @@
 [ext_resource type="Resource" uid="uid://b5j8ic1p5na8t" path="res://Assets/Text/Calendar/calendar.dialogue" id="3_wuoig"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="4_h512l"]
 [ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="5_h512l"]
+[ext_resource type="Texture2D" uid="uid://b16opsoe7xwca" path="res://Assets/Sprites/Calendar/summer.png" id="5_nur5r"]
+[ext_resource type="Texture2D" uid="uid://ty0xofjbxyxj" path="res://Assets/Sprites/Calendar/winter.png" id="6_bma1j"]
 
 [sub_resource type="Resource" id="Resource_hs8w3"]
 script = ExtResource("4_h512l")
 anomaly_id = "calendar"
-high_temp_text_bank = "Calendar My Just The"
-low_temp_text_bank = "Frozen Beach Why Is"
-valid_solution_lines = "Why Is The Beach Frozen
-Frozen Beach"
+high_temp_text_bank = "Calendar My Just"
+low_temp_text_bank = "Is The Beach Frozen"
+valid_solution_lines = "Is The Beach Frozen
+Frozen Beach
+The Beach Is Frozen
+Beach Is Frozen
+Beach Frozen"
 eldritch_solution_lines = "Just My Calendar
 My Calendar"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
@@ -35,11 +40,34 @@ temperature_unlock_threshold = 40.0
 encounter = ExtResource("3_wuoig")
 thought_puzzle = SubResource("Resource_hs8w3")
 
+[node name="IllusionSprite" parent="." index="0" unique_id=591201497]
+position = Vector2(41.054993, 94.79)
+texture = ExtResource("5_nur5r")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=409228283]
+position = Vector2(-1.9450073, -8.209999)
+
+[node name="Interactable" parent="." index="2" unique_id=620950227]
+position = Vector2(-1.9450073, -8.209999)
+
+[node name="CollisionShape2D" parent="Interactable" index="0" unique_id=1466374265]
+position = Vector2(0, 7.3549995)
+
+[node name="TrueSprite" parent="." index="3" unique_id=2084650500]
+visible = true
+position = Vector2(-23.000008, 93)
+texture = ExtResource("6_bma1j")
+
+[node name="MouseArea" parent="." index="4" unique_id=798930045]
+position = Vector2(-1.9450073, -8.209999)
+
 [node name="TemperatureArea" type="Area2D" parent="." index="5" unique_id=863806731]
+position = Vector2(-1.9450073, -8.209999)
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TemperatureArea" index="0" unique_id=1556328912]
+position = Vector2(2, 8)
 shape = SubResource("CircleShape2D_wuoig")
 debug_color = Color(0.6102322, 0.53929585, 0.0056532454, 0.41960785)
 
@@ -50,10 +78,10 @@ scale = Vector2(0.135, 0.14)
 
 [node name="Glitch" parent="." index="7" unique_id=714474402]
 material = SubResource("ShaderMaterial_hs8w3")
-offset_left = -11.0
-offset_top = -13.0
-offset_right = 12.0
-offset_bottom = 11.0
+offset_left = -10.945007
+offset_top = -20.21
+offset_right = 12.054993
+offset_bottom = 3.790001
 
 [connection signal="body_entered" from="TemperatureArea" to="." method="_on_temperature_area_body_entered"]
 [connection signal="body_exited" from="TemperatureArea" to="." method="_on_temperature_area_body_exited"]

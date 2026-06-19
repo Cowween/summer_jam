@@ -9,13 +9,14 @@ class_name StageManager
 @export var base_temp := 45.0
 @export var is_room := false
 @export var stage_id := 0
-@export var background_sprite : Sprite2D
-
+@export var background_sprite : CanvasItem
+@export var background_music : AudioStream
 
 @onready var player : Player = %Player
 @onready var friend : Friend = %Friend
 @onready var inventory := $InventoryInterface
 @onready var tilemap := $FloorLayer
+@onready var fade_out: ColorRect = $EffectsLayer/FadeOut
 
 var game_data : GameData = GlobalStorage.game_data
 
@@ -27,6 +28,7 @@ var current_temp : float :
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SoundManager.play_bg(background_music)
 	if not background_sprite:
 		configure_camera_limits()
 	else:
@@ -35,7 +37,9 @@ func _ready() -> void:
 	GameBus.player_heat_changed.connect(_player_heat_changed)
 	GameBus.refresh_temp.connect(_on_temp_refresh)
 	GameBus.anomaly_solved.connect(_on_anomaly_solved)
+	game_data.wpn_equipped = false
 	refresh_temp()
+	current_temp = current_temp
 	game_data.current_stage = stage_id
 	game_data.player_core_heat = game_data.player_core_heat
 	if game_data.is_inventory_open:
@@ -123,6 +127,11 @@ func set_friend_state(state: String) -> void:
 			friend.current_state = friend.State.DISTRACTED
 
 func _new_loop() -> void:
+	GameBus.block_player_movement.emit()
+	player.die()
+	var tween := create_tween()
+	tween.tween_property(fade_out, "color:a", 1.0 ,3.5)
+	await tween.finished
 	game_data.loop()
 	get_tree().change_scene_to_file(starting_scene)
 

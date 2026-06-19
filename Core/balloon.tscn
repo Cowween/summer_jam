@@ -2,14 +2,30 @@
 
 [ext_resource type="Script" uid="uid://b3bciitqfekcm" path="res://Core/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Texture2D" uid="uid://bg6sd1ohkjn53" path="res://Assets/Sprites/Suiyobi/suiyobisplashnonchalant.png" id="2_l1erc"]
 [ext_resource type="Texture2D" uid="uid://dknampu1d5fwr" path="res://Assets/Sprites/Suiyobi/suiyobisplash.png" id="2_vayph"]
+[ext_resource type="Texture2D" uid="uid://d3pb04vxjr1xt" path="res://Assets/Sprites/Suiyobi/suiyobisplashangry.png" id="3_3svp3"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="Texture2D" uid="uid://dyowfiq733kwq" path="res://Assets/Sprites/Suica/suicasplash2.png" id="3_pxaix"]
 [ext_resource type="Shader" uid="uid://bjw437c7p0dyy" path="res://Assets/Shaders/melt.gdshader" id="4_ggi1d"]
 [ext_resource type="Texture2D" uid="uid://dkjnyk71q2w4n" path="res://Assets/Sprites/Suica/suicaskin.png" id="4_m6uqt"]
+[ext_resource type="Texture2D" uid="uid://1d71lk2x4ita" path="res://Assets/Sprites/Suiyobi/suiyobisplashdetermined.png" id="4_s8r0i"]
+[ext_resource type="Texture2D" uid="uid://ddhfrauf853gk" path="res://Assets/Sprites/Suiyobi/suiyobisplashhappy.png" id="5_8y2r2"]
 [ext_resource type="Texture2D" uid="uid://cyebf74lu1a7e" path="res://Assets/Sprites/Suica/suicaskindead.png" id="5_kinxr"]
+[ext_resource type="Texture2D" uid="uid://cxug708m1ygwm" path="res://Assets/Sprites/Suiyobi/suiyobisplashscared.png" id="6_2ln4t"]
 [ext_resource type="StyleBox" uid="uid://cxaaiymnrp2cc" path="res://Assets/Themes/normal_dialogue.tres" id="6_pxaix"]
+[ext_resource type="Texture2D" uid="uid://db5wofh6uuili" path="res://Assets/Sprites/Suiyobi/suiyobisplashsad.png" id="7_31twa"]
+[ext_resource type="Texture2D" uid="uid://b4umxg6ald28q" path="res://Assets/Sprites/Suica/suicasplashhappy.png" id="7_htbcr"]
 [ext_resource type="StyleBox" uid="uid://b5ks2njbfts0k" path="res://Assets/Themes/evil_dialogue.tres" id="7_m6uqt"]
+[ext_resource type="Texture2D" uid="uid://dskvgm6ytguj7" path="res://Assets/Sprites/Suica/suicasplashsadsmile.png" id="8_31twa"]
+[ext_resource type="Texture2D" uid="uid://dpgedvgssqe4r" path="res://Assets/Sprites/Suiyobi/suiyobisplashconfused.png" id="8_jktkj"]
+[ext_resource type="Texture2D" uid="uid://dmsblu1h1qi1t" path="res://Assets/Sprites/Suiyobi/suiyobisplashfustrated.png" id="9_gpm2x"]
+[ext_resource type="Texture2D" uid="uid://c3rpfpxg3ilb3" path="res://Assets/Sprites/Suica/suicasplashtear.png" id="9_jktkj"]
+[ext_resource type="Texture2D" uid="uid://b0ylmwv2xrkjd" path="res://Assets/Sprites/Suica/suicasplashugly.png" id="10_3svp3"]
+[ext_resource type="Texture2D" uid="uid://cd340wh8s64vs" path="res://Assets/Sprites/Suiyobi/suiyobisplashshocked.png" id="10_jktkj"]
+[ext_resource type="Texture2D" uid="uid://ce7r8ovotbdcb" path="res://Assets/Sprites/Suica/suicasplashplayful.png" id="14_bceih"]
+[ext_resource type="Texture2D" uid="uid://dwknk8ed6s2w6" path="res://Assets/Sprites/Suica/suicasplashsus.png" id="15_j4tak"]
+[ext_resource type="FontFile" uid="uid://da6cqnkyhl7kr" path="res://Assets/Themes/Greybeard-18px-Bold.ttf" id="21_bceih"]
+[ext_resource type="FontFile" uid="uid://cuwkw5e18rtc1" path="res://Assets/Themes/Greybeard-16px.ttf" id="21_gpm2x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -60,15 +76,20 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_qq3yp"]
 default_font_size = 20
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("21_bceih")
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
 Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
 Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
+Label/font_sizes/font_size = 16
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/normal_font = ExtResource("21_gpm2x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ri7kw"]
 shader = ExtResource("4_ggi1d")
@@ -114,8 +135,25 @@ _data = {
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
 script = ExtResource("1_36de5")
-suiyobi_texture = ExtResource("2_vayph")
-suika_texture = ExtResource("3_pxaix")
+suiyobi_texture = Dictionary[String, Texture2D]({
+"angry": ExtResource("3_3svp3"),
+"confused": ExtResource("8_jktkj"),
+"default": ExtResource("2_l1erc"),
+"determined": ExtResource("4_s8r0i"),
+"frustrated": ExtResource("9_gpm2x"),
+"happy": ExtResource("5_8y2r2"),
+"sad": ExtResource("7_31twa"),
+"scared": ExtResource("6_2ln4t"),
+"shocked": ExtResource("10_jktkj")
+})
+suika_texture = Dictionary[String, Texture2D]({
+"default": ExtResource("7_htbcr"),
+"melancholic": ExtResource("8_31twa"),
+"playful": ExtResource("14_bceih"),
+"sad": ExtResource("9_jktkj"),
+"sus": ExtResource("15_j4tak"),
+"ugly": ExtResource("10_3svp3")
+})
 evil_suika = ExtResource("4_m6uqt")
 dead_suika = ExtResource("5_kinxr")
 normal_style = ExtResource("6_pxaix")

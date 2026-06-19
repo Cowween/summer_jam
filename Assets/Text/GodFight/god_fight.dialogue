@@ -1,12 +1,12 @@
 
 ~ success
 %
-	You: Uurghhhh!
+	You: [#angry]Uurghhhh!
 	You: Get out of my head you creepy fucker!
 %
-	You: Shut up, shut up, SHUT UP!
+	You: [#frustrated]Shut up, shut up, SHUT UP!
 %
-	You: I have enough of your stupid thoughts!
+	You: [#angry]I have enough of your stupid thoughts!
 => END
 
 ~ failure

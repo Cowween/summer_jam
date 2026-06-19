@@ -10,16 +10,19 @@ var next_spawn : int = 0
 var player_y_n : bool
 var picked_up_name : String
 var is_inventory_open := true
-var is_friend_following := true
+var is_friend_following := false
 var permanent_temp_dec := 0
 var stage_temp_dec := [0.0, 0.0, 0.0, 0.0, 0.0]
 var loop_count := 0
 var friend_killed := false
-var friend_revealed := true
+var friend_revealed := false
 var suspect_friend := false
 var suspicion_state := 0
 var god_mode := false
 var current_stage := 0
+var past_temp := 35.0
+var wpn_equipped := false
+const PICKUP = preload("uid://u35c0elr6hb0")
 
 #==Stage 0 flags==
 
@@ -56,6 +59,7 @@ var is_switch_off := false
 var is_switch_broken := false
 var is_glass_broken := false
 var jacket_on := false
+var jacket_taken := false
 
 #==Stage 4 flags==
 
@@ -98,7 +102,8 @@ func add_item(item: ItemResource) -> void:
 		for i in inventory:
 			if i.item_group == item.item_group:
 				i.uses += item.uses
-
+				i.uses = min(i.uses, 5)
+	SoundManager.play_sfx(PICKUP)
 	GameBus.inventory_changed.emit()
 	picked_up_items.append(item.item_id)
 		

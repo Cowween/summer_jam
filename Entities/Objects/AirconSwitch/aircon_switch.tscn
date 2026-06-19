@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://cxse1m1rf5dro"]
 
 [ext_resource type="Script" uid="uid://b688equmor5hd" path="res://Entities/Objects/AirconSwitch/aircon_switch.gd" id="1_v6bgq"]
-[ext_resource type="Texture2D" uid="uid://c6gmdtfalfxwv" path="res://Assets/Sprites/AirconSwitch/aircon_switch_on.png" id="2_adxnb"]
 [ext_resource type="Resource" uid="uid://dmtm5gb4bgmlx" path="res://Assets/Text/Aircon/aircon.dialogue" id="2_v1q3v"]
-[ext_resource type="Texture2D" uid="uid://bm2cf75kq5q31" path="res://Assets/Sprites/AirconSwitch/aircon_switch.png" id="3_v1q3v"]
 [ext_resource type="Script" uid="uid://brrdjg4dvwhuk" path="res://Core/Resources/thought_puzzle_resource.gd" id="3_wycdf"]
 [ext_resource type="Script" uid="uid://cgsxe33566jl6" path="res://Entities/Objects/AirconSwitch/interactable.gd" id="4_adxnb"]
-[ext_resource type="Texture2D" uid="uid://beghw46dke65v" path="res://Assets/Sprites/AirconSwitch/aircon_switch_corrupted5.png" id="5_v6bgq"]
-[ext_resource type="Texture2D" uid="uid://dfeil8l5iek1k" path="res://Assets/Sprites/AirconSwitch/aircon_switch_destroyed1.png" id="6_v1q3v"]
+[ext_resource type="Texture2D" uid="uid://cphid0tvob3kf" path="res://Assets/Sprites/AirconSwitch/switchon.png" id="4_i2wyc"]
+[ext_resource type="Texture2D" uid="uid://cbxb404q6as8" path="res://Assets/Sprites/AirconSwitch/switchoff.png" id="5_i76pd"]
+[ext_resource type="Texture2D" uid="uid://xqjqabka6g57" path="res://Assets/Sprites/AirconSwitch/switchtumor.png" id="7_8jtvn"]
+[ext_resource type="Texture2D" uid="uid://dovlor6pv1ey6" path="res://Assets/Sprites/AirconSwitch/switchonblood.png" id="8_eiioi"]
 [ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="9_i2wyc"]
+[ext_resource type="AudioStream" uid="uid://cc0nb3tusakeo" path="res://Assets/Audio/SFX/Bluezone_BC0297_stone_impact_041.wav" id="10_i76pd"]
 
 [sub_resource type="Resource" id="Resource_i2wyc"]
 script = ExtResource("3_wycdf")
@@ -28,10 +29,10 @@ metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_adxnb")
+"texture": ExtResource("4_i2wyc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_v1q3v")
+"texture": ExtResource("5_i76pd")
 }],
 "loop": true,
 "name": &"default",
@@ -45,7 +46,7 @@ size = Vector2(16, 16)
 size = Vector2(32, 51.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
-size = Vector2(16, 16)
+size = Vector2(20.5, 26)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i76pd"]
 shader = ExtResource("9_i2wyc")
@@ -62,6 +63,7 @@ encounter = ExtResource("2_v1q3v")
 thought_puzzle = SubResource("Resource_i2wyc")
 
 [node name="IllusionSprite" type="AnimatedSprite2D" parent="." unique_id=1742560944]
+position = Vector2(-352, 32)
 sprite_frames = SubResource("SpriteFrames_i76pd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=409228283]
@@ -71,22 +73,24 @@ shape = SubResource("RectangleShape2D_xg7r6")
 script = ExtResource("4_adxnb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1466374265]
-position = Vector2(0, 14.25)
+position = Vector2(-4, 11)
 shape = SubResource("RectangleShape2D_38fgn")
 debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
 
 [node name="TrueSprite" type="Sprite2D" parent="." unique_id=2084650500]
-texture = ExtResource("5_v6bgq")
+position = Vector2(-352, 32)
+texture = ExtResource("7_8jtvn")
 
 [node name="MouseArea" type="Area2D" parent="." unique_id=798930045]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea" unique_id=1850676131]
+position = Vector2(-4.25, -1)
 shape = SubResource("RectangleShape2D_wvik4")
 debug_color = Color(1.5883148e-06, 0.6354228, 0.42116326, 0.41960785)
 
 [node name="AirconSwitchDestroyed" type="Sprite2D" parent="." unique_id=989387449]
-visible = false
-texture = ExtResource("6_v1q3v")
+position = Vector2(-352, 34)
+texture = ExtResource("8_eiioi")
 
 [node name="Glitch" type="ColorRect" parent="." unique_id=59273280]
 visible = false
@@ -95,5 +99,8 @@ offset_left = -16.0
 offset_top = -8.0
 offset_right = 13.0
 offset_bottom = 8.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=212426682]
+stream = ExtResource("10_i76pd")
 
 [connection signal="destroyed" from="Interactable" to="." method="_on_interactable_destroyed"]

@@ -1,9 +1,13 @@
 extends InventoryObject
 
+const KITCHENOPEN = preload("uid://copcm0oowj2y")
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if item_resource.item_id in GlobalStorage.game_data.picked_up_items:
-		interactable.monitorable = false
+	GameBus.open_fridge.connect(_on_open_fridge)
+	if GlobalStorage.game_data.fridge_open:
+		sprite_2d.texture = KITCHENOPEN
 	interactable.interacted.connect(_on_interacted)
 
 
@@ -11,8 +15,16 @@ func _on_interacted() -> void:
 	if not GlobalStorage.game_data.fridge_open:
 		DialogueManager.show_dialogue_balloon(interaction_dialogues, "fridge_locked")
 		return
-	if item_resource.item_id in GlobalStorage.game_data.picked_up_items:
-		return
+	print("here fridge2")
+	for i in GlobalStorage.game_data.inventory:
+		if i.item_id == item_resource.item_id:
+			if i.uses == 5:
+				DialogueManager.show_dialogue_balloon(interaction_dialogues, "cannot_carry")
+				await DialogueManager.dialogue_ended
+				return
+			else:
+				break
+	print("here fridge")
 	DialogueManager.show_dialogue_balloon(interaction_dialogues, "fridge")
 	await DialogueManager.dialogue_ended
 	if not GlobalStorage.game_data.player_y_n:
@@ -20,4 +32,6 @@ func _on_interacted() -> void:
 	GlobalStorage.game_data.picked_up_name = item_resource.display_name + " x" + str(item_resource.uses)
 	DialogueManager.show_dialogue_balloon(interaction_dialogues, "item_pick_up")
 	GlobalStorage.game_data.add_item(item_resource)
-	interactable.monitorable = false
+
+func _on_open_fridge() -> void:
+	sprite_2d.texture = KITCHENOPEN

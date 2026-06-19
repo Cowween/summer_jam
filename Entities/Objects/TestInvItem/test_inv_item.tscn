@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cx7p0hmwrtcsf" path="res://Core/Objects/inventory_object.gd" id="1_tqcbp"]
 [ext_resource type="Script" uid="uid://du7i7ddvjv0n6" path="res://Core/Resources/item_resource.gd" id="2_f4nh0"]
+[ext_resource type="Resource" uid="uid://dxbp102mmls3p" path="res://Assets/Text/interactions.dialogue" id="2_l5aqa"]
 [ext_resource type="Texture2D" uid="uid://b4d0qx6y1w6lt" path="res://Assets/Sprites/TestAssets/Petixel Prototype 16x16/pawn.tres" id="2_vsxgq"]
 [ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_lqakv"]
 
@@ -15,7 +16,7 @@ metadata/_custom_type_script = "uid://du7i7ddvjv0n6"
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsk87"]
-size = Vector2(26, 25)
+size = Vector2(26, 52)
 
 [node name="TestInvItem" type="StaticBody2D" unique_id=1939774420]
 script = ExtResource("1_tqcbp")

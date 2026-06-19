@@ -7,22 +7,22 @@ Come to me.
 
 ~ illusion
 
-You: Why are there icicles on the tree.
-You: Think, Suiyobi, think.
+You: [#confused]Why are there icicles on the tree.
+You: [#determined]Think, Suiyobi, think.
 You: You've been through so many insane happenings at this point.
 
 => END
 
 ~ success
 
-You: ...
+You: [#default]...
 You: It has been winter... All along...
 
 => END
 
 ~ failure
 
-You: Urgh, that's definitely not correct.
+You: [#frustrated]Urgh, that's definitely not correct.
 You: Someone's definitely been fucking with my head.
 
 => END

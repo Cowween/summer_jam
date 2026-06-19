@@ -3,14 +3,36 @@
 [ext_resource type="Script" uid="uid://fbe4188qn5gm" path="res://Core/starting_scene_manager.gd" id="1_dkute"]
 [ext_resource type="TileSet" uid="uid://b0adb4s07stq" path="res://Assets/Env/room_set.tres" id="2_08dcv"]
 [ext_resource type="Resource" uid="uid://dw3bx11g4swlf" path="res://Assets/Text/Stage0/stage0.dialogue" id="2_unsi6"]
+[ext_resource type="AudioStream" uid="uid://be5o844wtk4wl" path="res://Assets/Audio/deeznatsu_roomloop.wav" id="3_qmk1f"]
 [ext_resource type="PackedScene" uid="uid://b6132nmkyqfi5" path="res://Entities/Player/player.tscn" id="3_wrber"]
 [ext_resource type="PackedScene" uid="uid://deilpmagseesp" path="res://Entities/Friend/friend.tscn" id="4_unxrx"]
 [ext_resource type="PackedScene" uid="uid://s52tnyepiya3" path="res://Core/scene_trigger.tscn" id="5_08dcv"]
 [ext_resource type="PackedScene" uid="uid://h73xotmnutmy" path="res://Core/UI/debug_Interface.tscn" id="6_unxrx"]
+[ext_resource type="PackedScene" uid="uid://dn4xj7sc8f1ii" path="res://Core/UI/actual_interface.tscn" id="7_6kaqg"]
 [ext_resource type="PackedScene" uid="uid://sdoimmwccupo" path="res://Core/UI/inventory_interface.tscn" id="7_08dcv"]
+[ext_resource type="Texture2D" uid="uid://dv1vfb3xt8itj" path="res://Assets/Env/poster.png" id="9_elfng"]
 [ext_resource type="PackedScene" uid="uid://b2204hju1qu5k" path="res://Core/UI/thought_puzzle.tscn" id="9_ete61"]
+[ext_resource type="Texture2D" uid="uid://ct012nui5uido" path="res://Assets/Env/bed.png" id="10_63ooh"]
+[ext_resource type="Texture2D" uid="uid://bscl5hdluk5nt" path="res://Assets/Env/mirror.png" id="11_cfcc5"]
+[ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="12_cfcc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kaqg"]
+size = Vector2(74, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_elfng"]
+size = Vector2(34, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmk1f"]
+size = Vector2(80, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfcc5"]
+size = Vector2(40, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjjk4"]
+size = Vector2(20, 34)
 
 [node name="StartingSceneTest" type="Node2D" unique_id=989248023 node_paths=PackedStringArray("spawn_list", "ui")]
+y_sort_enabled = true
 script = ExtResource("1_dkute")
 initial_friend_state = "following"
 starting_scene = "uid://bscsgcyvxq3yf"
@@ -18,10 +40,23 @@ stage_script = ExtResource("2_unsi6")
 spawn_list = [NodePath("StartingSpawn"), NodePath("DoorSpawn")]
 ui = NodePath("DebugInterface")
 base_temp = 35.0
-is_room = true
+background_music = ExtResource("3_qmk1f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1033191559]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 640.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="FloorLayer" type="TileMapLayer" parent="." unique_id=1601530917]
-tile_map_data = PackedByteArray("AAAMAAYAAAALABAAAAAMAAcAAAAKABAAAAAMAAgAAAALABAAAAAMAAoAAAALABAAAAAMAAsAAAAKABAAAAAMAAwAAAALABAAAAAMAA0AAAAKABAAAAANAAYAAAAKABAAAAANAAcAAAALABAAAAANAAgAAAAKABAAAAANAAoAAAAKABAAAAANAAsAAAALABAAAAANAAwAAAAKABAAAAANAA0AAAALABAAAAAOAAYAAAALABAAAAAOAAcAAAAKABAAAAAOAAgAAAALABAAAAAOAAoAAAALABAAAAAOAAsAAAAKABAAAAAOAAwAAAALABAAAAAOAA0AAAAKABAAAAAPAAYAAAAKABAAAAAPAAcAAAALABAAAAAPAAgAAAAKABAAAAAPAAoAAAAKABAAAAAPAAsAAAALABAAAAAPAAwAAAAKABAAAAAPAA0AAAALABAAAAAQAAYAAAALABAAAAAQAAcAAAAKABAAAAAQAAgAAAALABAAAAAQAAoAAAALABAAAAAQAAsAAAAKABAAAAAQAAwAAAALABAAAAAQAA0AAAAKABAAAAARAAYAAAAKABAAAAARAAcAAAALABAAAAARAAgAAAAKABAAAAARAAoAAAAKABAAAAARAAsAAAALABAAAAARAAwAAAAKABAAAAARAA0AAAALABAAAAASAAYAAAALABAAAAASAAcAAAAKABAAAAASAAgAAAALABAAAAASAAoAAAALABAAAAASAAsAAAAKABAAAAASAAwAAAALABAAAAASAA0AAAAKABAAAAATAAYAAAAKABAAAAATAAcAAAALABAAAAATAAgAAAAKABAAAAATAAoAAAAKABAAAAATAAsAAAALABAAAAATAAwAAAAKABAAAAATAA0AAAALABAAAAAUAAYAAAALABAAAAAUAAcAAAAKABAAAAAUAAgAAAALABAAAAAUAAoAAAALABAAAAAUAAsAAAAKABAAAAAUAAwAAAALABAAAAAUAA0AAAAKABAAAAAVAAYAAAAKABAAAAAVAAcAAAALABAAAAAVAAgAAAAKABAAAAAVAAkAAAALABAAAAAVAAoAAAAKABAAAAAVAAsAAAALABAAAAAVAAwAAAAKABAAAAAVAA0AAAALABAAAAAWAAoAAAALABAAAAAWAAkAAAAKABAAAAAMAAIAAAATAAcAAAAMAAMAAAATAAcAAAAMAAQAAAATAAcAAAANAAIAAAATAAcAAAANAAMAAAATAAcAAAANAAQAAAATAAcAAAAOAAIAAAATAAcAAAAOAAMAAAATAAcAAAAOAAQAAAATAAcAAAAPAAIAAAATAAcAAAAPAAMAAAATAAcAAAAPAAQAAAATAAcAAAAQAAIAAAATAAcAAAAQAAMAAAATAAcAAAAQAAQAAAATAAcAAAARAAIAAAATAAcAAAARAAMAAAATAAcAAAARAAQAAAATAAcAAAASAAIAAAATAAcAAAASAAMAAAATAAcAAAASAAQAAAATAAcAAAATAAIAAAATAAcAAAATAAMAAAATAAcAAAATAAQAAAATAAcAAAAUAAIAAAATAAcAAAAUAAMAAAATAAcAAAAUAAQAAAATAAcAAAAVAAIAAAATAAcAAAAVAAMAAAATAAcAAAAVAAQAAAATAAcAAAALAAIAAAAJAAUAAAALAAMAAAAJAAUAAAALAAQAAAAJAAUAAAALAAUAAAAJAAUAAAALAAYAAAAJAAUAAAALAAcAAAAJAAUAAAALAAgAAAAJAAUAAAALAAkAAAAJAAUAAAALAAoAAAAJAAUAAAALAAsAAAAJAAUAAAALAAwAAAAJAAUAAAALAA0AAAAJAAUAAAAWAAIAAAAfAAsAAAAWAAMAAAAfAAsAAAAWAAQAAAAfAAsAAAAWAAUAAAAfAAsAAAAWAAYAAAAfAAsAAAAWAAcAAAAfAAsAAAAWAAgAAAAfAAsAAAAWAAsAAAAfAAsAAAAWAAwAAAAfAAsAAAAWAA0AAAAfAAsAAAAMAA4AAAAQABEAAAANAA4AAAAQABEAAAAOAA4AAAAQABEAAAAPAA4AAAAQABEAAAAQAA4AAAAQABEAAAARAA4AAAAQABEAAAASAA4AAAAQABEAAAATAA4AAAAQABEAAAAUAA4AAAAQABEAAAAVAA4AAAAQABEAAAALAA4AAAAJABEAAAAWAA4AAAAfABEAAAAMAAUAAAATAAcAAAANAAUAAAATAAcAAAAOAAUAAAATAAcAAAAPAAUAAAATAAcAAAAQAAUAAAATAAcAAAARAAUAAAATAAcAAAASAAUAAAATAAcAAAATAAUAAAATAAcAAAAUAAUAAAATAAcAAAAVAAUAAAATAAcAAAALAAEAAAAJAAQAAAAMAAEAAAAOAAQAAAANAAEAAAAOAAQAAAAOAAEAAAAOAAQAAAAPAAEAAAAOAAQAAAAQAAEAAAAOAAQAAAARAAEAAAAOAAQAAAASAAEAAAAOAAQAAAATAAEAAAAOAAQAAAAUAAEAAAAOAAQAAAAVAAEAAAAOAAQAAAAWAAEAAAAfAAQAAAAMAAkAAAAKABAAAAANAAkAAAALABAAAAAOAAkAAAAKABAAAAAPAAkAAAALABAAAAAQAAkAAAAKABAAAAARAAkAAAALABAAAAASAAkAAAAKABAAAAATAAkAAAALABAAAAAUAAkAAAAKABAAAAA=")
+tile_map_data = PackedByteArray("AAAMAAYAAAALABAAAAAMAAcAAAAKABAAAAAMAAgAAAALABAAAAAMAAoAAAALABAAAAAMAAsAAAAKABAAAAAMAAwAAAALABAAAAAMAA0AAAAKABAAAAANAAYAAAAKABAAAAANAAcAAAALABAAAAANAAgAAAAKABAAAAANAAoAAAAKABAAAAANAAsAAAALABAAAAANAAwAAAAKABAAAAANAA0AAAALABAAAAAOAAYAAAALABAAAAAOAAcAAAAKABAAAAAOAAgAAAALABAAAAAOAAoAAAALABAAAAAOAAsAAAAKABAAAAAOAAwAAAALABAAAAAOAA0AAAAKABAAAAAPAAYAAAAKABAAAAAPAAcAAAALABAAAAAPAAgAAAAKABAAAAAPAAoAAAAKABAAAAAPAAsAAAALABAAAAAPAAwAAAAKABAAAAAPAA0AAAALABAAAAAQAAYAAAALABAAAAAQAAcAAAAKABAAAAAQAAgAAAALABAAAAAQAAoAAAALABAAAAAQAAsAAAAKABAAAAAQAAwAAAALABAAAAAQAA0AAAAKABAAAAARAAYAAAAKABAAAAARAAcAAAALABAAAAARAAgAAAAKABAAAAARAAoAAAAKABAAAAARAAsAAAALABAAAAARAAwAAAAKABAAAAARAA0AAAALABAAAAASAAYAAAALABAAAAASAAcAAAAKABAAAAASAAgAAAALABAAAAASAAoAAAALABAAAAASAAsAAAAKABAAAAASAAwAAAALABAAAAASAA0AAAAKABAAAAATAAYAAAAKABAAAAATAAcAAAALABAAAAATAAgAAAAKABAAAAATAAoAAAAKABAAAAATAAsAAAALABAAAAATAAwAAAAKABAAAAATAA0AAAALABAAAAAUAAYAAAALABAAAAAUAAcAAAAKABAAAAAUAAgAAAALABAAAAAUAAoAAAALABAAAAAUAAsAAAAKABAAAAAUAAwAAAALABAAAAAUAA0AAAAKABAAAAAVAAYAAAAKABAAAAAVAAcAAAALABAAAAAVAAgAAAAKABAAAAAVAAkAAAALABAAAAAVAAoAAAAKABAAAAAVAAsAAAALABAAAAAVAAwAAAAKABAAAAAVAA0AAAALABAAAAAMAAIAAAATAAcAAAAMAAMAAAATAAcAAAAMAAQAAAATAAcAAAANAAIAAAATAAcAAAANAAMAAAATAAcAAAANAAQAAAATAAcAAAAOAAIAAAATAAcAAAAOAAMAAAATAAcAAAAOAAQAAAATAAcAAAAPAAIAAAATAAcAAAAPAAMAAAATAAcAAAAPAAQAAAATAAcAAAAQAAIAAAATAAcAAAAQAAMAAAATAAcAAAAQAAQAAAATAAcAAAARAAIAAAATAAcAAAARAAMAAAATAAcAAAARAAQAAAATAAcAAAASAAIAAAATAAcAAAASAAMAAAATAAcAAAASAAQAAAATAAcAAAATAAIAAAATAAcAAAATAAMAAAATAAcAAAATAAQAAAATAAcAAAAUAAIAAAATAAcAAAAUAAMAAAATAAcAAAAUAAQAAAATAAcAAAAVAAIAAAATAAcAAAAVAAMAAAATAAcAAAAVAAQAAAATAAcAAAALAAIAAAAJAAUAAAALAAMAAAAJAAUAAAALAAQAAAAJAAUAAAALAAUAAAAJAAUAAAALAAYAAAAJAAUAAAALAAcAAAAJAAUAAAALAAgAAAAJAAUAAAALAAkAAAAJAAUAAAALAAoAAAAJAAUAAAALAAsAAAAJAAUAAAALAAwAAAAJAAUAAAALAA0AAAAJAAUAAAAWAAIAAAAfAAsAAAAWAAMAAAAfAAsAAAAWAAQAAAAfAAsAAAAWAAUAAAAfAAsAAAAWAAYAAAAfAAsAAAAWAAcAAAAfAAsAAAAWAAgAAAAfAAsAAAAWAAsAAAAfAAsAAAAWAAwAAAAfAAsAAAAWAA0AAAAfAAsAAAAMAA4AAAAQABEAAAANAA4AAAAQABEAAAAOAA4AAAAQABEAAAAPAA4AAAAQABEAAAAQAA4AAAAQABEAAAARAA4AAAAQABEAAAASAA4AAAAQABEAAAATAA4AAAAQABEAAAAUAA4AAAAQABEAAAAVAA4AAAAQABEAAAALAA4AAAAJABEAAAAWAA4AAAAfABEAAAAMAAUAAAATAAcAAAANAAUAAAATAAcAAAAOAAUAAAATAAcAAAAPAAUAAAATAAcAAAAQAAUAAAATAAcAAAARAAUAAAATAAcAAAASAAUAAAATAAcAAAATAAUAAAATAAcAAAAUAAUAAAATAAcAAAAVAAUAAAATAAcAAAALAAEAAAAJAAQAAAAMAAEAAAAOAAQAAAANAAEAAAAOAAQAAAAOAAEAAAAOAAQAAAAPAAEAAAAOAAQAAAAQAAEAAAAOAAQAAAARAAEAAAAOAAQAAAASAAEAAAAOAAQAAAATAAEAAAAOAAQAAAAUAAEAAAAOAAQAAAAVAAEAAAAOAAQAAAAWAAEAAAAfAAQAAAAMAAkAAAAKABAAAAANAAkAAAALABAAAAAOAAkAAAAKABAAAAAPAAkAAAALABAAAAAQAAkAAAAKABAAAAARAAkAAAALABAAAAASAAkAAAAKABAAAAATAAkAAAALABAAAAAUAAkAAAAKABAAAAA=")
 tile_set = ExtResource("2_08dcv")
 
 [node name="StartingSpawn" type="Node2D" parent="." unique_id=2060300757]
@@ -35,31 +70,23 @@ position = Vector2(272, 144)
 [node name="DoorSpawn" type="Node2D" parent="." unique_id=1432894022]
 
 [node name="Spawn" type="Marker2D" parent="DoorSpawn" unique_id=336342512]
-position = Vector2(320, 160)
-
-[node name="FriendSpawn" type="Marker2D" parent="DoorSpawn" unique_id=1923497858]
 position = Vector2(336, 160)
 
-[node name="Player" parent="." unique_id=1941967074 instance=ExtResource("3_wrber")]
-unique_name_in_owner = true
-position = Vector2(48, 144)
-
-[node name="Friend" parent="." unique_id=1900777179 node_paths=PackedStringArray("target_node", "thought_interface") instance=ExtResource("4_unxrx")]
-unique_name_in_owner = true
-position = Vector2(40, 192)
-target_node = NodePath("../Player")
-thought_interface = NodePath("../ThoughtPuzzle")
+[node name="FriendSpawn" type="Marker2D" parent="DoorSpawn" unique_id=1923497858]
+position = Vector2(360, 160)
 
 [node name="SceneTrigger" parent="." unique_id=1998012916 instance=ExtResource("5_08dcv")]
 position = Vector2(368, 160)
 next_scene = "uid://dymr546j5mdvi"
 
 [node name="DebugInterface" parent="." unique_id=1566658164 node_paths=PackedStringArray("env") instance=ExtResource("6_unxrx")]
+visible = false
 env = NodePath("..")
 
 [node name="InventoryInterface" parent="." unique_id=527975129 instance=ExtResource("7_08dcv")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1472252284]
+[node name="ActualInterface" parent="." unique_id=1237272209 node_paths=PackedStringArray("env") instance=ExtResource("7_6kaqg")]
+env = NodePath("..")
 
 [node name="FriendInitialSpawn" type="Marker2D" parent="." unique_id=1192669525]
 position = Vector2(999, 0)
@@ -67,3 +94,65 @@ position = Vector2(999, 0)
 [node name="ThoughtPuzzle" parent="." unique_id=1708991597 node_paths=PackedStringArray("env") instance=ExtResource("9_ete61")]
 visible = false
 env = NodePath("..")
+
+[node name="Poster" type="Sprite2D" parent="." unique_id=1246039911]
+position = Vector2(304, 112)
+texture = ExtResource("9_elfng")
+
+[node name="Bed" type="Sprite2D" parent="." unique_id=1328803700]
+y_sort_enabled = true
+position = Vector2(232, 120)
+texture = ExtResource("10_63ooh")
+offset = Vector2(120, -8)
+
+[node name="Mirror" type="Sprite2D" parent="." unique_id=1463189050]
+y_sort_enabled = true
+position = Vector2(320, 96)
+texture = ExtResource("11_cfcc5")
+offset = Vector2(-48, 16)
+
+[node name="Player" parent="." unique_id=1941967074 instance=ExtResource("3_wrber")]
+unique_name_in_owner = true
+position = Vector2(312, 136)
+
+[node name="Friend" parent="." unique_id=1900777179 node_paths=PackedStringArray("target_node", "thought_interface") instance=ExtResource("4_unxrx")]
+unique_name_in_owner = true
+position = Vector2(40, 192)
+target_node = NodePath("../Player")
+thought_interface = NodePath("../ThoughtPuzzle")
+
+[node name="Collider" type="StaticBody2D" parent="." unique_id=1041336415]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider" unique_id=1989568762]
+position = Vector2(235, 107)
+shape = SubResource("RectangleShape2D_6kaqg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collider" unique_id=898766920]
+position = Vector2(319, 96)
+shape = SubResource("RectangleShape2D_elfng")
+
+[node name="Interactable" type="Node2D" parent="." unique_id=246589613]
+
+[node name="BEd" type="Area2D" parent="Interactable" unique_id=1553932358]
+script = ExtResource("12_cfcc5")
+interaction = "bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/BEd" unique_id=923378930]
+position = Vector2(232, 116)
+shape = SubResource("RectangleShape2D_qmk1f")
+
+[node name="Mirror" type="Area2D" parent="Interactable" unique_id=415913389]
+script = ExtResource("12_cfcc5")
+interaction = "mirror"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/Mirror" unique_id=1367278489]
+position = Vector2(324, 107)
+shape = SubResource("RectangleShape2D_cfcc5")
+
+[node name="E" type="Area2D" parent="Interactable" unique_id=1667069832]
+script = ExtResource("12_cfcc5")
+interaction = "poster"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable/E" unique_id=1310649927]
+position = Vector2(288, 95)
+shape = SubResource("RectangleShape2D_gjjk4")

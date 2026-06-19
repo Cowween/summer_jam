@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://btg2wb031q54s"]
 
 [ext_resource type="Script" uid="uid://ixiishwl5um6" path="res://Entities/Objects/Truck/truck.gd" id="1_8p583"]
-[ext_resource type="Texture2D" uid="uid://brt7ecquk0x2x" path="res://Assets/Env/icecreamtruck.png" id="2_1u6t5"]
+[ext_resource type="Texture2D" uid="uid://ctt2xwudt7oec" path="res://Assets/Sprites/Truck/truckclosed.png" id="2_1u6t5"]
 [ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_gigcm"]
-[ext_resource type="Texture2D" uid="uid://dkbp8cust1tbi" path="res://Assets/Sprites/Truck/truck_open.png" id="4_1u6t5"]
+[ext_resource type="Texture2D" uid="uid://pqtqenptigta" path="res://Assets/Sprites/Truck/truckopen.png" id="4_gigcm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krsms"]
 size = Vector2(112, 96)
@@ -13,6 +13,22 @@ size = Vector2(100.774826, 60.443825)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lsabr"]
 size = Vector2(45, 41)
+
+[sub_resource type="Gradient" id="Gradient_1u6t5"]
+colors = PackedColorArray(0.26666668, 0.105882354, 1, 1, 0.43529412, 0.65882355, 1, 0.54509807)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gigcm"]
+gradient = SubResource("Gradient_1u6t5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_krsms"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20.78, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = 226.31999
+initial_velocity_max = 226.31999
+gravity = Vector3(9.8, 0, 0)
+color_ramp = SubResource("GradientTexture1D_gigcm")
 
 [node name="Truck" type="StaticBody2D" unique_id=1494584065]
 script = ExtResource("1_8p583")
@@ -39,9 +55,16 @@ position = Vector2(25.5, -19.5)
 shape = SubResource("RectangleShape2D_lsabr")
 debug_color = Color(0.97988075, 0, 0.38827664, 0.41960785)
 
+[node name="BusParticles" type="GPUParticles2D" parent="." unique_id=1826870699]
+position = Vector2(27, -19)
+emitting = false
+amount = 100
+lifetime = 5.74
+process_material = SubResource("ParticleProcessMaterial_krsms")
+
 [node name="TruckOpen" type="Sprite2D" parent="." unique_id=834964735]
 visible = false
-position = Vector2(32, -32)
-texture = ExtResource("4_1u6t5")
+position = Vector2(-208, -72)
+texture = ExtResource("4_gigcm")
 
 [connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

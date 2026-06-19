@@ -18,6 +18,7 @@ enum State { FOLLOWING, STAND_STILL, DISTRACTED }
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 
+const DSGN_ERIE_EERIE_02_IN_MOTION_AUDIO_SINISTER_TEXTURES_VOLUME_2 = preload("uid://bvowlyd1xevty")
 
 var current_state: State = State.FOLLOWING
 var game_data : GameData = GlobalStorage.game_data
@@ -25,7 +26,7 @@ var distracted_position: Vector2 = Vector2.ZERO
 var mouse_in := false
 var sus : Array[String]
 var current_facing: String = "down"
-
+var p_toggle := false
 
 signal arrived
 
@@ -53,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 			velocity = Vector2.ZERO # Do absolutely nothing
 		State.DISTRACTED:
 			handle_distracted_logic()
-
+	update_animations()
 	move_and_slide()
 func update_animations() -> void:
 	# If the friend is moving fast enough, play the walk animation
@@ -91,6 +92,14 @@ func handle_following_logic() -> void:
 		velocity = Vector2.ZERO
 		
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("p_toggle"):
+		p_toggle = true
+		if not game_data.wpn_equipped and mouse_in and game_data.suspect_friend:
+			CursorManager.set_ponder_mode()
+	if event.is_action_released("p_toggle"):
+		p_toggle = false
+		if not game_data.wpn_equipped and game_data.suspect_friend:
+			CursorManager.set_default_mode()
 	if event.is_action_pressed("ponder") and mouse_in and not game_data.friend_revealed and game_data.suspect_friend:
 		ponder_friend()
 
@@ -145,7 +154,7 @@ func _on_anomaly_solved(id: String, solved: String) -> void:
 		$AnimatedSprite2D.hide()
 		glitch.hide()
 		add_to_group("shootable")
-		print(get_groups())
+
 
 func _on_friend_sus() -> void:
 	glitch.show()
@@ -156,23 +165,28 @@ func take_bullet_damage(is_pistol: bool) -> void:
 	GameBus.killed.emit()
 	game_data.friend_killed = true
 	remove_from_group("shootable")
+	SoundManager.play_bg(DSGN_ERIE_EERIE_02_IN_MOTION_AUDIO_SINISTER_TEXTURES_VOLUME_2)
 	DialogueManager.show_dialogue_balloon(friend_script, "killed")
 	await DialogueManager.dialogue_ended
-	await get_tree().create_timer(2.0).timeout
 	game_data.player_core_heat = 100.0
 
 func _on_mouse_area_mouse_entered() -> void:
 	mouse_in = true
+	if p_toggle and not game_data.wpn_equipped  and game_data.suspect_friend:
+		CursorManager.set_ponder_mode()
 
 
 func _on_mouse_area_mouse_exited() -> void:
 	mouse_in = false
+	if p_toggle and not game_data.wpn_equipped and game_data.suspect_friend:
+		CursorManager.set_default_mode()
 
 
 func _on_mouse_area_interacted() -> void:
-	DialogueManager.show_dialogue_balloon(friend_script, "start")
+	if current_state == State.FOLLOWING:
+		DialogueManager.show_dialogue_balloon(friend_script, "start")
 
 
 func _on_timer_timeout() -> void:
 	DialogueManager.show_dialogue_balloon(friend_script, "eldritch_whispers")
-	timer.start(randf_range(1, 120))
+	timer.start(randf_range(1, 60))

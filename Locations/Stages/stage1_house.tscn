@@ -3,47 +3,134 @@
 [ext_resource type="PackedScene" uid="uid://c6wpo1l6elume" path="res://Locations/base_location.tscn" id="1_kav1m"]
 [ext_resource type="Script" uid="uid://btd26sbergbt4" path="res://Locations/Stages/stage_1_house.gd" id="2_v1tyr"]
 [ext_resource type="PackedScene" uid="uid://dwvyamjog46s1" path="res://Entities/Objects/Calendar/calendar.tscn" id="3_00sps"]
+[ext_resource type="AudioStream" uid="uid://d4gctfl7tni6f" path="res://Assets/Audio/SFX/door_knock.mp3" id="3_15u0t"]
 [ext_resource type="Resource" uid="uid://bcfj0q85rf0yl" path="res://Assets/Text/Stage1/stage1_script.dialogue" id="3_c2jdb"]
 [ext_resource type="TileSet" uid="uid://b0adb4s07stq" path="res://Assets/Env/room_set.tres" id="4_0i1c4"]
 [ext_resource type="PackedScene" uid="uid://dxeyf0bouvdub" path="res://Entities/Objects/Television/television.tscn" id="4_00sps"]
+[ext_resource type="AudioStream" uid="uid://be5o844wtk4wl" path="res://Assets/Audio/deeznatsu_roomloop.wav" id="4_1uqm7"]
 [ext_resource type="PackedScene" uid="uid://s52tnyepiya3" path="res://Core/scene_trigger.tscn" id="4_iues0"]
 [ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="5_0i1c4"]
+[ext_resource type="Texture2D" uid="uid://7tqtd36ywjb" path="res://Assets/Env/glasstable.png" id="5_dt2bb"]
+[ext_resource type="Texture2D" uid="uid://b35d3f30tdey" path="res://Assets/Env/sofa.png" id="6_dt2bb"]
 [ext_resource type="PackedScene" uid="uid://c70b5tih571b0" path="res://Entities/Weapons/Slingshot/sling_shot.tscn" id="6_mrsim"]
+[ext_resource type="Texture2D" uid="uid://cssps7hrcx375" path="res://Assets/Env/diningtable.png" id="7_5ph1j"]
+[ext_resource type="Script" uid="uid://730j8j0wpk56" path="res://Locations/Stages/door.gd" id="7_t58r6"]
+[ext_resource type="Texture2D" uid="uid://kvy5h7wcp2cl" path="res://Assets/Env/door.tres" id="8_5ph1j"]
 [ext_resource type="PackedScene" uid="uid://df0wbi8o0b78m" path="res://Entities/Objects/Fridge/fridge.tscn" id="8_dn643"]
+[ext_resource type="Texture2D" uid="uid://mcr1cvvf8xfl" path="res://Assets/Env/door2.tres" id="9_1uqm7"]
+[ext_resource type="Texture2D" uid="uid://b403vgref1h68" path="res://Assets/Env/bookclosed.png" id="10_6qk3s"]
+[ext_resource type="AudioStream" uid="uid://vu30wvbfmhlg" path="res://Assets/Audio/SFX/ScatterNoise1.wav" id="16_wlp5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15u0t"]
+size = Vector2(12, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt2bb"]
 size = Vector2(31, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t58r6"]
+size = Vector2(18.369919, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iku2p"]
+size = Vector2(18.369919, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmq7"]
+size = Vector2(64, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g836o"]
+size = Vector2(80, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1uqm7"]
+size = Vector2(96, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ph1j"]
+size = Vector2(13, 18)
+
 [node name="Stage1House" unique_id=285425476 node_paths=PackedStringArray("spawn_list") instance=ExtResource("1_kav1m")]
 script = ExtResource("2_v1tyr")
+knocking = ExtResource("3_15u0t")
 initial_friend_state = "stand_still"
 stage_script = ExtResource("3_c2jdb")
 spawn_list = [NodePath("Spawn0"), NodePath("Spawn1")]
-is_room = true
 stage_id = 1
+background_music = ExtResource("4_1uqm7")
 
-[node name="ThoughtPuzzle" parent="." index="2" unique_id=1708991597]
+[node name="ColorRect" type="ColorRect" parent="." index="0" unique_id=1306195877]
+offset_left = -384.0
+offset_top = -190.0
+offset_right = 864.0
+offset_bottom = 461.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ThoughtPuzzle" parent="." index="3" unique_id=1708991597]
 visible = false
 
-[node name="FloorLayer" parent="." index="3" unique_id=1350096058]
-tile_map_data = PackedByteArray("AAALAAcAAAAKAA8AAAALAAgAAAALAA8AAAALAAkAAAAKAA8AAAALAAoAAAALAA8AAAALAAsAAAAKAA8AAAALAAwAAAALAA8AAAALAA0AAAAKAA8AAAALAA4AAAALAA8AAAAMAAcAAAALAA8AAAAMAAgAAAAKAA8AAAAMAAkAAAALAA8AAAAMAAoAAAAKAA8AAAAMAAsAAAALAA8AAAAMAAwAAAAKAA8AAAAMAA0AAAALAA8AAAAMAA4AAAAKAA8AAAANAAcAAAAKAA8AAAANAAgAAAALAA8AAAANAAkAAAAKAA8AAAANAAoAAAALAA8AAAANAAsAAAAKAA8AAAANAAwAAAALAA8AAAANAA0AAAAKAA8AAAANAA4AAAALAA8AAAAOAAcAAAALAA8AAAAOAAgAAAAKAA8AAAAOAAkAAAALAA8AAAAOAAoAAAAKAA8AAAAOAAsAAAALAA8AAAAOAAwAAAAKAA8AAAAOAA0AAAALAA8AAAAOAA4AAAAKAA8AAAAPAAcAAAAKAA8AAAAPAAgAAAALAA8AAAAPAAkAAAAKAA8AAAAPAAoAAAALAA8AAAAPAAsAAAAKAA8AAAAPAAwAAAALAA8AAAAPAA0AAAAKAA8AAAAPAA4AAAALAA8AAAAQAAcAAAALAA8AAAAQAAgAAAAKAA8AAAAQAAkAAAALAA8AAAAQAAoAAAAKAA8AAAAQAAsAAAALAA8AAAAQAAwAAAAKAA8AAAAQAA0AAAALAA8AAAAQAA4AAAAKAA8AAAARAAcAAAAKAA8AAAARAAgAAAALAA8AAAARAAkAAAAKAA8AAAARAAoAAAALAA8AAAARAAsAAAAKAA8AAAARAAwAAAALAA8AAAARAA0AAAAKAA8AAAARAA4AAAALAA8AAAASAAcAAAALAA8AAAASAAgAAAAKAA8AAAASAAkAAAALAA8AAAASAAoAAAAKAA8AAAASAAsAAAALAA8AAAASAAwAAAAKAA8AAAASAA0AAAALAA8AAAASAA4AAAAKAA8AAAATAAcAAAAKAA8AAAATAAgAAAALAA8AAAATAAkAAAAKAA8AAAATAAoAAAALAA8AAAATAAsAAAAKAA8AAAATAAwAAAALAA8AAAATAA0AAAAKAA8AAAATAA4AAAALAA8AAAAUAAcAAAALAA8AAAAUAAgAAAAKAA8AAAAUAAkAAAALAA8AAAAUAAoAAAAKAA8AAAAUAAsAAAALAA8AAAAUAAwAAAAKAA8AAAAUAA0AAAALAA8AAAAUAA4AAAAKAA8AAAAVAAcAAAAKAA8AAAAVAAgAAAALAA8AAAAVAAkAAAAKAA8AAAAVAAoAAAALAA8AAAAVAAsAAAAKAA8AAAAVAAwAAAALAA8AAAAVAA0AAAAKAA8AAAAVAA4AAAALAA8AAAAWAAcAAAALAA8AAAAWAAgAAAAKAA8AAAAWAAkAAAALAA8AAAAWAAoAAAAKAA8AAAAWAAsAAAALAA8AAAAWAAwAAAAKAA8AAAAWAA0AAAALAA8AAAAWAA4AAAAKAA8AAAAXAAcAAAAKAA8AAAAXAAgAAAALAA8AAAAXAAkAAAAKAA8AAAAXAAoAAAALAA8AAAAXAAsAAAAKAA8AAAAXAAwAAAALAA8AAAAXAA0AAAAKAA8AAAAXAA4AAAALAA8AAAAYAAcAAAALAA8AAAAYAAgAAAAKAA8AAAAYAAkAAAALAA8AAAAYAAoAAAAKAA8AAAAYAAsAAAALAA8AAAAYAAwAAAAKAA8AAAAYAA0AAAALAA8AAAAYAA4AAAAKAA8AAAAZAAcAAAAKAA8AAAAZAAgAAAALAA8AAAAZAAkAAAAKAA8AAAAZAAoAAAALAA8AAAAZAAsAAAAKAA8AAAAZAAwAAAALAA8AAAAZAA0AAAAKAA8AAAAZAA4AAAALAA8AAAAKAAgAAAAKAA8AAAAKAAkAAAALAA8AAAAKAAoAAAAKAA8AAAAKAAsAAAALAA8AAAAKAAwAAAAKAA8AAAAKAA0AAAALAA8AAAAKAA4AAAAKAA8AAAAaAAcAAAALAA8AAAAaAAgAAAAKAA8AAAAaAAkAAAALAA8AAAAaAAoAAAAKAA8AAAAaAAsAAAALAA8AAAAaAA4AAAAKAA8AAAAaAAwAAAAKAA8AAAAaAA0AAAALAA8AAAAKAAcAAAALAA8AAAAJAAgAAAALABAAAAAJAAcAAAAKAA8AAAA=")
+[node name="FloorLayer" parent="." index="5" unique_id=1350096058]
+tile_map_data = PackedByteArray("AAALAAkAAAAKAA8AAAALAAoAAAALAA8AAAALAAsAAAAKAA8AAAALAAwAAAALAA8AAAALAA0AAAAKAA8AAAALAA4AAAALAA8AAAALAA8AAAAKAA8AAAAMAAkAAAALAA8AAAAMAAoAAAAKAA8AAAAMAAsAAAALAA8AAAAMAAwAAAAKAA8AAAAMAA0AAAALAA8AAAAMAA4AAAAKAA8AAAAMAA8AAAALAA8AAAANAAkAAAAKAA8AAAANAAoAAAALAA8AAAANAAsAAAAKAA8AAAANAAwAAAALAA8AAAANAA0AAAAKAA8AAAANAA4AAAALAA8AAAANAA8AAAAKAA8AAAAOAAkAAAALAA8AAAAOAAoAAAAKAA8AAAAOAAsAAAALAA8AAAAOAAwAAAAKAA8AAAAOAA0AAAALAA8AAAAOAA4AAAAKAA8AAAAOAA8AAAALAA8AAAAPAAkAAAAKAA8AAAAPAAoAAAALAA8AAAAPAAsAAAAKAA8AAAAPAAwAAAALAA8AAAAPAA0AAAAKAA8AAAAPAA4AAAALAA8AAAAPAA8AAAAKAA8AAAAQAAkAAAALAA8AAAAQAAoAAAAKAA8AAAAQAAsAAAALAA8AAAAQAAwAAAAKAA8AAAAQAA0AAAALAA8AAAAQAA4AAAAKAA8AAAAQAA8AAAALAA8AAAARAAkAAAAKAA8AAAARAAoAAAALAA8AAAARAAsAAAAKAA8AAAARAAwAAAALAA8AAAARAA0AAAAKAA8AAAARAA4AAAALAA8AAAARAA8AAAAKAA8AAAASAAkAAAALAA8AAAASAAoAAAAKAA8AAAASAAsAAAALAA8AAAASAAwAAAAKAA8AAAASAA0AAAALAA8AAAASAA4AAAAKAA8AAAASAA8AAAALAA8AAAATAAkAAAAKAA8AAAATAAoAAAALAA8AAAATAAsAAAAKAA8AAAATAAwAAAALAA8AAAATAA0AAAAKAA8AAAATAA4AAAALAA8AAAATAA8AAAAKAA8AAAAUAAkAAAALAA8AAAAUAAoAAAAKAA8AAAAUAAsAAAALAA8AAAAUAAwAAAAKAA8AAAAUAA0AAAALAA8AAAAUAA4AAAAKAA8AAAAUAA8AAAALAA8AAAAVAAkAAAAKAA8AAAAVAAoAAAALAA8AAAAVAAsAAAAKAA8AAAAVAAwAAAALAA8AAAAVAA0AAAAKAA8AAAAVAA4AAAALAA8AAAAVAA8AAAAKAA8AAAAWAAkAAAALAA8AAAAWAAoAAAAKAA8AAAAWAAsAAAALAA8AAAAWAAwAAAAKAA8AAAAWAA0AAAALAA8AAAAWAA4AAAAKAA8AAAAWAA8AAAALAA8AAAAXAAkAAAAKAA8AAAAXAAoAAAALAA8AAAAXAAsAAAAKAA8AAAAXAAwAAAALAA8AAAAXAA0AAAAKAA8AAAAXAA4AAAALAA8AAAAXAA8AAAAKAA8AAAAYAAkAAAALAA8AAAAYAAoAAAAKAA8AAAAYAAsAAAALAA8AAAAYAAwAAAAKAA8AAAAYAA0AAAALAA8AAAAYAA4AAAAKAA8AAAAYAA8AAAALAA8AAAAZAAkAAAAKAA8AAAAZAAoAAAALAA8AAAAZAAsAAAAKAA8AAAAZAAwAAAALAA8AAAAZAA0AAAAKAA8AAAAZAA4AAAALAA8AAAAZAA8AAAAKAA8AAAAKAAkAAAALAA8AAAAKAAoAAAAKAA8AAAAKAAsAAAALAA8AAAAKAAwAAAAKAA8AAAAKAA0AAAALAA8AAAAKAA4AAAAKAA8AAAAaAAkAAAALAA8AAAAaAAoAAAAKAA8AAAAaAAsAAAALAA8AAAAaAAwAAAAKAA8AAAAaAA0AAAALAA8AAAAaAA4AAAAKAA8AAAAKAA8AAAALAA8AAAAKABAAAAAKAA8AAAALABAAAAALAA8AAAAMABAAAAAKAA8AAAANABAAAAALAA8AAAAOABAAAAAKAA8AAAAPABAAAAALAA8AAAAQABAAAAAKAA8AAAARABAAAAALAA8AAAASABAAAAAKAA8AAAATABAAAAALAA8AAAAUABAAAAAKAA8AAAAVABAAAAALAA8AAAAWABAAAAAKAA8AAAAXABAAAAALAA8AAAAYABAAAAAKAA8AAAAZABAAAAALAA8AAAAaAA8AAAALAA8AAAAaABAAAAAKAA8AAAA=")
 tile_set = ExtResource("4_0i1c4")
 
-[node name="WallLayer" parent="." index="4" unique_id=769951624]
-tile_map_data = PackedByteArray("AAAKAAMAAAAKAAUAAAAKAAQAAAAKAAUAAAAKAAUAAAAKAAUAAAAKAAYAAAAKAAUAAAALAAMAAAAKAAUAAAALAAQAAAAKAAUAAAALAAUAAAAKAAUAAAALAAYAAAAKAAUAAAAMAAMAAAAKAAUAAAAMAAQAAAAKAAUAAAAMAAUAAAAKAAUAAAAMAAYAAAAKAAUAAAANAAMAAAAKAAUAAAANAAQAAAAKAAUAAAANAAUAAAAKAAUAAAANAAYAAAAKAAUAAAAOAAMAAAAKAAUAAAAOAAQAAAAKAAUAAAAOAAUAAAAKAAUAAAAOAAYAAAAKAAUAAAAPAAMAAAAKAAUAAAAPAAQAAAAKAAUAAAAPAAUAAAAKAAUAAAAPAAYAAAAKAAUAAAAQAAMAAAAKAAUAAAAQAAQAAAAKAAUAAAAQAAUAAAAKAAUAAAAQAAYAAAAKAAUAAAARAAMAAAAKAAUAAAARAAQAAAAKAAUAAAARAAUAAAAKAAUAAAARAAYAAAAKAAUAAAASAAMAAAAKAAUAAAASAAQAAAAKAAUAAAASAAUAAAAKAAUAAAASAAYAAAAKAAUAAAATAAMAAAAKAAUAAAATAAQAAAAKAAUAAAATAAUAAAAKAAUAAAATAAYAAAAKAAUAAAAUAAMAAAAKAAUAAAAUAAQAAAAKAAUAAAAUAAUAAAAKAAUAAAAUAAYAAAAKAAUAAAAVAAMAAAAKAAUAAAAVAAQAAAAKAAUAAAAVAAUAAAAKAAUAAAAVAAYAAAAKAAUAAAAWAAMAAAAKAAUAAAAWAAQAAAAKAAUAAAAWAAUAAAAKAAUAAAAWAAYAAAAKAAUAAAAXAAMAAAAKAAUAAAAXAAQAAAAKAAUAAAAXAAUAAAAKAAUAAAAXAAYAAAAKAAUAAAAYAAMAAAAKAAUAAAAYAAQAAAAKAAUAAAAYAAUAAAAKAAUAAAAYAAYAAAAKAAUAAAAZAAMAAAAKAAUAAAAZAAQAAAAKAAUAAAAZAAUAAAAKAAUAAAAZAAYAAAAKAAUAAAAaAAMAAAAKAAUAAAAaAAQAAAAKAAUAAAAaAAUAAAAKAAUAAAAaAAYAAAAKAAUAAAAKAAIAAAAKAAQAAAALAAIAAAALAAQAAAAMAAIAAAAMAAQAAAANAAIAAAANAAQAAAAOAAIAAAAOAAQAAAAPAAIAAAAPAAQAAAAQAAIAAAAQAAQAAAARAAIAAAARAAQAAAASAAIAAAASAAQAAAATAAIAAAATAAQAAAAUAAIAAAAUAAQAAAAVAAIAAAAVAAQAAAAWAAIAAAAWAAQAAAAXAAIAAAAXAAQAAAAYAAIAAAAYAAQAAAAZAAIAAAAZAAQAAAAaAAIAAAAaAAQAAAAbAAMAAAAfAAcAAAAbAAQAAAAfAAcAAAAbAAUAAAAfAAcAAAAbAAYAAAAfAAcAAAAbAAcAAAAfAAcAAAAbAAsAAAAfAAcAAAAbAAwAAAAfAAcAAAAbAA0AAAAfAAcAAAAbAA4AAAAfAAcAAAAJAAMAAAAJAAoAAAAJAAQAAAAJAAoAAAAJAAUAAAAJAAoAAAAJAAYAAAAJAAoAAAAJAAkAAAAJAAoAAAAJAAoAAAAJAAoAAAAJAAsAAAAJAAoAAAAJAAwAAAAJAAoAAAAJAA0AAAAJAAoAAAAJAA4AAAAJAAoAAAAKAA8AAAAQABEAAAALAA8AAAAQABEAAAAMAA8AAAAQABEAAAANAA8AAAAQABEAAAAOAA8AAAAQABEAAAAPAA8AAAAQABEAAAAQAA8AAAAQABEAAAARAA8AAAAQABEAAAASAA8AAAAQABEAAAATAA8AAAAQABEAAAAUAA8AAAAQABEAAAAVAA8AAAAQABEAAAAWAA8AAAAQABEAAAAXAA8AAAAQABEAAAAYAA8AAAAQABEAAAAZAA8AAAAQABEAAAAaAA8AAAAQABEAAAAbAAgAAAAfAAkAAAAJAAIAAAAJAAQAAAAJAA8AAAAJABEAAAAbAAIAAAAfAAQAAAAbAA8AAAAfABEAAAA=")
+[node name="Glasstable" type="Sprite2D" parent="." index="6" unique_id=268389671]
+y_sort_enabled = true
+position = Vector2(204.09, 219.445)
+texture = ExtResource("5_dt2bb")
+offset = Vector2(98, 13.97)
+
+[node name="Sofa" type="Sprite2D" parent="." index="7" unique_id=1470782269]
+y_sort_enabled = true
+position = Vector2(208, 264)
+texture = ExtResource("6_dt2bb")
+offset = Vector2(95.83, -35.785)
+
+[node name="Diningtable" type="Sprite2D" parent="." index="8" unique_id=1339627195]
+y_sort_enabled = true
+position = Vector2(338, 228)
+texture = ExtResource("7_5ph1j")
+offset = Vector2(-81, -32)
+
+[node name="Bookclosed" type="Sprite2D" parent="." index="9" unique_id=1804603564]
+y_sort_enabled = true
+position = Vector2(315, 230)
+texture = ExtResource("10_6qk3s")
+offset = Vector2(-107, -30)
+
+[node name="Door" type="StaticBody2D" parent="." index="10" unique_id=441617960]
+y_sort_enabled = true
+position = Vector2(435, 192)
+script = ExtResource("7_t58r6")
+
+[node name="Door" type="Sprite2D" parent="Door" index="0" unique_id=244795582]
+texture = ExtResource("8_5ph1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" index="1" unique_id=641842994]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_15u0t")
+
+[node name="Door2" type="Sprite2D" parent="Door" index="2" unique_id=1628983548]
+visible = false
+position = Vector2(13, -14)
+texture = ExtResource("9_1uqm7")
+
+[node name="WallLayer" parent="." index="11" unique_id=769951624]
+tile_map_data = PackedByteArray("AAAJAAQAAAAJAAQAAAAJAAUAAAAJAAcAAAAJAAYAAAAJAAcAAAAJAAsAAAAJAAcAAAAJAAwAAAAJAAcAAAAJAA0AAAAJAAcAAAAJAA4AAAAJAAcAAAAJAA8AAAAJAAcAAAAKAAQAAAAKAAQAAAAKAAUAAAAKAAUAAAAKAAYAAAAKAAUAAAALAAQAAAALAAQAAAALAAUAAAAKAAUAAAALAAYAAAAKAAUAAAAMAAQAAAAMAAQAAAAMAAUAAAAKAAUAAAAMAAYAAAAKAAUAAAANAAQAAAANAAQAAAANAAUAAAAKAAUAAAANAAYAAAAKAAUAAAAOAAQAAAAOAAQAAAAOAAUAAAAKAAUAAAAOAAYAAAAKAAUAAAAPAAQAAAAPAAQAAAAPAAUAAAAKAAUAAAAPAAYAAAAKAAUAAAAQAAQAAAAQAAQAAAAQAAUAAAAKAAUAAAAQAAYAAAAKAAUAAAARAAQAAAARAAQAAAARAAUAAAAKAAUAAAARAAYAAAAKAAUAAAASAAQAAAASAAQAAAASAAUAAAAKAAUAAAASAAYAAAAKAAUAAAATAAQAAAATAAQAAAATAAUAAAAKAAUAAAATAAYAAAAKAAUAAAAUAAQAAAAUAAQAAAAUAAUAAAAKAAUAAAAUAAYAAAAKAAUAAAAVAAQAAAAVAAQAAAAVAAUAAAAKAAUAAAAVAAYAAAAKAAUAAAAWAAQAAAAWAAQAAAAWAAUAAAAKAAUAAAAWAAYAAAAKAAUAAAAXAAQAAAAXAAQAAAAXAAUAAAAKAAUAAAAXAAYAAAAKAAUAAAAYAAQAAAAYAAQAAAAYAAUAAAAKAAUAAAAYAAYAAAAKAAUAAAAZAAQAAAAZAAQAAAAZAAUAAAAKAAUAAAAZAAYAAAAKAAUAAAAaAAQAAAAaAAQAAAAaAAUAAAAKAAUAAAAaAAYAAAAKAAUAAAAbAAQAAAAfAAQAAAAbAAUAAAAfAAcAAAAbAAYAAAAfAAcAAAAbAAcAAAAfAAcAAAAbAAgAAAAfAAcAAAAbAA0AAAAfAAcAAAAbAA4AAAAfAAcAAAAbAA8AAAAfAAcAAAAJAAcAAAAJAAcAAAAJAAgAAAAJAAcAAAAJABAAAAAJAAcAAAAJABEAAAAJABEAAAAKAAcAAAAKAAUAAAAKAAgAAAAKAAUAAAAKABEAAAAQABEAAAALAAcAAAAKAAUAAAALAAgAAAAKAAUAAAALABEAAAAQABEAAAAMAAcAAAAKAAUAAAAMAAgAAAAKAAUAAAAMABEAAAAQABEAAAANAAcAAAAKAAUAAAANAAgAAAAKAAUAAAANABEAAAAQABEAAAAOAAcAAAAKAAUAAAAOAAgAAAAKAAUAAAAOABEAAAAQABEAAAAPAAcAAAAKAAUAAAAPAAgAAAAKAAUAAAAPABEAAAAQABEAAAAQAAcAAAAKAAUAAAAQAAgAAAAKAAUAAAAQABEAAAAQABEAAAARAAcAAAAKAAUAAAARAAgAAAAKAAUAAAARABEAAAAQABEAAAASAAcAAAAKAAUAAAASAAgAAAAKAAUAAAASABEAAAAQABEAAAATAAcAAAAKAAUAAAATAAgAAAAKAAUAAAATABEAAAAQABEAAAAUAAcAAAAKAAUAAAAUAAgAAAAKAAUAAAAUABEAAAAQABEAAAAVAAcAAAAKAAUAAAAVAAgAAAAKAAUAAAAVABEAAAAQABEAAAAWAAcAAAAKAAUAAAAWAAgAAAAKAAUAAAAWABEAAAAQABEAAAAXAAcAAAAKAAUAAAAXAAgAAAAKAAUAAAAXABEAAAAQABEAAAAYAAcAAAAKAAUAAAAYAAgAAAAKAAUAAAAYABEAAAAQABEAAAAZAAcAAAAKAAUAAAAZAAgAAAAKAAUAAAAZABEAAAAQABEAAAAaAAcAAAAKAAUAAAAaAAgAAAAKAAUAAAAaABEAAAAQABEAAAAbAAkAAAAfAAcAAAAbAAoAAAAfAAkAAAAbABAAAAAfAAcAAAAbABEAAAAfABEAAAA=")
 tile_set = ExtResource("4_0i1c4")
 
-[node name="SceneTrigger" parent="Triggers" parent_id_path=PackedInt32Array(1897780192) index="0" unique_id=1998012916]
-position = Vector2(144, 128)
+[node name="Triggers" parent="." index="12" unique_id=1897780192]
+position = Vector2(0, 32)
+
+[node name="SceneTrigger" parent="Triggers" index="0" unique_id=1998012916]
+position = Vector2(161, 128)
 next_scene = "uid://bscsgcyvxq3yf"
 next_spawn = 1
 
-[node name="SceneTrigger2" parent="Triggers" parent_id_path=PackedInt32Array(1897780192) index="1" unique_id=937834689 instance=ExtResource("4_iues0")]
+[node name="SceneTrigger2" parent="Triggers" index="1" unique_id=937834689 instance=ExtResource("4_iues0")]
 position = Vector2(449, 160)
 monitoring = false
 next_scene = "uid://ciqpq4aaa8f1k"
 
-[node name="Door" type="Area2D" parent="Interactables" parent_id_path=PackedInt32Array(2140238182) index="0" unique_id=1848723163]
+[node name="Interactables" parent="." index="13" unique_id=2140238182]
+position = Vector2(0, 32)
+
+[node name="Door" type="Area2D" parent="Interactables" index="0" unique_id=1848723163]
 position = Vector2(38.245, 0)
 script = ExtResource("5_0i1c4")
 
@@ -51,36 +138,53 @@ script = ExtResource("5_0i1c4")
 position = Vector2(393.755, 160)
 shape = SubResource("RectangleShape2D_dt2bb")
 
-[node name="Television" parent="Anomalies" parent_id_path=PackedInt32Array(1391283418) index="0" unique_id=1780494124 node_paths=PackedStringArray("world", "thought_puzzle_interface") instance=ExtResource("4_00sps")]
-position = Vector2(214, 187)
+[node name="Text" type="Area2D" parent="Interactables" index="1" unique_id=1941273924]
+script = ExtResource("5_0i1c4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Text" index="0" unique_id=1801044546]
+position = Vector2(192, 192)
+shape = SubResource("RectangleShape2D_t58r6")
+
+[node name="Text2" type="Area2D" parent="Interactables" index="2" unique_id=677833769]
+script = ExtResource("5_0i1c4")
+interaction = "self_help"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Text2" index="0" unique_id=1245357121]
+position = Vector2(316, 206.5)
+shape = SubResource("RectangleShape2D_iku2p")
+
+[node name="Anomalies" parent="." index="14" unique_id=1391283418]
+position = Vector2(0, 32)
+
+[node name="Television" parent="Anomalies" index="0" unique_id=1780494124 node_paths=PackedStringArray("world", "thought_puzzle_interface") instance=ExtResource("4_00sps")]
+position = Vector2(208, 160)
+static_sound = ExtResource("16_wlp5x")
 world = NodePath("../..")
 thought_puzzle_interface = NodePath("../../ThoughtPuzzle")
 
-[node name="TestAnomaly" parent="Anomalies" parent_id_path=PackedInt32Array(1391283418) index="1" unique_id=1119539795 node_paths=PackedStringArray("world", "thought_puzzle_interface") instance=ExtResource("3_00sps")]
-position = Vector2(328, 128)
+[node name="TestAnomaly" parent="Anomalies" index="1" unique_id=1119539795 node_paths=PackedStringArray("world", "thought_puzzle_interface") instance=ExtResource("3_00sps")]
+position = Vector2(232, 96)
 cooling_reward = 10.0
 world = NodePath("../..")
 thought_puzzle_interface = NodePath("../../ThoughtPuzzle")
 
-[node name="Slingshot" parent="Anomalies" parent_id_path=PackedInt32Array(1391283418) index="2" unique_id=1939774420 instance=ExtResource("6_mrsim")]
-position = Vector2(365, 118)
+[node name="Slingshot" parent="Anomalies" index="2" unique_id=1939774420 instance=ExtResource("6_mrsim")]
+position = Vector2(320, 104)
 
-[node name="Fridge" parent="Anomalies" parent_id_path=PackedInt32Array(1391283418) index="3" unique_id=1883396269 instance=ExtResource("8_dn643")]
-position = Vector2(401, 67)
+[node name="Fridge" parent="Anomalies" index="3" unique_id=1883396269 instance=ExtResource("8_dn643")]
+position = Vector2(280, 64)
 
-[node name="Friend" parent="Characters" parent_id_path=PackedInt32Array(28831964) index="0" unique_id=1900777179]
+[node name="Characters" parent="." index="15" unique_id=28831964]
+position = Vector2(0, 32)
+
+[node name="Friend" parent="Characters" index="0" unique_id=1900777179]
 position = Vector2(101, -100)
 
-[node name="Player" parent="Characters" parent_id_path=PackedInt32Array(28831964) index="1" unique_id=1941967074]
-position = Vector2(263, 202)
+[node name="Player" parent="Characters" index="1" unique_id=1941967074]
+position = Vector2(340, 218)
 
-[node name="Spawn" parent="Spawn0" parent_id_path=PackedInt32Array(300232249) index="0" unique_id=1237786385]
-position = Vector2(175, 128)
-
-[node name="FriendSpawn" parent="Spawn0" parent_id_path=PackedInt32Array(300232249) index="1" unique_id=729169349]
-position = Vector2(155, 128)
-
-[node name="Spawn1" type="Node2D" parent="." index="10" unique_id=255815288]
+[node name="Spawn1" type="Node2D" parent="." index="16" unique_id=255815288]
+position = Vector2(0, 32)
 
 [node name="Spawn" type="Marker2D" parent="Spawn1" index="0" unique_id=1276027096]
 position = Vector2(422, 160)
@@ -88,4 +192,40 @@ position = Vector2(422, 160)
 [node name="FriendSpawn" type="Marker2D" parent="Spawn1" index="1" unique_id=1238491280]
 position = Vector2(444, 160)
 
+[node name="Collision" type="StaticBody2D" parent="." index="17" unique_id=1426582183]
+position = Vector2(0, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" index="0" unique_id=2141715039]
+position = Vector2(208, 182)
+shape = SubResource("RectangleShape2D_xpmq7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision" index="1" unique_id=303995196]
+position = Vector2(208, 232)
+shape = SubResource("RectangleShape2D_g836o")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collision" index="2" unique_id=731918045]
+position = Vector2(337, 188)
+shape = SubResource("RectangleShape2D_1uqm7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collision" index="3" unique_id=1615098699]
+position = Vector2(396.5, 189)
+shape = SubResource("RectangleShape2D_5ph1j")
+
+[node name="Spawn0" parent="." index="18" unique_id=300232249]
+position = Vector2(0, 32)
+
+[node name="Spawn" parent="Spawn0" index="0" unique_id=1237786385]
+position = Vector2(197, 128)
+
+[node name="FriendSpawn" parent="Spawn0" index="1" unique_id=729169349]
+position = Vector2(177, 128)
+
+[node name="FriendInitialSpawn" parent="." index="19" unique_id=1753829264]
+position = Vector2(-277, -431)
+
+[node name="FadeOut" parent="EffectsLayer" parent_id_path=PackedInt32Array(2109084688) index="1" unique_id=198079097]
+color = Color(0.9764706, 0.14509805, 0, 0)
+
 [connection signal="interacted" from="Interactables/Door" to="." method="_on_door_interacted"]
+[connection signal="interacted" from="Interactables/Text" to="." method="_on_text_interacted"]
+[connection signal="interacted" from="Interactables/Text2" to="." method="_on_text_interacted"]

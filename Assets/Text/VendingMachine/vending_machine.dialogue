@@ -23,20 +23,20 @@ The isotonic drinks machine is not responding to your touch.
 
 ~ success
 
-You: Ah-
+You: [#scared]Ah-
 You: The vending machine- It's alive!
-Suika: The vending machine...?
+Suika: [#default]The vending machine...?
 Suika: Did something happen to it?
-You: Do you not see-
-You: N-Never mind.
+You: [#scared]Do you not see-
+You: [#default]N-Never mind.
 
 => END
 
 ~ failure
 
 The vending machine seems to be selling some nice cold drinks.
-You: I should really get a drink.
-Suika: There's a vending machine right there silly~
+You: [#default]I should really get a drink.
+Suika: [#playful]There's a vending machine right there silly~
 Suika: You can get a 100 Minus there!
 
 => END

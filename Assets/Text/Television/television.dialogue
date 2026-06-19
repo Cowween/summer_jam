@@ -17,7 +17,7 @@ else:
 
 ~ tv
 if GlobalStorage.game_data.tv_on:
-	You: It's
+	You: [#sad]It's
 	You: So hot...
 else:
 	if GlobalStorage.game_data.tv_broken:
@@ -43,7 +43,7 @@ Unplug the tv?
 if GlobalStorage.game_data.tv_broken:
 	Look at what you have done.
 else:
-	You: I need to turn the tv off.
+	You: [#scared]I need to turn the tv off.
 	You: I- I need to blind it
 	Use the slingshot to shoot at the eye.
 
@@ -52,7 +52,7 @@ else:
 ~ illusion
 
 if GlobalStorage.game_data.tv_on:
-	You: It's
+	You: [#sad]It's
 	You: So hot...
 else:
 	The tv is off.
@@ -62,14 +62,15 @@ else:
 
 ~ success
 
-You: What the hell is going on with the tv?
+You: [#scared]What the hell is going on with the tv?
 You: It's... It's staring at me.
+You: I need to shut it down!
 
 => END
 
 ~ failure
 
-You: It's my favourite program.
+You: [#default]It's my favourite program.
 
 => END
 
