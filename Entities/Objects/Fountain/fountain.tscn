@@ -16,9 +16,10 @@
 script = ExtResource("4_dvleq")
 high_temp_text_bank = "It's Just A Fountain"
 low_temp_text_bank = "The Statue Looks Off
+"
+valid_solution_lines = "The Statue Looks Off
 The Fountain Statue Looks Off
 The Fountain Looks Off"
-valid_solution_lines = "The Statue Looks Off"
 eldritch_solution_lines = "It's Just A Fountain"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 

@@ -8,16 +8,19 @@ const DEEZNATSU_ROADLOOPDISTORTED = preload("uid://bt76b5s6d6cf7")
 
 func _ready() -> void:
 	super()
+	
 	GameBus.aircon_switch_flipped.connect(_on_switch_flipped)
 	GameBus.aircon_switch_broken.connect(_on_switch_broken)
 	GameBus.truck.connect(func(): ac_toggle(true))
 	if game_data.friend_revealed:
-		background_music = DEEZNATSU_ROADLOOPDISTORTED
+		SoundManager.play_bg(DEEZNATSU_ROADLOOPDISTORTED)
 	if not game_data.stage_2_visited:
 		DialogueManager.show_dialogue_balloon(stage_script, "start")
 		await DialogueManager.dialogue_ended
 		game_data.stage_2_visited = true
 		game_data.stage_2_count += 1
+	if game_data.is_friend_distracted:
+		friend.global_position = switch_pos.global_position
 	if game_data.is_truck_open:
 		ac_toggle(true)
 

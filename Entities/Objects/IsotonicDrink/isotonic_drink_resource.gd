@@ -1,4 +1,6 @@
 extends ItemResource
+class_name DrinkResource
+
 
 @export var heat_decrease_amount := 20.0
 

@@ -18,7 +18,13 @@ script = ExtResource("3_fmhpl")
 high_temp_text_bank = "Stuffy Winter Jacket"
 low_temp_text_bank = "Mannequin Wearing Is Not Melting"
 valid_solution_lines = "Mannequin Wearing Jacket Is Not Melting
-Mannequin Wearing Winter Jacket Is Not Melting"
+Mannequin Wearing Winter Jacket Is Not Melting
+Mannequin Wearing Stuffy Winter Jacket Is Not Melting
+Mannequin Wearing Stuffy Jacket Is Not Melting
+Mannequin Not Wearing Jacket Is Melting
+Mannequin Not Wearing Winter Jacket Is Melting
+Mannequin Not Wearing Stuffy Jacket Is Melting
+Mannequin Not Wearing Stuffy Winter Jacket Is Melting"
 eldritch_solution_lines = "Stuffy Winter Jacket"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 

@@ -15,23 +15,24 @@ func _on_interacted() -> void:
 	if not GlobalStorage.game_data.fridge_open:
 		DialogueManager.show_dialogue_balloon(interaction_dialogues, "fridge_locked")
 		return
-	print("here fridge2")
+	var item := item_resource.duplicate()
+	var uses := 0
 	for i in GlobalStorage.game_data.inventory:
-		if i.item_id == item_resource.item_id:
+		if i.item_id == item.item_id:
+			uses = i.uses
 			if i.uses == 5:
 				DialogueManager.show_dialogue_balloon(interaction_dialogues, "cannot_carry")
 				await DialogueManager.dialogue_ended
 				return
 			else:
 				break
-	print("here fridge")
 	DialogueManager.show_dialogue_balloon(interaction_dialogues, "fridge")
 	await DialogueManager.dialogue_ended
 	if not GlobalStorage.game_data.player_y_n:
 		return
-	GlobalStorage.game_data.picked_up_name = item_resource.display_name + " x" + str(item_resource.uses)
+	GlobalStorage.game_data.picked_up_name = item_resource.display_name + " x" + str(5-uses)
 	DialogueManager.show_dialogue_balloon(interaction_dialogues, "item_pick_up")
-	GlobalStorage.game_data.add_item(item_resource)
+	GlobalStorage.game_data.add_item(item)
 
 func _on_open_fridge() -> void:
 	sprite_2d.texture = KITCHENOPEN

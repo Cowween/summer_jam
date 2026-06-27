@@ -11,15 +11,11 @@
 [sub_resource type="Resource" id="Resource_hs8w3"]
 script = ExtResource("4_h512l")
 anomaly_id = "calendar"
-high_temp_text_bank = "Calendar My Just"
-low_temp_text_bank = "Is The Beach Frozen"
-valid_solution_lines = "Is The Beach Frozen
-Frozen Beach
-The Beach Is Frozen
-Beach Is Frozen
+high_temp_text_bank = "Beach Picture"
+low_temp_text_bank = "Frozen"
+valid_solution_lines = "Frozen Beach
 Beach Frozen"
-eldritch_solution_lines = "Just My Calendar
-My Calendar"
+eldritch_solution_lines = "Beach Picture"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wuoig"]
@@ -29,7 +25,7 @@ radius = 23.0
 shader = ExtResource("5_h512l")
 shader_parameter/shake_power = 0.03
 shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 100.0
+shader_parameter/shake_speed = 50.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.01
 

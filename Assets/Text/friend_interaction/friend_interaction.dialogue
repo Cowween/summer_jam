@@ -29,7 +29,7 @@ match GlobalStorage.game_data.current_stage:
 			You: [#default]Maybe it's because it's so "nice" and "sunny" that I'm staying inside?!
 	when 2
 		%
-			You:[#default]How are you wearing a jacket in this weather?
+			You: [#default]How are you wearing a jacket in this weather?
 			You: I swear it's abnormally hot out here.
 			Suika: Really? It's not even that hot silly~
 			You: Seriously what's gotten into you today?

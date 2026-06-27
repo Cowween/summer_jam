@@ -19,6 +19,7 @@ class_name StageManager
 @onready var fade_out: ColorRect = $EffectsLayer/FadeOut
 
 var game_data : GameData = GlobalStorage.game_data
+var is_dying := false
 
 var current_temp : float :
 	set(value):
@@ -28,6 +29,8 @@ var current_temp : float :
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	CursorManager.set_default_mode()
 	SoundManager.play_bg(background_music)
 	if not background_sprite:
 		configure_camera_limits()
@@ -40,6 +43,7 @@ func _ready() -> void:
 	game_data.wpn_equipped = false
 	refresh_temp()
 	current_temp = current_temp
+	game_data.last_stage = game_data.current_stage
 	game_data.current_stage = stage_id
 	game_data.player_core_heat = game_data.player_core_heat
 	if game_data.is_inventory_open:
@@ -127,6 +131,7 @@ func set_friend_state(state: String) -> void:
 			friend.current_state = friend.State.DISTRACTED
 
 func _new_loop() -> void:
+	is_dying = true
 	GameBus.block_player_movement.emit()
 	player.die()
 	var tween := create_tween()
@@ -136,6 +141,8 @@ func _new_loop() -> void:
 	get_tree().change_scene_to_file(starting_scene)
 
 func _player_heat_changed(new_heat: float) -> void:
+	if is_dying:
+		return
 	if new_heat >= 100.0 and not game_data.god_mode:
 		_new_loop()
 		
@@ -147,7 +154,3 @@ func _on_anomaly_solved() -> void:
 		if not game_data.solved_anomalies.has(a.anomaly_id):
 			return
 			
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

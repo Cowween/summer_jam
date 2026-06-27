@@ -64,7 +64,7 @@ func cold_visuals() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("p_toggle"):
 		p_toggle = true
-		if not data.wpn_equipped and mouse_in:
+		if not data.wpn_equipped and mouse_in and not is_pondered:
 			CursorManager.set_ponder_mode()
 	if event.is_action_released("p_toggle"):
 		p_toggle = false
@@ -107,7 +107,7 @@ func _on_interact() -> void:
 func _on_mouse_entered():
 	print("mouse in")
 	mouse_in = true
-	if p_toggle and not data.wpn_equipped:
+	if p_toggle and not data.wpn_equipped and not is_pondered:
 		CursorManager.set_ponder_mode()
 	
 func _on_mouse_exited():
@@ -173,7 +173,7 @@ func _on_flicker_timer_timeout() -> void:
 	
 	if glitch.visible:
 		# It's currently VISIBLE. Keep it on screen for a terrifying, split-second flash.
-		next_time = randf_range(0.5, 1.0)
+		next_time = randf_range(0.5, 2.0)
 	else:
 		# It's currently HIDDEN. Wait a few seconds before the next jump scare.
 		next_time = randf_range(1.5, 4.0)

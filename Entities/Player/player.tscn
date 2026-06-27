@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://7b51vis65i50" path="res://Assets/Sprites/Suiyobi/suiyobifaint15.png" id="17_520x1"]
 [ext_resource type="Texture2D" uid="uid://bjqalw813ymt6" path="res://Assets/Sprites/Suiyobi/suiyobifaint16.png" id="18_mycwr"]
 [ext_resource type="Texture2D" uid="uid://d2cyy35ni4fdk" path="res://Assets/Sprites/Suiyobi/suiyobifaint17.png" id="19_0bw0x"]
+[ext_resource type="FontFile" uid="uid://bp0xxd06txs7q" path="res://Assets/Themes/TeenyTinyPixls-o2zo.ttf" id="32_w51ui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3d8c"]
 size = Vector2(18, 8)
@@ -597,6 +598,26 @@ frame_progress = 1.0
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1838122982]
 position = Vector2(-8, 19)
 occluder = SubResource("OccluderPolygon2D_tekja")
+
+[node name="E" type="Label" parent="." unique_id=1922491585]
+visible = false
+z_index = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("32_w51ui")
+theme_override_font_sizes/font_size = 5
+text = "[Interact]"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

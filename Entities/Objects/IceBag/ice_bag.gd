@@ -1,6 +1,6 @@
 extends BaseAnomaly
 
-@export var tentacles_attack := 50.0
+@export var tentacles_attack := 60.0
 @export var tentacles_temp := 100.0
 @export var ice_bag_dec := 10.0
 

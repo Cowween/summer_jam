@@ -30,8 +30,8 @@ size = Vector2(31, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t58r6"]
 size = Vector2(18.369919, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iku2p"]
-size = Vector2(18.369919, 39)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qk3s"]
+size = Vector2(20, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmq7"]
 size = Vector2(64, 28)
@@ -150,8 +150,8 @@ script = ExtResource("5_0i1c4")
 interaction = "self_help"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Text2" index="0" unique_id=1245357121]
-position = Vector2(316, 206.5)
-shape = SubResource("RectangleShape2D_iku2p")
+position = Vector2(316, 208)
+shape = SubResource("RectangleShape2D_6qk3s")
 
 [node name="Anomalies" parent="." index="14" unique_id=1391283418]
 position = Vector2(0, 32)
@@ -228,4 +228,3 @@ color = Color(0.9764706, 0.14509805, 0, 0)
 
 [connection signal="interacted" from="Interactables/Door" to="." method="_on_door_interacted"]
 [connection signal="interacted" from="Interactables/Text" to="." method="_on_text_interacted"]
-[connection signal="interacted" from="Interactables/Text2" to="." method="_on_text_interacted"]

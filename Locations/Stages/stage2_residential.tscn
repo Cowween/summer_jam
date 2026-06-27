@@ -277,7 +277,7 @@ shape = SubResource("RectangleShape2D_7ca3p")
 
 [node name="AC3" type="Area2D" parent="Interactables" parent_id_path=PackedInt32Array(2140238182) index="5" unique_id=427260575]
 script = ExtResource("14_4y03v")
-interaction = "aircon_closed"
+interaction = "crash"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/AC3" index="0" unique_id=1060453316]
 position = Vector2(958.5, 85.5)
@@ -342,6 +342,7 @@ thought_puzzle_interface = NodePath("../../ThoughtPuzzle")
 position = Vector2(296, 184)
 
 [node name="Slingshot" parent="." index="15" unique_id=1939774420 instance=ExtResource("7_fjkkg")]
+visible = false
 position = Vector2(520, 408)
 
 [node name="Spawn" parent="Spawn0" parent_id_path=PackedInt32Array(300232249) index="0" unique_id=1237786385]

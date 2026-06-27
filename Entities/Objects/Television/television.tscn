@@ -35,7 +35,7 @@ metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 size = Vector2(40, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rui07"]
-size = Vector2(57, 48)
+size = Vector2(57, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvik4"]
 size = Vector2(16, 16)
@@ -110,7 +110,7 @@ position = Vector2(0, -19)
 script = ExtResource("5_sh0fu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1466374265]
-position = Vector2(-0.5, 7)
+position = Vector2(-0.5, 9.5)
 shape = SubResource("RectangleShape2D_rui07")
 debug_color = Color(0.9695465, 0, 0.46377677, 0.41960785)
 

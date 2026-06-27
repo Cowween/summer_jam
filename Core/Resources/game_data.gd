@@ -22,6 +22,7 @@ var god_mode := false
 var current_stage := 0
 var past_temp := 35.0
 var wpn_equipped := false
+var last_stage := 0
 const PICKUP = preload("uid://u35c0elr6hb0")
 
 #==Stage 0 flags==
@@ -38,7 +39,7 @@ var tv_broken := false
 var stage_1_solved := false
 var fridge_open := false
 var friend_seen := false
-var friend_killed_reset := true
+var friend_killed_reset := false
 
 #==Stage 2 flags==
 
@@ -75,6 +76,7 @@ func loop() -> void:
 	stage_3_visited = false
 	stage_4_visited = false
 	is_friend_following = false
+	is_friend_distracted = false
 	is_reset = true
 	next_spawn = 0
 	loop_count += 1

@@ -14,6 +14,7 @@ const CROSSHAIR = preload("uid://dkkwp1mnqfrcc")
 
 @onready var camera := $Camera2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var e: Label = $E
 
 var interacting_area : Interactable = null
 var game_data : GameData = GlobalStorage.game_data
@@ -186,6 +187,7 @@ func swing_sledgehammer() -> void:
 
 func _on_interaction_area_area_entered(area: Area2D) -> void:
 	if area is Interactable:
+		e.show()
 		#print("Entering "+str(area.get_parent()))
 		interacting_area = area
 		
@@ -193,6 +195,7 @@ func _on_interaction_area_area_entered(area: Area2D) -> void:
 func _on_interaction_area_area_exited(area: Area2D) -> void:
 	if area is Interactable:
 		if area == interacting_area:
+			e.hide()
 			interacting_area = null
 
 
@@ -204,10 +207,11 @@ func _on_heat_tick_timeout() -> void:
 
 func _on_dialogue_started(_resource: DialogueResource) -> void:
 	is_input_locked = true
-	
+	$HeatTick.paused = true
 	
 func _on_dialogue_ended(_resource: DialogueResource) -> void:
 	is_input_locked = false
+	$HeatTick.paused = false
 	
 func _on_movement_block() -> void:
 	is_input_locked = true

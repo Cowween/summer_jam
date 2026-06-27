@@ -215,7 +215,7 @@ texture = ExtResource("14_fmen6")
 lifetime = 3.4299999999999997
 process_material = SubResource("ParticleProcessMaterial_w51ab")
 
-[node name="Collisions" type="StaticBody2D" parent="." index="18" unique_id=234258229]
+[node name="Collisions" type="StaticBody2D" parent="." index="17" unique_id=234258229]
 visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0" unique_id=1962591986]
@@ -236,7 +236,7 @@ shape = SubResource("RectangleShape2D_w51ab")
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions" index="4" unique_id=175875733]
 polygon = PackedVector2Array(656, 344, 712, 368, 720, 352, 672, 328)
 
-[node name="Steam" type="AudioStreamPlayer2D" parent="." index="19" unique_id=1923058320]
+[node name="Steam" type="AudioStreamPlayer2D" parent="." index="18" unique_id=1923058320]
 stream = ExtResource("16_w51ab")
 
 [connection signal="body_entered" from="Interactables/Grass" to="." method="_on_grass_body_entered"]

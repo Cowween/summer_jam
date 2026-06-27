@@ -32,6 +32,7 @@ func execute_hallucination_trap() -> void:
 
 func _on_truth_revealed() -> void:
 	# Virtual function: Overridden by individual anomalies (e.g., breaking streetlights)
+	glitch.hide()
 	pass
 
 func update_visuals() -> void:

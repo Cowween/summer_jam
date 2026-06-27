@@ -6,15 +6,18 @@
 [ext_resource type="Script" uid="uid://dfyn8b88xowol" path="res://Core/interactable.gd" id="3_fivr2"]
 [ext_resource type="Shader" uid="uid://shyrhliw5hpx" path="res://Assets/Shaders/fade_to_dust.gdshader" id="5_swt35"]
 [ext_resource type="Texture2D" uid="uid://djsb4tcwcegmq" path="res://Assets/Sprites/Tree/vines.png" id="6_wdgrm"]
-[ext_resource type="Texture2D" uid="uid://brsgtbpxsjnqp" path="res://Assets/Sprites/Tree/vinesice.png" id="7_q8o5i"]
+[ext_resource type="Texture2D" uid="uid://chkb0govxonfb" path="res://Assets/Sprites/Tree/vineicicles.png" id="7_swt35"]
 [ext_resource type="Shader" uid="uid://bip1kum7fqslf" path="res://Assets/Shaders/glitch.gdshader" id="8_swt35"]
 
 [sub_resource type="Resource" id="Resource_swt35"]
 script = ExtResource("2_fivr2")
-high_temp_text_bank = "There Is Nothing Beyond Here"
-low_temp_text_bank = "It Winter"
-valid_solution_lines = "It Is Winter"
-eldritch_solution_lines = "There Is Nothing Beyond Here"
+high_temp_text_bank = "Turn Back"
+low_temp_text_bank = "It Is Winter"
+valid_solution_lines = "It Is Winter
+Is Winter
+It Winter
+"
+eldritch_solution_lines = "Turn Back"
 metadata/_custom_type_script = "uid://brrdjg4dvwhuk"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q8o5i"]
@@ -76,7 +79,7 @@ texture = ExtResource("6_wdgrm")
 
 [node name="TrueSprite" type="Sprite2D" parent="." unique_id=2084650500]
 position = Vector2(-208, 48)
-texture = ExtResource("7_q8o5i")
+texture = ExtResource("7_swt35")
 
 [node name="IllusionSprite" type="Sprite2D" parent="." unique_id=591201497]
 position = Vector2(-208, 48)

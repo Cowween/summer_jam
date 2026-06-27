@@ -3,7 +3,7 @@ extends Node2D
 @export var boss_puzzle: Array[ThoughtPuzzleResource]
 @export var thought_puzzle_interface : ThoughtPuzzle
 @export var encounter : DialogueResource
-@export var heat_damage := 20.0
+@export var heat_damage := 40.0
 @export var death_pos : Marker2D
 @export var scream1 : AudioStream
 @export var psychic : AudioStream
@@ -25,9 +25,9 @@ extends Node2D
 var movement_tween: Tween
 # Health & Phases
 var slingshot_hits: int = 0
-var hits_to_stun: int = 1
+var hits_to_stun: int = 5
 var sledgehammer_hits: int = 0
-var hits_to_kill: int = 1
+var hits_to_kill: int = 3
 
 var is_stunned: bool = false
 var is_dead: bool = false
@@ -48,11 +48,12 @@ func _ready() -> void:
 	sprite.material.set("shader_parameter/flash_modifier", 0.0)
 	# Start the psychic attack loop
 	attack_timer.timeout.connect(_on_psychic_attack_triggered)
-	attack_timer.start(randf_range(4.0, 7.0))
+	
 	bob.play("bobbing")
 	# Listen for when the player successfully escapes the puzzle
 	GameBus.anomaly_pondered.connect(_on_puzzle_solved)
 	await DialogueManager.dialogue_ended
+	attack_timer.start(randf_range(4.0, 7.0))
 	start_movement_cycle()
 
 func update_visuals() -> void:
@@ -188,7 +189,7 @@ func _on_puzzle_solved(anomaly_id: String, solved: String) -> void:
 	if anomaly_id == "boss_psychic_attack":
 		audio_stream_player_2d.stop()
 		print("Player escaped the psychic attack!")
-		if solved == "wrong":
+		if solved == "wrong" or solved == "random":
 			game_data.player_core_heat += 20.0
 		psychic_attack = false
 		update_visuals()
